@@ -1,0 +1,41 @@
+.nav-link{
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.nav-link:hover{
+    border-bottom:solid rgb(245, 245, 233) !important;
+
+}
+
+.navbar-brand{
+    font-family: 'Megrim', cursive;
+    font-size:35px;
+    text-transform: uppercase;
+}
+
+.request-type-display, .display-fromdate, .display-todate{
+    background-color:rgba(0, 0, 255, 0.212);
+
+}
+ 
+#leave-form-box{
+    background-color:rgba(128, 128, 128, 0.226);
+    padding:2%;
+    
+}
+
+.leave-form-heading{
+    font-family: 'Arapey', serif;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* Half Day Check */
+#halfday-check-box{
+    background-color:white;
+    padding:1%;
+}
+
+.big-checkbox {
+    width: 30px; height: 20px;
+}
