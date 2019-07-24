@@ -1,4 +1,5 @@
-//JS Handler for login.html
+////////////////////////////////JS Handler for login.html
+
 var rootRef = firebase.database().ref("students");
 rootRef.once("child_added", snap =>{
     var regnofromdb = snap.child("registernumber").val();
@@ -32,7 +33,7 @@ rootRef.once("child_added", snap =>{
         
         //redirect to index page
         window.location.href ='index.html';
-        
+
         return false;
         }
 
