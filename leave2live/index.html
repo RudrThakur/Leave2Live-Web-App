@@ -1,127 +1,140 @@
+<!-- Main Page : index.html -->
+<!-- Author : Rudraksh -->
+<!-- Description : LeaveApplication Form Automated Using a Web Application -->
+<!-- WILL SERVE TO KCG COLLEGE OF TECHNOLOGY -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Students App</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Head -->
+  <head>
+    <!-- Title -->
+    <title>Students App</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Leave2Live</a>
+      <!-- Navbar Toggler Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collapsible Navbar -->
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Applications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">History</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gatepass</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#">Feedback</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <br>
 
+    <!-- Request Section -->
+    <div class="container">
+      <h3>Please Select A Request Type</h3><hr>
+        <select class="form-control form-control-lg" id="request-type">
+          <option selected>Choose Request Type ...</option>
+          <option>Leave Request</option>
+          <option>On Duty Request</option>
+        </select>
+      <br>
+      <span class="request-type-display"></span>
+      <br><br>
+    </div>
 
-  <!-- Bootstrap CDN -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Application Form -->
+    <div class="container" id="leave-form-box">
+      <h4 class="leave-form-heading">Leave/OD Form</h4><hr>
+
+      <!-- Half Day Checkbox -->
+      <div class="form-group" id="halfday-check-box">
+        <input type="checkbox" id="halfday-check" class="big-checkbox"/>
+        <label for="halfday-check"><strong>Check Here For Half Day</strong></label>
+      <br>
+        <span class="display-halfdaycheck"></span>
+      </div>
+
+      <!-- From Date -->
+      <div class="form-group">
+        <label for="fromdate">Select From Date:</label>
+        <input type="date" class="form-control" id="fromdate" placeholder="Enter From Date" name="fromdate">
+      <br>
+        <span class="display-fromdate"></span>
+      </div>
+
+      <!-- To Date -->
+      <div class="form-group">
+        <label for="todate">Select To Date:</label>
+        <input type="date" class="form-control" id="todate" placeholder="Enter To Date" name="todate">
+      <br>
+      <span class="display-todate"></span>
+      <span class="display-totaldays"></span>
+      </div>
+
+      <!-- Number of Working Days -->
+      <div class="form-group">
+        <label for="days">Number of Working Days:</label>
+        <input type="number" name="days" class="form-control" id="days" placeholder="Please Enter Number of Working Days">
+      <br>
+        <span class="display-days"></span>
+      </div>
+
+      <!-- Scheduled Tests -->
+      <div class="form-group">
+        <label for="tests">Is There Any Tests Scheduled ?</label>
+        <input type="text" name="tests" class="form-control" id="tests">
+      <br>
+        <span class="display-days"></span>
+      </div>
+
+      <!-- Reason Category -->
+      <div class="form-group">
+        <label for="reasoncategory">Reason Category</label>
+        <input type="text" name="reasoncategory" class="form-control" id="reasoncategory">
+      <br>
+        <span class="display-days"></span>
+      </div>
+
+      <!-- Reason Specific -->
+      <div class="form-group">
+        <label for="reasonspecific">Is There Any Tests Scheduled ?</label>
+        <input type="text" name="reasonspecific" class="form-control" id="reasonspecific">
+      <br>
+        <span class="display-days"></span>
+      </div>
+    <!-- End of Request Box -->
+    </div>
+  <!-- End of Body -->
+  </body>
+  
+                                                    <!-- Links Here -->
+
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 <!-- Google Fonts API -->
 <link href="https://fonts.googleapis.com/css?family=Arapey|Julius+Sans+One|Megrim&display=swap" rel="stylesheet">
 
 <!-- External CSS -->
 <link rel="stylesheet" href="css/index.css">
-
-</head>
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Leave2Live</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Applications</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">My Requests</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">History</a>
-            </li> 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Gatepass</a>
-              </li> 
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Feedback</a>
-                </li> 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-              </li>
-          </ul>
-          
-        </div>
-      </nav>
-               <br>
-              
-              <div class="container">
-                <h3>Please Select A Request Type</h3><hr>
-                <select class="form-control form-control-lg" id="request-type">
-                  <option selected>Choose Request Type ...</option>
-                  <option>Leave Request</option>
-                  <option>On Duty Request</option>
-                </select>
-                <br>
-                <span class="request-type-display"></span>
-                <br><br>
-              </div>
-
-              <!-- Application Form -->
-              <div class="container" id="leave-form-box">
-                  <h4 class="leave-form-heading">Leave/OD Form</h4><hr>
-
-                                <!-- Half Day Checkbox -->
-              <div class="form-group" id="halfday-check-box">
-                <input type="checkbox" id="halfday-check" class="big-checkbox"/>
-                <label for="halfday-check"><strong>Check Here For Half Day</strong></label>
-                <br>
-                <span class="display-halfdaycheck"></span>
-              </div>
-              
-
-              
-                <!-- From Date -->
-                <div class="form-group">
-                  <label for="fromdate">Select From Date:</label>
-                  <input type="date" class="form-control" id="fromdate" placeholder="Enter From Date" name="fromdate">
-                  <br>
-                  <span class="display-fromdate"></span>
-              </div>
-
-
-
-              <!-- To Date -->
-              <div class="form-group">
-                <label for="todate">Select To Date:</label>
-                <input type="date" class="form-control" id="todate" placeholder="Enter To Date" name="todate">
-                <br>
-                <span class="display-todate"></span>
-                <span class="display-totaldays"></span>
-              </div>
-
-              <!-- Number of Working Days -->
-
-              <div class="form-group">
-                <label for="days">Number of Working Days:</label>
-                <input type="text" class="form-control" id="days">
-                <br>
-                <span class="display-days"></span>
-              </div>
-
-
-
-              <!-- Scheduled Tests -->
-
-              <!-- Reason Category -->
-
-              <!-- Reason Specific -->
-
-
-
-
-
-
-              </div>
-
-              </body>
-
-
 
 <!--  Jquery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -130,9 +143,15 @@
 <!-- Bootstrap CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<!-- External Javascript -->
+<!-- Javascript Handler -->
 <script src="js/index.js"></script>
 
-</html>
+<!-- Firebase Config File -->
+<script src="js/configFirebase.js"></script>
 
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+</html>
+<!-- End of Html -->
 

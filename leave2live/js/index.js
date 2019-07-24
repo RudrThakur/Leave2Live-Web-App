@@ -15,7 +15,24 @@ var totaldays, halfDayFlag = 0;
 
 $(document).ready(function(){
 
+///////////////////////////////// Check Active Session ////////////////////
+/*if (!localStorage.getItem("studentname")){
+    window.location.href ='login.html';
+    return false;
+  }
+  else{
+    var registernumber = localStorage.getItem("registernumber");
+    var studentname = localStorage.getItem("studentname");
+    var classandsec = localStorage.getItem("classandsec");
+    var requestid = localStorage.getItem("requestid");
+    var absentdays = localStorage.getItem("absentdays");
+      $("#registernumber").val(registernumber);
+      $("#studentname").val(studentname);
+      $("#classandsec").val(classandsec);
+      $("#requestid").val(requestid);
+      $("#absentdays").val(absentdays);
 
+  }*/
 
 ///////////////////////////////// Initial Validations /////////////////////
 
