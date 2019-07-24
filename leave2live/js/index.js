@@ -1,3 +1,6 @@
+//////////////// JS Handler for index.html
+
+
 /////////////////////////// GLOBALS //////////////////////////
 
 
@@ -100,18 +103,18 @@ function checkDateValidity (date1){
 
 //Getting current request type and displaying below the select drop down
 $("#request-type").click(function(){
-var requestType = $("#request-type").val();
-if(requestType != "Choose Request Type ..."){
-    //show request type
-    $(".request-type-display").html("Your current RequestType is "+ requestType);
-    $(".request-type-display").css("background-color","rgba(0, 0, 255, 0.212)");
+    var requestType = $("#request-type").val();
+    if(requestType != "Choose Request Type ..."){
+        //show request type
+        $(".request-type-display").html("Your current RequestType is "+ requestType);
+        $(".request-type-display").css("background-color","rgba(0, 0, 255, 0.212)");
 
-}
-//hide request-type-display 
-else{
-    $(".request-type-display").html("Please Choose A Request Type");
-    $(".request-type-display").css("background-color","#FF9393");
-}
+    }
+    //hide request-type-display 
+    else{
+        $(".request-type-display").html("Please Choose A Request Type");
+        $(".request-type-display").css("background-color","#FF9393");
+    }
 
 });
 
@@ -279,9 +282,6 @@ $("#todate").change(function(){
          }
  
 });
-
-
-
 
 //Days Event Handler
 
