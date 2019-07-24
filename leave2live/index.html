@@ -98,11 +98,28 @@
       </div>
 
       <!-- Scheduled Tests -->
-      <div class="form-group">
-        <label for="tests">Is There Any Tests Scheduled ?</label>
-        <input type="text" name="tests" class="form-control" id="tests">
+      <div class="form-group" id="test-check-box">
+        <input type="checkbox" id="test-check" class="big-checkbox"/>
+        <label for="test-check"><strong>There is a Scheduled Test</strong></label>
       <br>
-        <span class="display-days"></span>
+        <span class="display-test"></span>
+      </div>
+
+      <!-- Test Type -->
+      <div class="form-group" id="test-type-box" style="display:none">
+        <h6>Please Specify the Test :</h6>
+        <select class="form-control form-control-sm" id="test-type">
+          <option selected>Choose Test Type ...</option>
+          <option>Unit Tests - 1 </option>
+          <option>Unit Tests - 2 </option>
+          <option>Unit Tests - 3 </option>
+          <option>Model Exam - 1 </option>
+          <option>Model Exam - 2 </option>
+          <option>Model Practicals </option>
+          <option>University Theory Examination </option>
+          <option>University Practical Examination  </option>
+        </select>
+        <span class="display-test-type"></span>
       </div>
 
       <!-- Reason Category -->
@@ -115,10 +132,10 @@
 
       <!-- Reason Specific -->
       <div class="form-group">
-        <label for="reasonspecific">Is There Any Tests Scheduled ?</label>
+        <label for="reasonspecific">Please Specify Your Reason ?</label>
         <input type="text" name="reasonspecific" class="form-control" id="reasonspecific">
       <br>
-        <span class="display-days"></span>
+        <span class="display-reasonspecific"></span>
       </div>
     <!-- End of Request Box -->
     </div>

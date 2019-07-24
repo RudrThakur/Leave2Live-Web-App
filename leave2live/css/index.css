@@ -30,8 +30,12 @@
     text-align: center;
 }
 
-/* Half Day Check */
 #halfday-check-box{
+    background-color:white;
+    padding:1%;
+}
+
+#test-check-box{
     background-color:white;
     padding:1%;
 }

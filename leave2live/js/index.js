@@ -293,7 +293,17 @@ $("#days").change(function(){
 
 });
 
+//Test Check Handler
 
+$("#test-check").change(function(){
+    if(!this.checked){
+        $("#test-type-box").hide();//Hide Test Type
+    }
+    if(this.checked){
+        $("#test-type-box").show();//Show Test Type
+    }
+
+});
 
 
 });
