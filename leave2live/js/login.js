@@ -31,6 +31,11 @@ rootRef.on("child_added", snap =>{
         window.location.href ='index.html';
         return false;
         }
+
+        else{
+        //alert Failure !
+        alert("Invalid Credentials !");
+        }
     });
 
 });
