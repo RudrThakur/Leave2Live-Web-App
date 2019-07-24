@@ -23,17 +23,17 @@
           <form class="was-validated">
             <div class="form-group">
               <!-- Form Inputs -->
-              <input type="text" class="form-control" id="uname" placeholder="Registration Number" name="uname" required>
+              <input type="text" class="form-control" id="registernumber" placeholder="Registration Number" name="registernumber" required>
               <div class="valid-feedback">Yayy Everything looks Good.</div>
               <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="pwd" placeholder="Password" name="pswd" required>
+              <input type="password" class="form-control" id="pass" placeholder="Password" name="pass" required>
               <div class="valid-feedback">Yayy Everything looks Good.</div>
               <div class="invalid-feedback">Please fill out this field.</div>
             </div>
             <div class="login-button-box">
-            <button type="submit" class="btn btn-outline btn-lg">Log Me In</button>
+            <button type="submit" class="btn btn-outline btn-lg" id="login-btn">Log Me In</button>
             </div>
           </form>
         <a href="#" data-toggle="modal" data-target="#staff-login-modal">Are you a Staff ? Click Here to Login</a>
@@ -55,16 +55,16 @@
               <div class="staff-login-form">
                 <form class="was-validated">
                   <div class="form-group">
-                    <input type="text" class="form-control" id="uname" placeholder="Email" name="uname" required>
+                    <input type="text" class="form-control" id="staffemail" placeholder="Email" name="staffemail" required>
                     <div class="valid-feedback">Yayy Everything looks Good.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="pswd" required>
+                    <input type="password" class="form-control" id="staffpass" placeholder="Password" name="staffpass" required>
                     <div class="valid-feedback">Yayy Everything looks Good.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                   </div>
-                  <button type="submit" class="btn btn-danger btn-lg">Log Me In</button>
+                  <button type="submit" class="btn btn-danger btn-lg" id="stafflogin-btn">Log Me In</button>
                 </form>
               </div>
             </div>
@@ -109,6 +109,10 @@
 
 <!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+<!-- JavaScript Handler -->
+<script src="js/configFirebase.js"></script>
+<script src="js/login.js"></script>
 
 </html>
 <!-- End of Html -->
