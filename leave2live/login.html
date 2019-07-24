@@ -1,112 +1,103 @@
+<!-- LOGIN PAGE -->
+<!-- Author : Rudraksh -->
+<!-- Description : LeaveApplication Form Automated Using a Web Application -->
+<!-- WILL SERVE TO KCG COLLEGE OF TECHNOLOGY -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Leave2Live-Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <!-- Title -->
+    <title>Leave2Live-Login</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
 
-  <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="css/login.css">
-
-  <!-- Google Fonts API -->
-  <link href="https://fonts.googleapis.com/css?family=Arapey|Julius+Sans+One|Megrim&display=swap" rel="stylesheet">
-
-</head>
-<body>
-
-<div class="container">
-
-    <!-- Login Box -->
-<div class="login-box m-auto col-lg-6 col-md-8">
+    <div class="container">
+      <!-- Login Box -->
+      <div class="login-box m-auto col-lg-6 col-md-8">
         <h2 class="login-heading">Leave2Live</h2>
-        
+        <!-- Login Form -->
         <div class="login-form">
-                <p class="login-box-caption">- Please Login -</p>
-                <!-- Login Form -->
+          <p class="login-box-caption">- Please Login -</p>
+          <form class="was-validated">
+            <div class="form-group">
+              <!-- Form Inputs -->
+              <input type="text" class="form-control" id="uname" placeholder="Registration Number" name="uname" required>
+              <div class="valid-feedback">Yayy Everything looks Good.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="pwd" placeholder="Password" name="pswd" required>
+              <div class="valid-feedback">Yayy Everything looks Good.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="login-button-box">
+            <button type="submit" class="btn btn-outline btn-lg">Log Me In</button>
+            </div>
+          </form>
+        <a href="#" data-toggle="modal" data-target="#staff-login-modal">Are you a Staff ? Click Here to Login</a>
+
+      <!-- Staff Login Modal -->
+
+      <div class="modal fade" id="staff-login-modal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Staff Login</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <!-- Staff Login Form -->
+              <div class="staff-login-form">
                 <form class="was-validated">
-                    <div class="form-group">
-                      
-                      <input type="text" class="form-control" id="uname" placeholder="Registration Number" name="uname" required>
-                      <div class="valid-feedback">Yayy Everything looks Good.</div>
-                      <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="form-group">
-                      
-                      <input type="password" class="form-control" id="pwd" placeholder="Password" name="pswd" required>
-                      <div class="valid-feedback">Yayy Everything looks Good.</div>
-                      <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="login-button-box">
-                        <button type="submit" class="btn btn-outline btn-lg">Log Me In</button>
-
-                    </div>
-                    
-                    </form>
-                  <a href="#" data-toggle="modal" data-target="#staff-login-modal">Are you a Staff ? Click Here to Login</a>
-
-                  <!-- Staff Login Modal -->
-                 
-                  <div class="modal fade" id="staff-login-modal">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                      
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                          <h4 class="modal-title">Staff Login</h4>
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        
-                        <!-- Modal body -->
-                        <div class="modal-body">
-
-                        
-
-                          <div class="staff-login-form">
-                               <!-- Staff Login Form -->
-                              <form class="was-validated">
-                                  <div class="form-group">
-                                    
-                                    <input type="text" class="form-control" id="uname" placeholder="Email" name="uname" required>
-                                    <div class="valid-feedback">Yayy Everything looks Good.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
-                                  </div>
-                                  <div class="form-group">
-                                    
-                                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="pswd" required>
-                                    <div class="valid-feedback">Yayy Everything looks Good.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
-                                  </div>
-                                 
-                                      <button type="submit" class="btn btn-danger btn-lg">Log Me In</button>
-              
-                                  
-                                  </form>
-
-
-                          </div>
-                          
-                        </div>
-                        
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                          
-                        </div>
-                        
-                      </div>
-                    </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="uname" placeholder="Email" name="uname" required>
+                    <div class="valid-feedback">Yayy Everything looks Good.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
                   </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="pwd" placeholder="Password" name="pswd" required>
+                    <div class="valid-feedback">Yayy Everything looks Good.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                  </div>
+                  <button type="submit" class="btn btn-danger btn-lg">Log Me In</button>
+                </form>
+              </div>
+            </div>
 
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <!-- End of Modal Footer -->
+                </div>
+              <!-- End of Modal Content -->
+              </div>
+            <!-- End of Modal Dialogue -->
+            </div>
+          <!-- End of Staff Modal -->
+          </div>
+        <!-- End of Login Form -->
         </div>
-   
-
-</div>
-
-</div>
-
+    <!-- End of Login Box -->
+    </div>
+  <!-- End of Container -->
+  </div>
+<!-- End of Body -->
 </body>
+
+                                                        <!-- LINKS -->
+                                                        
+<!-- Bootstrap CSS CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="css/login.css">
+
+<!-- Google Fonts API -->
+<link href="https://fonts.googleapis.com/css?family=Arapey|Julius+Sans+One|Megrim&display=swap" rel="stylesheet">
 
 <!-- Jquery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -120,3 +111,4 @@
 <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 
 </html>
+<!-- End of Html -->
