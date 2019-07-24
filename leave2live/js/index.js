@@ -1,4 +1,4 @@
-/////////////////////////// Namespaces //////////////////////////
+/////////////////////////// GLOBALS //////////////////////////
 
 
 //FromDate Globals
@@ -59,8 +59,6 @@ $(document).ready(function(){
         $(".display-days").css("background-color","#FF9393");
     }
 
-
-
     
 //////////////////// Functions //////////////////////
 
@@ -97,8 +95,6 @@ function checkDateValidity (date1){
 
 }
 
-
-
 /////////////////////////// Event Handlers ////////////////////
 
 
@@ -118,7 +114,6 @@ else{
 }
 
 });
-
 
 //Half Day Check Handler
 
@@ -181,9 +176,6 @@ $("#halfday-check").change(function(){
         }
     
 });
-
-
-
 
 //get fromdate 
 $("#fromdate").change(function(){
