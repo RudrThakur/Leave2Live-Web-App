@@ -1,4 +1,4 @@
-    body{
+body{
     background-image:url("../img/login-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,13 +34,13 @@
     opacity: 1; /* Firefox */
 }
   
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: rgba(255, 255, 255, 0.849) !important;
-  }
+}
   
-  ::-ms-input-placeholder { /* Microsoft Edge */
+::-ms-input-placeholder { /* Microsoft Edge */
     color: rgba(255, 255, 255, 0.849) !important;
-  }
+}
 .login-form{
     margin-top:30% !important;
 }
