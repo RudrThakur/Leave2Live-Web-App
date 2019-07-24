@@ -1,17 +1,20 @@
 //JS Handler for login.html
 var rootRef = firebase.database().ref("students");
-rootRef.on("child_added", snap =>{
+rootRef.once("child_added", snap =>{
     var regnofromdb = snap.child("registernumber").val();
     var passfromdb  = snap.child("password").val(); 
 
     //onclick handler for login-btn
     $("#login-btn").click(function(){
-        debugger;
         var regno = $("#registernumber").val();
         var pass = $("#pass").val();
+
+        //If credentials are Correct
         if (regnofromdb == regno && passfromdb == pass){
+            
         //alert success !
         alert("Login Success");
+
         //getting student profile from firebase
 
         var studentname = snap.child("studentname").val();
@@ -29,12 +32,16 @@ rootRef.on("child_added", snap =>{
         
         //redirect to index page
         window.location.href ='index.html';
+        
         return false;
         }
 
+        //If Credentials are wrong
         else{
         //alert Failure !
         alert("Invalid Credentials !");
+
+        return true;
         }
     });
 
