@@ -67,10 +67,22 @@ $(document).ready(function(){
         $(".display-reason-category").html("Please Enter Reason Category");
         $(".display-reason-category").css("background-color","#FF9393");
     }
+
+    //Arrear Count
+    if(!$("#arrearcount").val()){
+        $(".display-arrearcount").html("Please Enter Number of Arrears");
+        $(".display-arrearcount").css("background-color","#FF9393");
+    }
+
+    //Attendance
+    if(!$("#attendance").val()){
+        $(".display-attendance").html("Please Enter Your current Attendance Percentage");
+        $(".display-attendance").css("background-color","#FF9393");
+    }
     
 //////////////////// Functions //////////////////////
 
-//function to reverse a string
+//function to reverse a date
 function rev(str){
     return str.split("-").reverse().join("-");
 }
