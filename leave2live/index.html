@@ -28,9 +28,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">My Requests</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">History</a>
           </li> 
           <li class="nav-item">
             <a class="nav-link" href="#">Gatepass</a>
@@ -133,16 +130,31 @@
             <option>Outstation Plans </option>
             <option>Other </option>
           </select>
+          <br>
           <span class="display-reason-category"></span>
         </div>
 
       <!-- Reason Specific -->
-      <div class="form-group">
+      <div class="form-group" id="reason-specific-box" style="display:none">
         <label for="reasonspecific">Please Specify Your Reason ?</label>
-        <input type="text" name="reasonspecific" class="form-control" id="reasonspecific">
+        <textarea name="reasonspecific" class="form-control" id="reasonspecific" rows="4" cols="50"></textarea>
       <br>
         <span class="display-reasonspecific"></span>
       </div>
+
+      <!-- Arrear Count -->
+      <div class="form-group">
+          <label for="arrearcount">Number of Arrears:</label>
+          <input type="number" name="arrearcount" class="form-control" id="arrearcount" placeholder="Number of Arrears">
+        <br>
+          <span class="display-arrearcount"></span>
+        </div>
+
+        <!--  -->
+
+        <!--  -->
+
+        <!--  -->
     <!-- End of Request Box -->
     </div>
   <!-- End of Body -->

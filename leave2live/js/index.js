@@ -62,6 +62,11 @@ $(document).ready(function(){
         $(".display-days").css("background-color","#FF9393");
     }
 
+    //Reason Category
+    if($("#reason-category").val() == "Choose Reason Category ..."){
+        $(".display-reason-category").html("Please Enter Reason Category");
+        $(".display-reason-category").css("background-color","#FF9393");
+    }
     
 //////////////////// Functions //////////////////////
 
@@ -303,6 +308,15 @@ $("#test-check").change(function(){
         $("#test-type-box").show();//Show Test Type
     }
 
+});
+
+//Reason Category Handler
+
+$("#reason-category").change(function(){
+    if($("#reason-category").val() != "Choose Reason Category ...")
+        $("#reason-specific-box").show();
+    else 
+        $("#reason-specific-box").hide();
 });
 
 
