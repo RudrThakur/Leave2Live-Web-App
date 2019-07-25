@@ -123,12 +123,18 @@
       </div>
 
       <!-- Reason Category -->
-      <div class="form-group">
-        <label for="reasoncategory">Reason Category</label>
-        <input type="text" name="reasoncategory" class="form-control" id="reasoncategory">
-      <br>
-        <span class="display-days"></span>
-      </div>
+      <div class="form-group" id="reason-category-box">
+          <label for="reason-category">Please Select a Reason Category:</label>
+          <select class="form-control form-control-md" id="reason-category">
+            <option selected>Choose Reason Category ...</option>
+            <option>Medical </option>
+            <option>Events </option>
+            <option>Vacations </option>
+            <option>Outstation Plans </option>
+            <option>Other </option>
+          </select>
+          <span class="display-reason-category"></span>
+        </div>
 
       <!-- Reason Specific -->
       <div class="form-group">
