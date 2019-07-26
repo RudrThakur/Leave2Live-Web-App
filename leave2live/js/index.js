@@ -13,6 +13,10 @@ var globalToDay, globalToMonth, globalToYear;
 //Total Number of Days
 var totaldays, halfDayFlag = 0;
 
+//Error Flags 
+var globalErrorFlag = false;
+var validDatesFlag = false;
+
 
 // Document Ready
 
@@ -119,18 +123,24 @@ function checkDateValidity (date1){
 
 
 //Getting current request type and displaying below the select drop down
-$("#request-type").click(function(){
+$("#request-type").change(function(){
     var requestType = $("#request-type").val();
     if(requestType != "Choose Request Type ..."){
         //show request type
         $(".request-type-display").html("Your current RequestType is "+ requestType);
         $(".request-type-display").css("background-color","rgba(0, 0, 255, 0.212)");
 
+        //Switch Error Flag to clear
+        globalErrorFlag = true; 
+
     }
     //hide request-type-display 
     else{
         $(".request-type-display").html("Please Choose A Request Type");
         $(".request-type-display").css("background-color","#FF9393");
+
+        //Switch Error Flag to Block
+        globalErrorFlag = false;
     }
 
 });
@@ -172,6 +182,9 @@ $("#halfday-check").change(function(){
         else{//If ToDate is not Set
             $(".display-todate").html("Please Choose A Date");
             $(".display-todate").css("background-color","#FF9393");
+
+            //Set the Global Flag to Block
+            validDatesFlag = false;
         }
         
         $(".display-halfdaycheck").html("");//Nullify HalfDay Display
@@ -186,10 +199,16 @@ $("#halfday-check").change(function(){
              $(".display-totaldays").html("Invalid Dates Please Check the Dates Again !");
              $(".display-totaldays").css("background-color","#FF9393"); 
 
+             //Set the Global Flag to Block
+             validDatesFlag = false;
+
              }
              else{// If Dates are Valid
                 $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+totaldays +"</strong> (Approx)");
-                $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
+                $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)");
+
+                //Set the Global Flag to Clear
+                validDatesFlag = true;
              }
   
          }
@@ -215,10 +234,19 @@ $("#fromdate").change(function(){
         $(".display-fromdate").html("The Selected Day is "+ displayFromDate);
         $(".display-fromdate").css("background-color","rgba(0, 0, 255, 0.212)");
 
+        //When Half Day Flag is Set
+        if(halfDayFlag)
+        validDatesFlag = true;//Set the Global Flag to Clear
+        else //When the Half Day Flag is NOT SET
+        validDatesFlag = false;//Set the Global Flag to Block
+
     }
     if(!fromdate){//If No date is Selected
         $(".display-fromdate").html("Please Choose A Date");
         $(".display-fromdate").css("background-color","#FF9393");
+
+        //Switch Global Flag to set Block
+        validDatesFlag = false;
     }
 
 
@@ -226,23 +254,32 @@ $("#fromdate").change(function(){
     if(!checkDateValidity(globalFromYear) && 
        fromdate ){
         //if dates are Invalid
-        $(".display-fromdate").html("Invalid Date please Check the Date !");
-        $(".display-fromdate").css("background-color","#FF9393"); 
+        $(".display-fromdate").html("Invalid Dates Please Check the Dates Again !");
+        $(".display-fromdate").css("background-color","#FF9393");
+        
+        //Set the Global Flag to Block
+        validDatesFlag = false;
     }
     
     if(checkDateValidity(globalFromYear) && 
        checkDateValidity(globalToYear) && 
        $("#fromdate").val() &&
-        $("#todate").val() ){// If the dates are VALID and HALFDAY not Checked
+        $("#todate").val()){// If the dates are VALID and HALFDAY not Checked
             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 );
             if(totaldays < 0 ){// If ToDate is earlier than FromDate Raise Error
                 $(".display-totaldays").html("<br><br>Invalid Dates Please Check the Dates Again !");
                 $(".display-totaldays").css("background-color","#FF9393"); 
+
+                //Set the Global Flag to Block
+                validDatesFlag = false;
    
                 }
                 else{// If Dates are Valid
                    $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+totaldays +"</strong> (Approx)");
                    $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
+
+                   //Set the Global Flag to Clear
+                   validDatesFlag = true;
                 }
         }
 
@@ -258,19 +295,18 @@ $("#todate").change(function(){
     globalToMonth = parseInt(dateElements[1]);
     globalToYear = parseInt(dateElements[2])
     var displayToDate = dayofweek(globalToDay, globalToMonth, globalToYear);
-
-
    
     if(todate &&
         checkDateValidity(globalToYear)){//If a Date is selected
          $(".display-todate").html("The Selected Day is "+ displayToDate);
-         $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");
-         
- 
+         $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");    
      }
      if(!todate){//If No date is Selected
          $(".display-todate").html("Please Choose A Date");
          $(".display-todate").css("background-color","#FF9393");
+
+         //Set the Global Flag to Block 
+         validDatesFlag = false;
      }
  
  
@@ -280,6 +316,9 @@ $("#todate").change(function(){
          //if dates are Invalid
          $(".display-todate").html("<br><br>Invalid Date please Check the Date !");
          $(".display-todate").css("background-color","#FF9393"); 
+
+         //Set the Global Flag to Block
+         validDatesFlag = false;
      }
      
      if(checkDateValidity(globalFromYear) && 
@@ -290,11 +329,17 @@ $("#todate").change(function(){
              if(totaldays < 0 ){// If ToDate is earlier than FromDate Raise Error
                 $(".display-totaldays").html("<br><br>Invalid Dates Please Check the Dates Again !");
                 $(".display-totaldays").css("background-color","#FF9393"); 
+
+                //Set the Global Flag to Block
+                validDatesFlag = false;
    
                 }
                 else{// If Dates are Valid
                    $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+totaldays +"</strong> (Approx)");
                    $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
+
+                   //Set the Global Flag to Clear 
+                   validDatesFlag = true;
                 }
          }
  
