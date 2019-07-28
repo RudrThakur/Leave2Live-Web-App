@@ -376,5 +376,18 @@ $("#reason-category").change(function(){
     }
 });
 
+//Arrear Count Handler
+$("#arrearcount").on('input', function(){
+
+    var arrearcount = $("#arrearcount").val();
+    if(arrearcount == ""){
+        $(".display-arrearcount").html("Please Enter Number of Arrears");
+        $(".display-arrearcount").css("background-color","#FF9393"); 
+    }
+    else{
+        $(".display-arrearcount").html("Your current Arrears are " + arrearcount);
+        $(".display-arrearcount").css("background-color","rgba(0, 0, 255, 0.212)"); 
+    }
+});
 
 });
