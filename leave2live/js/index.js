@@ -122,7 +122,7 @@ function checkDateValidity (date1){
 /////////////////////////// Event Handlers ////////////////////
 
 
-//Getting current request type and displaying below the select drop down
+//Request Type Handler
 $("#request-type").change(function(){
     var requestType = $("#request-type").val();
     if(requestType != "Choose Request Type ..."){
@@ -216,7 +216,7 @@ $("#halfday-check").change(function(){
     
 });
 
-//get fromdate 
+//From Date Handler
 $("#fromdate").change(function(){
     var fromdate = $("#fromdate").val();//retrieved value is string but in reverse 
     //pass dates to reverse
@@ -285,7 +285,7 @@ $("#fromdate").change(function(){
 
     });
 
-//get todate 
+//To Date Handler 
 $("#todate").change(function(){
     var todate = $("#todate").val();
     //pass dates to reverse
