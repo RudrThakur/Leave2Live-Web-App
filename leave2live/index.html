@@ -47,110 +47,112 @@
     <!-- Navbar End -->
     <br>
 
-    <!-- Request Section -->
-    <div class="container">
-      <h3>Please Select A Request Type</h3><hr>
-        <select class="form-control form-control-lg" id="request-type">
-          <option selected>Choose Request Type ...</option>
-          <option>Leave Request</option>
-          <option>On Duty Request</option>
-        </select>
-      <br>
-      <span class="request-type-display"></span>
-      <br><br>
-    </div>
-
-    <!-- Application Form -->
-    <div class="container" id="leave-form-box">
-      <h4 class="leave-form-heading">Leave/OD Form</h4><hr>
-
-      <!-- Half Day Checkbox -->
-      <div class="form-group" id="halfday-check-box">
-        <input type="checkbox" id="halfday-check" class="big-checkbox"/>
-        <label for="halfday-check"><strong>Check Here For Half Day</strong></label>
-      <br>
-        <span class="display-halfdaycheck"></span>
-      </div>
-
-      <!-- From Date -->
-      <div class="form-group">
-        <label for="fromdate">Select From Date:</label>
-        <input type="date" class="form-control" id="fromdate" placeholder="Enter From Date" name="fromdate">
-      <br>
-        <span class="display-fromdate"></span>
-      </div>
-
-      <!-- To Date -->
-      <div class="form-group">
-        <label for="todate">Select To Date:</label>
-        <input type="date" class="form-control" id="todate" placeholder="Enter To Date" name="todate">
-      <br>
-      <span class="display-todate"></span>
-      <span class="display-totaldays"></span>
-      </div>
-
-      <!-- Number of Working Days -->
-      <div class="form-group">
-        <label for="days">Number of Working Days:</label>
-        <input type="number" name="days" class="form-control" id="days" placeholder="Please Enter Number of Working Days">
-      <br>
-        <span class="display-days"></span>
-      </div>
-
-      <!-- Scheduled Tests -->
-      <div class="form-group" id="test-check-box">
-        <input type="checkbox" id="test-check" class="big-checkbox"/>
-        <label for="test-check"><strong>There is a Scheduled Test</strong></label>
-      <br>
-        <span class="display-test"></span>
-      </div>
-
-      <!-- Test Type -->
-      <div class="form-group" id="test-type-box" style="display:none">
-        <h6>Please Specify the Test :</h6>
-        <select class="form-control form-control-sm" id="test-type">
-          <option selected>Choose Test Type ...</option>
-          <option>Unit Tests - 1 </option>
-          <option>Unit Tests - 2 </option>
-          <option>Unit Tests - 3 </option>
-          <option>Model Exam - 1 </option>
-          <option>Model Exam - 2 </option>
-          <option>Model Practicals </option>
-          <option>University Theory Examination </option>
-          <option>University Practical Examination  </option>
-        </select>
-        <span class="display-test-type"></span>
-      </div>
-
-      <!-- Reason Category -->
-      <div class="form-group" id="reason-category-box">
-          <label for="reason-category">Please Select a Reason Category:</label>
-          <select class="form-control form-control-md" id="reason-category">
-            <option selected>Choose Reason Category ...</option>
-            <option>Medical </option>
-            <option>Events </option>
-            <option>Vacations </option>
-            <option>Outstation Plans </option>
-            <option>Other </option>
+                                      <!-- Leave Form -->
+    <form>
+      <!-- Request Section -->
+      <div class="container">
+        <h3>Please Select A Request Type</h3><hr>
+          <select class="form-control form-control-lg" id="request-type">
+            <option selected>Choose Request Type ...</option>
+            <option>Leave Request</option>
+            <option>On Duty Request</option>
           </select>
-          <br>
-          <span class="display-reason-category"></span>
+        <br>
+        <span class="request-type-display"></span>
+        <br><br>
+      </div>
+
+      <!-- Application Form -->
+      <div class="container" id="leave-form-box">
+        <h4 class="leave-form-heading">Leave/OD Form</h4><hr>
+
+        <!-- Half Day Checkbox -->
+        <div class="form-group" id="halfday-check-box">
+          <input type="checkbox" id="halfday-check" class="big-checkbox"/>
+          <label for="halfday-check"><strong>Check Here For Half Day</strong></label>
+        <br>
+          <span class="display-halfdaycheck"></span>
         </div>
 
-      <!-- Reason Specific -->
-      <div class="form-group" id="reason-specific-box" style="display:none">
-        <label for="reasonspecific">Please Specify Your Reason ?</label>
-        <textarea name="reasonspecific" class="form-control" id="reasonspecific" rows="4" cols="50"></textarea>
-      <br>
-        <span class="display-reasonspecific"></span>
-      </div>
-
-      <!-- Arrear Count -->
-      <div class="form-group">
-          <label for="arrearcount">Number of Arrears:</label>
-          <input type="number" name="arrearcount" class="form-control" id="arrearcount" placeholder="Number of Arrears">
+        <!-- From Date -->
+        <div class="form-group">
+          <label for="fromdate">Select From Date:</label>
+          <input type="date" class="form-control" id="fromdate" placeholder="Enter From Date" name="fromdate">
         <br>
-          <span class="display-arrearcount"></span>
+          <span class="display-fromdate"></span>
+        </div>
+
+        <!-- To Date -->
+        <div class="form-group">
+          <label for="todate">Select To Date:</label>
+          <input type="date" class="form-control" id="todate" placeholder="Enter To Date" name="todate">
+        <br>
+        <span class="display-todate"></span>
+        <span class="display-totaldays"></span>
+        </div>
+
+        <!-- Number of Working Days -->
+        <div class="form-group">
+          <label for="days">Number of Working Days:</label>
+          <input type="number" name="days" class="form-control" id="days" placeholder="Please Enter Number of Working Days">
+        <br>
+          <span class="display-days"></span>
+        </div>
+
+        <!-- Scheduled Tests -->
+        <div class="form-group" id="test-check-box">
+          <input type="checkbox" id="test-check" class="big-checkbox"/>
+          <label for="test-check"><strong>There is a Scheduled Test</strong></label>
+        <br>
+          <span class="display-test"></span>
+        </div>
+
+        <!-- Test Type -->
+        <div class="form-group" id="test-type-box" style="display:none">
+          <h6>Please Specify the Test :</h6>
+          <select class="form-control form-control-sm" id="test-type">
+            <option selected>Choose Test Type ...</option>
+            <option>Unit Tests - 1 </option>
+            <option>Unit Tests - 2 </option>
+            <option>Unit Tests - 3 </option>
+            <option>Model Exam - 1 </option>
+            <option>Model Exam - 2 </option>
+            <option>Model Practicals </option>
+            <option>University Theory Examination </option>
+            <option>University Practical Examination  </option>
+          </select>
+          <span class="display-test-type"></span>
+        </div>
+
+        <!-- Reason Category -->
+        <div class="form-group" id="reason-category-box">
+            <label for="reason-category">Please Select a Reason Category:</label>
+            <select class="form-control form-control-md" id="reason-category">
+              <option selected>Choose Reason Category ...</option>
+              <option>Medical </option>
+              <option>Events </option>
+              <option>Vacations </option>
+              <option>Outstation Plans </option>
+              <option>Other </option>
+            </select>
+            <br>
+            <span class="display-reason-category"></span>
+        </div>
+
+        <!-- Reason Specific -->
+        <div class="form-group" id="reason-specific-box" style="display:none">
+          <label for="reasonspecific">Please Specify Your Reason ?</label>
+          <textarea name="reasonspecific" class="form-control" id="reasonspecific" rows="4" cols="50"></textarea>
+        <br>
+          <span class="display-reasonspecific"></span>
+        </div>
+
+        <!-- Arrear Count -->
+        <div class="form-group">
+            <label for="arrearcount">Number of Arrears:</label>
+            <input type="number" name="arrearcount" class="form-control" id="arrearcount" placeholder="Number of Arrears">
+          <br>
+            <span class="display-arrearcount"></span>
         </div>
 
         <!-- Attendance -->
@@ -160,7 +162,7 @@
         <br>
           <span class="display-attendance"></span>
         </div>
-        
+            
         <!-- Leave History -->
         <div class="form-group">
           <label for="leave-history">Number of Days taken Leave Earlier:</label>
@@ -169,9 +171,12 @@
           <span class="display-leave-history"></span>
         </div>
 
-        <!--  -->
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
     <!-- End of Request Box -->
-    </div>
+
   <!-- End of Body -->
   </body>
   
