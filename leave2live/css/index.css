@@ -3,13 +3,13 @@
 }
 
 .nav-link:hover{
-    border-bottom:solid rgb(245, 245, 233) !important;
+    border-bottom: solid rgb(245, 245, 233) !important;
 
 }
 
 .navbar-brand{
     font-family: 'Megrim', cursive;
-    font-size:35px;
+    font-size: 35px;
     text-transform: uppercase;
 }
 
@@ -20,8 +20,7 @@
  
 #leave-form-box{
     background-color:rgba(128, 128, 128, 0.226);
-    padding:2%;
-    
+    padding: 4%;
 }
 
 .leave-form-heading{
@@ -32,14 +31,20 @@
 
 #halfday-check-box{
     background-color:white;
-    padding:1%;
+    padding: 1%;
 }
 
 #test-check-box{
     background-color:white;
-    padding:1%;
+    padding: 1%;
 }
 
 .big-checkbox {
-    width: 30px; height: 20px;
+    width: 30px; 
+    height: 20px;
+}
+
+#leave-form-btn{
+    float: right;
+    margin-bottom: 2%;
 }

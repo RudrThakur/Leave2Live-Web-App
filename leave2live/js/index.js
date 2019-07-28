@@ -347,12 +347,17 @@ $("#todate").change(function(){
 
 //Days Event Handler
 
-$("#days").change(function(){
+$("#days").on('input',function(){
 
-
-
-
-
+    var days = $("#days").val();
+    if (days == ""){
+        $(".display-days").html("Please Enter Number of Working Days");
+        $(".display-days").css("background-color","#FF9393"); 
+    }
+    else{
+        $(".display-days").html("You are applying for " + days + " Working Days");
+        $(".display-days").css("background-color","rgba(0, 0, 255, 0.212)"); 
+    }
 });
 
 //Test Check Handler
@@ -370,10 +375,17 @@ $("#test-check").change(function(){
 //Reason Category Handler
 
 $("#reason-category").change(function(){
-    if($("#reason-category").val() != "Choose Reason Category ...")
+    if($("#reason-category").val() != "Choose Reason Category ..."){
         $("#reason-specific-box").show();
-    else 
+        var reasonCategory = $("#reason-category").val();
+        $(".display-reason-category").html("Your selected Reason Category is " + reasonCategory);
+        $(".display-reason-category").css("background-color","rgba(0, 0, 255, 0.212)"); 
+    }
+    else {
         $("#reason-specific-box").hide();
+        $(".display-reason-category").html("Please Enter Reason Category");
+        $(".display-reason-category").css("background-color","#FF9393"); 
+    }
 });
 
 
