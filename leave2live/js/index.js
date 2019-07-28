@@ -18,8 +18,14 @@ var oneDayFlag = 0;
 var halfDayFlag = false;
 
 //Error Flags 
-var globalErrorFlag = false;
+var validRequestFlag = false;
 var validDatesFlag = false;
+var validWorkingDaysFlag = false;
+var validReasonCategoryFlag = false;
+var validReasonSpecificFlag = false;
+var validArrearCountFlag = false;
+var validAttendanceFlag = false;
+var validLeaveHistoryFlag = false;
 
 
 // Document Ready
@@ -144,7 +150,7 @@ $("#request-type").change(function(){
         $(".request-type-display").css("background-color","rgba(0, 0, 255, 0.212)");
 
         //Switch Error Flag to clear
-        globalErrorFlag = true; 
+        validRequestFlag = true; 
 
     }
     //hide request-type-display 
@@ -153,7 +159,7 @@ $("#request-type").change(function(){
         $(".request-type-display").css("background-color","#FF9393");
 
         //Switch Error Flag to Block
-        globalErrorFlag = false;
+        validRequestFlag = false;
     }
 
 });
@@ -415,10 +421,15 @@ $("#days").on('input',function(){
     if (days == ""){
         $(".display-days").html("Please Enter Number of Working Days");
         $(".display-days").css("background-color","#FF9393"); 
+        //Set the Global Error flag to Block
+        validWorkingDaysFlag = false;
     }
     else{
         $(".display-days").html("You are applying for " + days + " Working Days");
         $(".display-days").css("background-color","rgba(0, 0, 255, 0.212)"); 
+
+        //Set the Global Error flag to Clear
+        validWorkingDaysFlag = true;
     }
 });
 
@@ -440,11 +451,16 @@ $("#reason-category").change(function(){
         var reasonCategory = $("#reason-category").val();
         $(".display-reason-category").html("Your selected Reason Category is " + reasonCategory);
         $(".display-reason-category").css("background-color","rgba(0, 0, 255, 0.212)"); 
+
+        //Set the Global Error flag to Clear
+        validReasonCategoryFlag = true;
     }
     else {
         $("#reason-specific-box").hide();
         $(".display-reason-category").html("Please Enter Reason Category");
         $(".display-reason-category").css("background-color","#FF9393"); 
+        //Set the Global Error flag to Block
+        validReasonCategoryFlag = false;
     }
 });
 
@@ -454,11 +470,15 @@ $("#arrearcount").on('input', function(){
     var arrearcount = $("#arrearcount").val();
     if(arrearcount == ""){
         $(".display-arrearcount").html("Please Enter Number of Arrears");
-        $(".display-arrearcount").css("background-color","#FF9393"); 
+        $(".display-arrearcount").css("background-color","#FF9393");
+        //Set the Global Error flag to Block
+        validArrearCountFlag = false; 
     }
     else{
         $(".display-arrearcount").html("Your current Arrears are " + arrearcount);
         $(".display-arrearcount").css("background-color","rgba(0, 0, 255, 0.212)"); 
+        //Set the Global Error flag to Clear
+        validArrearCountFlag = true;
     }
 });
 
@@ -494,10 +514,14 @@ $("#attendance").on('input', function(){
     if(attendance == ""){
         $(".display-attendance").html("Please Enter Your Attendance Percentage");
         $(".display-attendance").css("background-color","#FF9393"); 
+        //Set the Global Error flag to Block
+        validAttendanceFlag = false;
     }
     else{
         $(".display-attendance").html("Your Attendance Percentage is " + attendanceLevel);
         $(".display-attendance").css("background-color","rgba(0, 0, 255, 0.212)"); 
+        //Set the Global Error flag to Clear
+        validAttendanceFlag = true;
     }
 });
 
@@ -508,10 +532,14 @@ $("#leave-history").on('input', function(){
     if(leaveHistory == ""){
         $(".display-leave-history").html("Please enter Number of Days leave taken earlier");
         $(".display-leave-history").css("background-color","#FF9393"); 
+        //Set the Global Error flag to Block
+        validLeaveHistoryFlag = false;
     }
     else{
         $(".display-leave-history").html("Your leave history is " + leaveHistory + " days");
         $(".display-leave-history").css("background-color","rgba(0, 0, 255, 0.212)"); 
+        //Set the Global Error flag to Clear
+        validLeaveHistoryFlag = true;
     }
 
 });
@@ -519,15 +547,40 @@ $("#leave-history").on('input', function(){
 //Reason Specific Handler
 $("#reasonspecific").on('input', function(){
 
-    if($("#reasonspecific").val() == ""){
+    if($.trim($("#reasonspecific").val()).length  < 1){//If the text field is EMPTY
         $(".display-reasonspecific").html("Please Specify your Reason");
         $(".display-reasonspecific").css("background-color","#FF9393"); 
+        //Set the Global Error flag to Block
+        validReasonSpecificFlag = false;
     }
     else{
         $(".display-reasonspecific").html("");
         $(".display-reasonspecific").css("background-color","rgba(0, 0, 255, 0.212)"); 
+        //Set the Global Error flag to Clear
+        validReasonSpecificFlag = true;
     }
 
+});
+
+//////////////////////////////////// FORM SUBMISSION HANDLER //////////////////////////////////
+
+$("#leave-form-btn").click(function(){
+
+    debugger;
+    if(validDatesFlag &&
+       validRequestFlag &&
+       validWorkingDaysFlag &&
+       validReasonCategoryFlag &&
+       validReasonSpecificFlag &&
+       validArrearCountFlag &&
+       validAttendanceFlag &&
+       validLeaveHistoryFlag){
+           alert("All Clear");
+    }
+    else{
+        alert("An Error Occured!");
+        
+    }
 });
 
 });
