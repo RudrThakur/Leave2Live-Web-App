@@ -105,18 +105,14 @@ function dayofweek(d, m, y)
 //function to check the validity of entered date value
 
 function checkDateValidity (date1){
-
     var currentDate = new Date();
     var currentYear = currentDate.getFullYear();
-
-
     if(currentYear - date1 != 0 ){
             return 0;// return false if date Not Valid
        }    
     else{
         return 1;//return true if date Valid
     }
-
 }
 
 /////////////////////////// Event Handlers ////////////////////
@@ -146,7 +142,6 @@ $("#request-type").change(function(){
 });
 
 //Half Day Check Handler
-
 $("#halfday-check").change(function(){
     
     if(this.checked){// If halfDay Checkbox TRUE
@@ -163,7 +158,6 @@ $("#halfday-check").change(function(){
         $(".display-totaldays").html("");
         $(".display-halfdaycheck").html("You Have Selected Application For A HALF DAY");
         $(".display-halfdaycheck").css("background-color","rgba(0, 0, 255, 0.212)");
-
     } 
     else{ // If halfDay Checkbox FALSE
         halfDayFlag = 0;
@@ -213,7 +207,6 @@ $("#halfday-check").change(function(){
   
          }
         }
-    
 });
 
 //From Date Handler
@@ -248,7 +241,6 @@ $("#fromdate").change(function(){
         //Switch Global Flag to set Block
         validDatesFlag = false;
     }
-
 
     //check the validity of the entered Date
     if(!checkDateValidity(globalFromYear) && 
@@ -309,7 +301,6 @@ $("#todate").change(function(){
          validDatesFlag = false;
      }
  
- 
      //check the validity of the entered Date
      if(!checkDateValidity(globalToYear) && 
         todate){
@@ -346,7 +337,6 @@ $("#todate").change(function(){
 });
 
 //Days Event Handler
-
 $("#days").on('input',function(){
 
     var days = $("#days").val();
@@ -361,7 +351,6 @@ $("#days").on('input',function(){
 });
 
 //Test Check Handler
-
 $("#test-check").change(function(){
     if(!this.checked){
         $("#test-type-box").hide();//Hide Test Type
@@ -373,7 +362,6 @@ $("#test-check").change(function(){
 });
 
 //Reason Category Handler
-
 $("#reason-category").change(function(){
     if($("#reason-category").val() != "Choose Reason Category ..."){
         $("#reason-specific-box").show();
