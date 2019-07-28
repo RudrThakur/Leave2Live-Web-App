@@ -11,7 +11,11 @@ var globalFromDay, globalFromMonth, globalFromYear;
 var globalToDay, globalToMonth, globalToYear;
 
 //Total Number of Days
-var totaldays, halfDayFlag = 0;
+var totaldays;
+
+//Global Flags
+var oneDayFlag = 0;
+var halfDayFlag = false;
 
 //Error Flags 
 var globalErrorFlag = false;
@@ -83,6 +87,19 @@ $(document).ready(function(){
         $(".display-attendance").html("Please Enter Your current Attendance Percentage");
         $(".display-attendance").css("background-color","#FF9393");
     }
+
+    //Leave History
+    if(!$("#leave-history").val()){
+        $(".display-leave-history").html("Please Enter Number of Days leave taken earlier");
+        $(".display-leave-history").css("background-color","#FF9393");
+    }
+
+    //Reason Specific
+    if(!$("#reasonspecific").val()){
+        $(".display-reasonspecific").html("Please Specify your Reason");
+        $(".display-reasonspecific").css("background-color","#FF9393");
+    }
+
     
 //////////////////// Functions //////////////////////
 
@@ -141,28 +158,42 @@ $("#request-type").change(function(){
 
 });
 
-//Half Day Check Handler
-$("#halfday-check").change(function(){
+//One Day Check Handler
+$("#oneday-check").change(function(){
     
-    if(this.checked){// If halfDay Checkbox TRUE
-        halfDayFlag = 1;
-        $( "#todate" ).prop( "disabled", true );//disable ToDate
+    if(this.checked){// If oneDay Checkbox TRUE
+        oneDayFlag = 1;
+        $("#todate").prop( "disabled", true );//disable ToDate
+        $("#halfday-check-box" ).hide();//Hide Half Day Check Box
         $("#days").val(1);// set Days value to 1
         $(".display-days").hide();//hide DisplayDays
         $("#days").prop("disabled",true);//disable WorkingDays
-        $("#todate").val(""); 
+        $("#todate").val("");//Reset ToDate
         globalToYear = null;
         globalToDay = null;
         globalToMonth = null;
         $(".display-todate").html("");
         $(".display-totaldays").html("");
-        $(".display-halfdaycheck").html("You Have Selected Application For A HALF DAY");
-        $(".display-halfdaycheck").css("background-color","rgba(0, 0, 255, 0.212)");
+        $(".display-onedaycheck").html("You Have Selected Application For A SINGLE DAY");
+        $(".display-onedaycheck").css("background-color","rgba(0, 0, 255, 0.212)");
+
+        if(fromdate &&
+           checkDateValidity(globalFromYear)){//If a Date is selected
+
+            //Set the Global Flag to Clear
+            validDatesFlag = true;
+        }
+
+        else{
+            //Set the Global Flag to Block
+            validDatesFlag = false;
+        }
     } 
-    else{ // If halfDay Checkbox FALSE
-        halfDayFlag = 0;
+    else{ // If oneDay Checkbox FALSE
+        oneDayFlag = 0;
         $("#days").val("");// set Days value to 1
         $("#days").prop("disabled",false);//disable WorkingDays
+        $("#halfday-check-box" ).show();//Show Half Day Check Box
         $(".display-days").show();//show DisplayDays
 
         //disable ToDate
@@ -181,15 +212,15 @@ $("#halfday-check").change(function(){
             validDatesFlag = false;
         }
         
-        $(".display-halfdaycheck").html("");//Nullify HalfDay Display
+        $(".display-onedaycheck").html("");//Nullify oneDay Display
 
-        // If halfDay Checkbox FALSE display Number of Days
+        // If oneDay Checkbox FALSE display Number of Days
             if($("#fromdate").val() &&
                 $("#todate").val()){// If both FromDate and ToDate are Set
-             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 );
+             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 ) + 1;
 
 
-             if(totaldays < 0 ){// If ToDate is earlier than FromDate Raise Error
+             if(totaldays < 2 ){// If ToDate is earlier than FromDate Raise Error
              $(".display-totaldays").html("Invalid Dates Please Check the Dates Again !");
              $(".display-totaldays").css("background-color","#FF9393"); 
 
@@ -207,6 +238,46 @@ $("#halfday-check").change(function(){
   
          }
         }
+});
+
+//Half Day Check Handler 
+$("#halfday-check").change(function(){
+
+    //If Halfday Checkbox is CHECKED
+    if(this.checked){
+        halfDayFlag = true;//set Global Flag to True
+        $("#oneday-check-box").hide();//Hide oneday check
+        $("#days-box").hide();//Hide Number of Working days Box
+        $("#todate-box").hide();//Hide ToDate Box
+
+        //Display Span text Message 
+        $(".display-halfdaycheck").html("You Have Selected Application For HALF DAY");
+        $(".display-halfdaycheck").css("background-color","rgba(0, 0, 255, 0.212)");
+
+        if(fromdate &&
+            checkDateValidity(globalFromYear)){//If a Date is selected
+ 
+             //Set the Global Flag to Clear
+             validDatesFlag = true;
+         }
+ 
+         else{
+             //Set the Global Flag to Block
+             validDatesFlag = false;
+         }
+
+    }
+
+    //If Halfday Checkbox is NOT CHECKED
+    else{
+        halfDayFlag = false;// set Global Flag to False
+        $("#oneday-check-box").show();//Show oneday check
+        $("#days-box").show();//Show Number of Working days Box
+        $("#todate-box").show();//Show ToDate Box
+
+        //Hide Span text Message 
+        $(".display-halfdaycheck").html("");
+    }
 });
 
 //From Date Handler
@@ -227,10 +298,11 @@ $("#fromdate").change(function(){
         $(".display-fromdate").html("The Selected Day is "+ displayFromDate);
         $(".display-fromdate").css("background-color","rgba(0, 0, 255, 0.212)");
 
-        //When Half Day Flag is Set
-        if(halfDayFlag)
+        //When one Day Flag is Set
+        if(oneDayFlag ||
+           halfDayFlag)
         validDatesFlag = true;//Set the Global Flag to Clear
-        else //When the Half Day Flag is NOT SET
+        else //When the one Day Flag is NOT SET
         validDatesFlag = false;//Set the Global Flag to Block
 
     }
@@ -256,9 +328,9 @@ $("#fromdate").change(function(){
     if(checkDateValidity(globalFromYear) && 
        checkDateValidity(globalToYear) && 
        $("#fromdate").val() &&
-        $("#todate").val()){// If the dates are VALID and HALFDAY not Checked
-            totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 );
-            if(totaldays < 0 ){// If ToDate is earlier than FromDate Raise Error
+       $("#todate").val()){// If the dates are VALID and oneDAY not Checked
+            totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 ) + 1;
+            if(totaldays < 2 ){// If ToDate is earlier than FromDate Raise Error
                 $(".display-totaldays").html("<br><br>Invalid Dates Please Check the Dates Again !");
                 $(".display-totaldays").css("background-color","#FF9393"); 
 
@@ -315,9 +387,9 @@ $("#todate").change(function(){
      if(checkDateValidity(globalFromYear) && 
         checkDateValidity(globalToYear) && 
         $("#fromdate").val() &&
-        $("#todate").val()){// If the dates are VALID and HALFDAY not Checked
-             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 );
-             if(totaldays < 0 ){// If ToDate is earlier than FromDate Raise Error
+        $("#todate").val()){// If the dates are VALID and oneDAY not Checked
+             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 ) + 1;
+             if(totaldays < 2 ){// If ToDate is earlier than FromDate Raise Error
                 $(".display-totaldays").html("<br><br>Invalid Dates Please Check the Dates Again !");
                 $(".display-totaldays").css("background-color","#FF9393"); 
 
@@ -388,6 +460,74 @@ $("#arrearcount").on('input', function(){
         $(".display-arrearcount").html("Your current Arrears are " + arrearcount);
         $(".display-arrearcount").css("background-color","rgba(0, 0, 255, 0.212)"); 
     }
+});
+
+//Attendance Handler
+$("#attendance").on('input', function(){
+
+    var attendance = $("#attendance").val();
+    var attendanceLevel = "";
+
+    //Level Normal
+    if (attendance >= 75 &&
+        attendance <= 90){
+        attendanceLevel = "Normal";
+    }
+    
+    //Level High
+    if(attendance > 90){
+        attendanceLevel = "High";
+    }
+
+    //Level Low
+    if(attendance <75 &&
+        attendance >= 50){
+            attendanceLevel = "Low";
+    }
+
+    //Level Critical
+    if (attendance < 50){
+        attendanceLevel = "CRITICAL";
+    }
+
+    //Attendance Validation
+    if(attendance == ""){
+        $(".display-attendance").html("Please Enter Your Attendance Percentage");
+        $(".display-attendance").css("background-color","#FF9393"); 
+    }
+    else{
+        $(".display-attendance").html("Your Attendance Percentage is " + attendanceLevel);
+        $(".display-attendance").css("background-color","rgba(0, 0, 255, 0.212)"); 
+    }
+});
+
+//Leave History Handler
+$("#leave-history").on('input', function(){
+    var leaveHistory = $("#leave-history").val();
+
+    if(leaveHistory == ""){
+        $(".display-leave-history").html("Please enter Number of Days leave taken earlier");
+        $(".display-leave-history").css("background-color","#FF9393"); 
+    }
+    else{
+        $(".display-leave-history").html("Your leave history is " + leaveHistory + " days");
+        $(".display-leave-history").css("background-color","rgba(0, 0, 255, 0.212)"); 
+    }
+
+});
+
+//Reason Specific Handler
+$("#reasonspecific").on('input', function(){
+
+    if($("#reasonspecific").val() == ""){
+        $(".display-reasonspecific").html("Please Specify your Reason");
+        $(".display-reasonspecific").css("background-color","#FF9393"); 
+    }
+    else{
+        $(".display-reasonspecific").html("");
+        $(".display-reasonspecific").css("background-color","rgba(0, 0, 255, 0.212)"); 
+    }
+
 });
 
 });

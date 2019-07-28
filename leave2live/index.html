@@ -66,16 +66,24 @@
       <div class="container" id="leave-form-box">
         <h4 class="leave-form-heading">Leave/OD Form</h4><hr>
 
-        <!-- Half Day Checkbox -->
-        <div class="form-group" id="halfday-check-box">
-          <input type="checkbox" id="halfday-check" class="big-checkbox"/>
-          <label for="halfday-check"><strong>Check Here For Half Day</strong></label>
+        <!-- One Day Checkbox -->
+        <div class="form-group" id="oneday-check-box">
+          <input type="checkbox" id="oneday-check" class="big-checkbox"/>
+          <label for="oneday-check"><strong>Check Here For A Single Day</strong></label>
         <br>
-          <span class="display-halfdaycheck"></span>
+          <span class="display-onedaycheck"></span>
         </div>
 
+         <!-- Half Day Checkbox -->
+         <div class="form-group" id="halfday-check-box">
+            <input type="checkbox" id="halfday-check" class="big-checkbox"/>
+            <label for="halfday-check"><strong>Check Here For Half Day</strong></label>
+          <br>
+            <span class="display-halfdaycheck"></span>
+          </div>
+
         <!-- From Date -->
-        <div class="form-group">
+        <div class="form-group" id="fromdate-box">
           <label for="fromdate">Select From Date:</label>
           <input type="date" class="form-control" id="fromdate" placeholder="Enter From Date" name="fromdate">
         <br>
@@ -83,7 +91,7 @@
         </div>
 
         <!-- To Date -->
-        <div class="form-group">
+        <div class="form-group" id="todate-box">
           <label for="todate">Select To Date:</label>
           <input type="date" class="form-control" id="todate" placeholder="Enter To Date" name="todate">
         <br>
@@ -92,7 +100,7 @@
         </div>
 
         <!-- Number of Working Days -->
-        <div class="form-group">
+        <div class="form-group" id="days-box">
           <label for="days">Number of Working Days:</label>
           <input type="number" name="days" class="form-control" id="days" placeholder="Please Enter Number of Working Days">
         <br>

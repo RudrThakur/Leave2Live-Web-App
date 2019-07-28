@@ -29,7 +29,7 @@
     text-align: center;
 }
 
-#halfday-check-box{
+#oneday-check-box{
     background-color:white;
     padding: 1%;
 }
@@ -47,4 +47,9 @@
 #leave-form-btn{
     float: right;
     margin-bottom: 2%;
+}
+
+#halfday-check-box{
+    background-color:white;
+    padding: 1%;
 }
