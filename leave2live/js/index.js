@@ -10,12 +10,16 @@ var globalFromDay, globalFromMonth, globalFromYear;
 //ToDate Globals
 var globalToDay, globalToMonth, globalToYear;
 
-//Total Number of Days
+//Test Type Global 
+var globalTestType;
+
+//Global Total Number of Days
 var totaldays;
 
 //Global Flags
 var oneDayFlag = 0;
 var halfDayFlag = false;
+var testCheckFlag = false;
 
 //Error Flags 
 var validRequestFlag = false;
@@ -26,6 +30,7 @@ var validReasonSpecificFlag = false;
 var validArrearCountFlag = false;
 var validAttendanceFlag = false;
 var validLeaveHistoryFlag = false;
+var validTestTypeFlag = true;
 
 
 // Document Ready
@@ -106,6 +111,12 @@ $(document).ready(function(){
         $(".display-reasonspecific").css("background-color","#FF9393");
     }
 
+    //Test Type
+    if($("#test-type").val() == "Choose Test Type ..."){
+        $(".display-test-type").html("Please Specify the Exam");
+        $(".display-test-type").css("background-color","#FF9393");
+    }
+
     
 //////////////////// Functions //////////////////////
 
@@ -183,6 +194,9 @@ $("#oneday-check").change(function(){
         $(".display-onedaycheck").html("You Have Selected Application For A SINGLE DAY");
         $(".display-onedaycheck").css("background-color","rgba(0, 0, 255, 0.212)");
 
+        //Set Number Of Working Days Flag to Clear
+        validWorkingDaysFlag = true;
+
         if(fromdate &&
            checkDateValidity(globalFromYear)){//If a Date is selected
 
@@ -204,6 +218,9 @@ $("#oneday-check").change(function(){
 
         //disable ToDate
         $( "#todate" ).prop( "disabled", false );
+
+        //Set Number Of Working Days Flag to Block
+        validWorkingDaysFlag = false;
 
         if($("#todate").val()){//If ToDate is Set
             $(".display-todate").html("The Selected Day is "+ displayToDate);
@@ -267,10 +284,15 @@ $("#halfday-check").change(function(){
              validDatesFlag = true;
          }
  
-         else{
-             //Set the Global Flag to Block
-             validDatesFlag = false;
-         }
+        else{
+            //Set the Global Flag to Block
+            validDatesFlag = false;
+        }
+
+        //Set Number Of Working Days Flag to Clear
+        validWorkingDaysFlag = true;
+
+         
 
     }
 
@@ -280,6 +302,9 @@ $("#halfday-check").change(function(){
         $("#oneday-check-box").show();//Show oneday check
         $("#days-box").show();//Show Number of Working days Box
         $("#todate-box").show();//Show ToDate Box
+
+        //Set Number of Working Days Flag to Block
+        validWorkingDaysFlag = false;
 
         //Hide Span text Message 
         $(".display-halfdaycheck").html("");
@@ -421,15 +446,18 @@ $("#days").on('input',function(){
     if (days == ""){
         $(".display-days").html("Please Enter Number of Working Days");
         $(".display-days").css("background-color","#FF9393"); 
-        //Set the Global Error flag to Block
-        validWorkingDaysFlag = false;
+
+        if(oneDayFlag ||
+           halfDayFlag)
+        validWorkingDaysFlag = true;//Set the Global Error flag to Clear
+        else
+        validWorkingDaysFlag = false;//Set the Global Error Flag to Block
     }
     else{
         $(".display-days").html("You are applying for " + days + " Working Days");
-        $(".display-days").css("background-color","rgba(0, 0, 255, 0.212)"); 
-
-        //Set the Global Error flag to Clear
-        validWorkingDaysFlag = true;
+        $(".display-days").css("background-color","rgba(0, 0, 255, 0.212)");
+        
+        validWorkingDaysFlag = true;//Set the Global Error Flag to Clear
     }
 });
 
@@ -437,9 +465,35 @@ $("#days").on('input',function(){
 $("#test-check").change(function(){
     if(!this.checked){
         $("#test-type-box").hide();//Hide Test Type
+
+        //Set the global Flag to Block
+        testCheckFlag = false;
+
+        //If Test Check is SET & Test Type is Valid
+        if(testCheckFlag &&
+           globalTestType){
+               //Set the Global Flag to Clear
+               validTestTypeFlag = true;
+           }
+
+           else
+           validTestTypeFlag = false;// Set the global Flag to Block
     }
     if(this.checked){
         $("#test-type-box").show();//Show Test Type
+
+        //Set the global flag to Clear
+        testCheckFlag = true;
+
+        //If there is Scheduled Test & Test type is Selected
+        if(testCheckFlag &&
+           globalTestType){
+               //Set the global Flag to Clear
+               validTestTypeFlag = true;
+        }
+        else
+        validTestTypeFlag = false;//Set the global Flag to Block
+           
     }
 
 });
@@ -562,6 +616,27 @@ $("#reasonspecific").on('input', function(){
 
 });
 
+//Test Type Handler
+$("#test-type").change(function(){
+
+    var testType = $("#test-type").val();
+    globalTestType = testType;
+    if(testType != "Choose Test Type ..."){
+        $(".display-test-type").html("Your Selected Test Type is " + testType);
+        $(".display-test-type").css("background-color","rgba(0, 0, 255, 0.212)"); 
+        if(testCheckFlag)//If Test Check is TICKED
+        validTestTypeFlag = true;//Set the Global Error flag to Clear
+    }
+    else{
+        $(".display-test-type").html("Please Specify the Exam");
+        $(".display-test-type").css("background-color","#FF9393"); 
+
+        if(!testCheckFlag)//If Test Check is NOT TICKED
+        validTestTypeFlag = false;//Set the Global Error flag to Block
+    }
+
+});
+
 //////////////////////////////////// FORM SUBMISSION HANDLER //////////////////////////////////
 
 $("#leave-form-btn").click(function(){
@@ -572,6 +647,7 @@ $("#leave-form-btn").click(function(){
        validWorkingDaysFlag &&
        validReasonCategoryFlag &&
        validReasonSpecificFlag &&
+       validTestTypeFlag &&
        validArrearCountFlag &&
        validAttendanceFlag &&
        validLeaveHistoryFlag){
