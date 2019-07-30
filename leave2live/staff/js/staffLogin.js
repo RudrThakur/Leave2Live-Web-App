@@ -17,7 +17,7 @@ rootRef.once("child_added", snap =>{
         //alert success !
         alert("Login Success");
 
-        //getting student profile from firebase
+        //getting staff profile from firebase
 
         var staffName = snap.child("staffname").val();
         var staffEmail  = snap.child("email").val(); 
