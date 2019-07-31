@@ -1,8 +1,8 @@
 //////////////// JS Handler for index.html
 
 
-/////////////////////////// GLOBALS //////////////////////////
 
+/////////////////////////// GLOBALS //////////////////////////
 
 //FromDate Globals
 var globalFromDay, globalFromMonth, globalFromYear;
@@ -32,41 +32,11 @@ var validAttendanceFlag = false;
 var validLeaveHistoryFlag = false;
 var validTestTypeFlag = true;
 
-
 // Document Ready
 
 $(document).ready(function(){
 
-///////////////////////////////// Check Active Session ////////////////////
-if (!localStorage.getItem("studentname")) {
-    window.location.href = 'login.html';
-    return false;
 
-} 
-else {
-
-    var registerNumber = localStorage.getItem("registernumber");
-    var studentName = localStorage.getItem("studentname");
-    var classAndSec = localStorage.getItem("classandsec");
-    var email = localStorage.getItem("email");
-    var phone = localStorage.getItem("phone");
-    var arrearCount = localStorage.getItem("arrearcount");
-    var department = localstorage.getItem("department");
-    var dob = localStorage.getItem("dob");
-    var leaveHistory = localStorage.getItem("leavehistory");
-
-    //Add values to Profile Modal 
-    $("#profile-register-number").val(registerNumber);
-    $("#profile-student-name").val(studentName);
-    $("#profile-dob").val(dob);
-    $("#profile-department").val(department);
-    $("#profile-classandsec").val(classAndSec);
-    $("#profile-arrearcount").val(arrearCount);
-    $("#profile-email").val(email);
-    $("#profile-phone").val(phone);
-    $("#profile-leave-history").val(leaveHistory);
-
-}
 
 ///////////////////////////////// Initial Validations /////////////////////
 
@@ -129,7 +99,28 @@ else {
         $(".display-test-type").css("background-color","#FF9393");
     }
 
-    
+///////////////////////////////// Check Active Session ////////////////////
+
+if (!localStorage.getItem("registernumber")) {
+    window.location.href = 'login.html';
+    return false;
+
+} 
+else {
+
+    //Add values to Profile Modal 
+    $("#profile-register-number").html(localStorage.getItem("registernumber"));
+    $("#profile-student-name").html(localStorage.getItem("studentname"));
+    $("#profile-dob").html(localStorage.getItem("dob"));
+    $("#profile-department").html(localstorage.getItem("department"));
+    $("#profile-classandsec").html(localStorage.getItem("classandsec"));
+    $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
+    $("#profile-email").html(localStorage.getItem("email"));
+    $("#profile-phone").html(localStorage.getItem("phone"));
+    $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
+
+}
+
 //////////////////// Functions //////////////////////
 
 //function to reverse a date

@@ -6,7 +6,7 @@ rootRef.once("child_added", snap =>{
     var passfromdb  = snap.child("password").val(); 
 
     //onclick handler for login-btn
-    $("#login-btn").click(function(){
+    $("#login-btn").click(function(){debugger;
         var regno = $("#registernumber").val();
         var pass = $("#pass").val();
 
@@ -15,7 +15,8 @@ rootRef.once("child_added", snap =>{
             
         //alert success !
         alert("Login Success");
-
+        
+        
         //getting student profile from firebase
 
         var studentName = snap.child("studentname").val();
@@ -29,16 +30,15 @@ rootRef.once("child_added", snap =>{
 
 
         //using localstorage to pass them into Javascript pages
-
+        debugger;
         localStorage.setItem("registernumber", regno);
-        localStorage.setItem("requestid", requestId);
         localStorage.setItem("studentname", studentName);
         localStorage.setItem("email", email);
         localStorage.setItem("phone", phone);
         localStorage.setItem("classandsec", classAndSec);
         localStorage.setItem("arrearcount", arrearCount);
         localStorage.setItem("department", department);
-        localStorage.setItem("dob",dob);
+        localStorage.setItem("dob", dob);
         localStorage.setItem("leavehistory", leaveHistory);
         
         //redirect to index page
