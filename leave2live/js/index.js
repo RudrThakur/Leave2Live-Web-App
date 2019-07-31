@@ -107,12 +107,12 @@ if (!localStorage.getItem("registernumber")) {
 
 } 
 else {
-
+    debugger;
     //Add values to Profile Modal 
     $("#profile-register-number").html(localStorage.getItem("registernumber"));
     $("#profile-student-name").html(localStorage.getItem("studentname"));
     $("#profile-dob").html(localStorage.getItem("dob"));
-    $("#profile-department").html(localstorage.getItem("department"));
+    $("#profile-department").html(localStorage.getItem("department"));
     $("#profile-classandsec").html(localStorage.getItem("classandsec"));
     $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
     $("#profile-email").html(localStorage.getItem("email"));
@@ -658,6 +658,8 @@ $("#leave-form-btn").click(function(){
     }
     else{
         alert("An Error Occured!");
+
+        return false;
         
     }
 });
