@@ -10,6 +10,9 @@ var globalFromDay, globalFromMonth, globalFromYear;
 //ToDate Globals
 var globalToDay, globalToMonth, globalToYear;
 
+//DayMode Globals
+var globalDayMode;
+
 //Test Type Global 
 var globalTestType;
 
@@ -17,20 +20,20 @@ var globalTestType;
 var totaldays;
 
 //Global Flags
-var oneDayFlag = 0;
-var halfDayFlag = false;
 var testCheckFlag = false;
+var multipleDaysFlag = false;
 
 //Error Flags 
 var validRequestFlag = false;
-var validDatesFlag = false;
-var validWorkingDaysFlag = false;
+var validDatesFlag = true;
+var validWorkingDaysFlag = true;
 var validReasonCategoryFlag = false;
 var validReasonSpecificFlag = false;
 var validArrearCountFlag = false;
 var validAttendanceFlag = false;
 var validLeaveHistoryFlag = false;
 var validTestTypeFlag = true;
+var validDayModeFlag = false;
 
 // Document Ready
 
@@ -42,23 +45,35 @@ $(document).ready(function(){
 
     //Initial Validation Leave Form
 
-    if($("#request-type").val() == "Choose Request Type ..."){//Request Type 
+
+    //Request Type 
+    if(!$("input[name='request-type']:checked").val()){
         $(".request-type-display").html("Please Choose A Request Type");
         $(".request-type-display").css("background-color","#FF9393");
     }
 
-    if(!$("#fromdate").val()){//From Date
+    //Day Mode
+    if($("#day-mode").val() == "Choose Day Mode"){
+        $(".day-mode-display").html("Please Choose A Day Mode");
+        $(".day-mode-display").css("background-color","#FF9393");
+    }
+
+    //From Date
+    if(!$("#fromdate").val()){
         $(".display-fromdate").html("Please Choose A Date");
         $(".display-fromdate").css("background-color","#FF9393");
       
     }
-    if(!$("#todate").val()){// To Date
+
+    // To Date
+    if(!$("#todate").val()){
         $(".display-todate").html("Please Choose A Date");
         $(".display-todate").css("background-color","#FF9393");
 
     }
 
-    if(!$("#days").val()){// Number of Working Days
+    // Number of Working Days
+    if(!$("#days").val()){
         $(".display-days").html("Please Enter Number Of Working Days");
         $(".display-days").css("background-color","#FF9393");
     }
@@ -99,7 +114,7 @@ $(document).ready(function(){
         $(".display-test-type").css("background-color","#FF9393");
     }
 
-///////////////////////////////// Check Active Session ////////////////////
+//  Session Handling ////////////////////
 
 if (!localStorage.getItem("registernumber")) {
     window.location.href = 'login.html';
@@ -107,7 +122,10 @@ if (!localStorage.getItem("registernumber")) {
 
 } 
 else {
-    debugger;
+   
+    //////////////////////////////////// Loading Student Profile ///////////////////////////
+
+
     //Add values to Profile Modal 
     $("#profile-register-number").html(localStorage.getItem("registernumber"));
     $("#profile-student-name").html(localStorage.getItem("studentname"));
@@ -156,11 +174,11 @@ function checkDateValidity (date1){
 
 
 //Request Type Handler
-$("#request-type").change(function(){
-    var requestType = $("#request-type").val();
-    if(requestType != "Choose Request Type ..."){
+$("input[name='request-type']").change(function(){
+    var requestType = $("input[name='request-type']:checked").val();
+    if(requestType){
         //show request type
-        $(".request-type-display").html("Your current RequestType is "+ requestType);
+        $(".request-type-display").html("Your current Request Type is "+ requestType);
         $(".request-type-display").css("background-color","rgba(0, 0, 255, 0.212)");
 
         //Switch Error Flag to clear
@@ -178,140 +196,48 @@ $("#request-type").change(function(){
 
 });
 
-//One Day Check Handler
-$("#oneday-check").change(function(){
-    
-    if(this.checked){// If oneDay Checkbox TRUE
-        oneDayFlag = 1;
-        $("#todate").prop( "disabled", true );//disable ToDate
-        $("#halfday-check-box" ).hide();//Hide Half Day Check Box
-        $("#days").val(1);// set Days value to 1
-        $(".display-days").hide();//hide DisplayDays
-        $("#days").prop("disabled",true);//disable WorkingDays
-        $("#todate").val("");//Reset ToDate
-        globalToYear = null;
-        globalToDay = null;
-        globalToMonth = null;
-        $(".display-todate").html("");
-        $(".display-totaldays").html("");
-        $(".display-onedaycheck").html("You Have Selected Application For A SINGLE DAY");
-        $(".display-onedaycheck").css("background-color","rgba(0, 0, 255, 0.212)");
+//Day Mode Handler 
+$("#day-mode").change(function(){
 
-        //Set Number Of Working Days Flag to Clear
-        validWorkingDaysFlag = true;
+    globalDayMode = $("#day-mode").val();
 
-        if(fromdate &&
-           checkDateValidity(globalFromYear)){//If a Date is selected
+    //When Day Mode is Not Selected
+    if(globalDayMode == "Choose Day Mode"){
 
-            //Set the Global Flag to Clear
-            validDatesFlag = true;
-        }
+        //Display Error Message
+        $(".day-mode-display").html("Please Choose A Day Mode");
+        $(".day-mode-display").css("background-color","#FF9393");
 
-        else{
-            //Set the Global Flag to Block
-            validDatesFlag = false;
-        }
-    } 
-    else{ // If oneDay Checkbox FALSE
-        oneDayFlag = 0;
-        $("#days").val("");// set Days value to 1
-        $("#days").prop("disabled",false);//disable WorkingDays
-        $("#halfday-check-box" ).show();//Show Half Day Check Box
-        $(".display-days").show();//show DisplayDays
-
-        //disable ToDate
-        $( "#todate" ).prop( "disabled", false );
-
-        //Set Number Of Working Days Flag to Block
-        validWorkingDaysFlag = false;
-
-        if($("#todate").val()){//If ToDate is Set
-            $(".display-todate").html("The Selected Day is "+ displayToDate);
-            $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");
-
-        }
-        else{//If ToDate is not Set
-            $(".display-todate").html("Please Choose A Date");
-            $(".display-todate").css("background-color","#FF9393");
-
-            //Set the Global Flag to Block
-            validDatesFlag = false;
-        }
-        
-        $(".display-onedaycheck").html("");//Nullify oneDay Display
-
-        // If oneDay Checkbox FALSE display Number of Days
-            if($("#fromdate").val() &&
-                $("#todate").val()){// If both FromDate and ToDate are Set
-             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 ) + 1;
-
-
-             if(totaldays < 2 ){// If ToDate is earlier than FromDate Raise Error
-             $(".display-totaldays").html("Invalid Dates Please Check the Dates Again !");
-             $(".display-totaldays").css("background-color","#FF9393"); 
-
-             //Set the Global Flag to Block
-             validDatesFlag = false;
-
-             }
-             else{// If Dates are Valid
-                $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+totaldays +"</strong> (Approx)");
-                $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)");
-
-                //Set the Global Flag to Clear
-                validDatesFlag = true;
-             }
-  
-         }
-        }
-});
-
-//Half Day Check Handler 
-$("#halfday-check").change(function(){
-
-    //If Halfday Checkbox is CHECKED
-    if(this.checked){
-        halfDayFlag = true;//set Global Flag to True
-        $("#oneday-check-box").hide();//Hide oneday check
-        $("#days-box").hide();//Hide Number of Working days Box
-        $("#todate-box").hide();//Hide ToDate Box
-
-        //Display Span text Message 
-        $(".display-halfdaycheck").html("You Have Selected Application For HALF DAY");
-        $(".display-halfdaycheck").css("background-color","rgba(0, 0, 255, 0.212)");
-
-        if(fromdate &&
-            checkDateValidity(globalFromYear)){//If a Date is selected
- 
-             //Set the Global Flag to Clear
-             validDatesFlag = true;
-         }
- 
-        else{
-            //Set the Global Flag to Block
-            validDatesFlag = false;
-        }
-
-        //Set Number Of Working Days Flag to Clear
-        validWorkingDaysFlag = true;
-
-         
-
+        //Set the validDayModeFlag to Block
+        validDayModeFlag = false;
     }
 
-    //If Halfday Checkbox is NOT CHECKED
     else{
-        halfDayFlag = false;// set Global Flag to False
-        $("#oneday-check-box").show();//Show oneday check
-        $("#days-box").show();//Show Number of Working days Box
-        $("#todate-box").show();//Show ToDate Box
 
-        //Set Number of Working Days Flag to Block
-        validWorkingDaysFlag = false;
+        //Set the validDayModeFlag to Clear
+        validDayModeFlag = true;
 
-        //Hide Span text Message 
-        $(".display-halfdaycheck").html("");
+        //Display the current Day Mode
+        $(".day-mode-display").html("Your Selected Day Mode is "+ globalDayMode);
+        $(".day-mode-display").css("background-color","rgba(0, 0, 255, 0.212)");
+
+        //When Day Mode is Selected
+        if(!(globalDayMode == "More Than a Day")){//When Day Mode is Half Day or Whole Day
+
+            $("#todate-box").hide();//Hide ToDate Box
+            $("#days-box").hide();//Hide Days Box
+        }
+
+        else{//When Day Mode is More Than A Day
+
+            multipleDaysFlag = true;//Set the multipleDaysFlag to Clear
+            $("#todate-box").show();//Hide ToDate Box
+            $("#days-box").show();//Hide Days Box
+        }
     }
+
+
+
 });
 
 //From Date Handler
@@ -396,26 +322,29 @@ $("#todate").change(function(){
    
     if(todate &&
         checkDateValidity(globalToYear)){//If a Date is selected
-         $(".display-todate").html("The Selected Day is "+ displayToDate);
-         $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");    
+        $(".display-todate").html("The Selected Day is "+ displayToDate);
+        $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");    
      }
      if(!todate){//If No date is Selected
-         $(".display-todate").html("Please Choose A Date");
-         $(".display-todate").css("background-color","#FF9393");
+        $(".display-todate").html("Please Choose A Date");
+        $(".display-todate").css("background-color","#FF9393");
 
-         //Set the Global Flag to Block 
-         validDatesFlag = false;
+        if(multipleDaysFlag){//If multipleDaysFlag is SET
+        //Set the Global Flag to Block 
+        validDatesFlag = false;
+        }
+        
      }
  
      //check the validity of the entered Date
      if(!checkDateValidity(globalToYear) && 
         todate){
-         //if dates are Invalid
-         $(".display-todate").html("<br><br>Invalid Date please Check the Date !");
-         $(".display-todate").css("background-color","#FF9393"); 
+        //if dates are Invalid
+        $(".display-todate").html("<br><br>Invalid Date please Check the Date !");
+        $(".display-todate").css("background-color","#FF9393"); 
 
-         //Set the Global Flag to Block
-         validDatesFlag = false;
+        //Set the Global Flag to Block
+        validDatesFlag = false;
      }
      
      if(checkDateValidity(globalFromYear) && 
@@ -450,11 +379,10 @@ $("#days").on('input',function(){
         $(".display-days").html("Please Enter Number of Working Days");
         $(".display-days").css("background-color","#FF9393"); 
 
-        if(oneDayFlag ||
-           halfDayFlag)
-        validWorkingDaysFlag = true;//Set the Global Error flag to Clear
-        else
-        validWorkingDaysFlag = false;//Set the Global Error Flag to Block
+        if(multipleDaysFlag){//If multipleDaysFlag is SET
+            validWorkingDaysFlag = false;//Set the Global Error Flag to Block
+        }
+        
     }
     else{
         $(".display-days").html("You are applying for " + days + " Working Days");
@@ -647,6 +575,7 @@ $("#leave-form-btn").click(function(){
     debugger;
     if(validDatesFlag &&
        validRequestFlag &&
+       validDayModeFlag &&
        validWorkingDaysFlag &&
        validReasonCategoryFlag &&
        validReasonSpecificFlag &&

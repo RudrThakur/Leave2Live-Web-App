@@ -30,7 +30,7 @@ rootRef.once("child_added", snap =>{
 
 
         //using localstorage to pass them into Javascript pages
-        debugger;
+        
         localStorage.setItem("registernumber", regno);
         localStorage.setItem("studentname", studentName);
         localStorage.setItem("email", email);
