@@ -18,18 +18,28 @@ rootRef.once("child_added", snap =>{
 
         //getting student profile from firebase
 
-        var studentname = snap.child("studentname").val();
+        var studentName = snap.child("studentname").val();
         var email  = snap.child("email").val(); 
         var phone  = snap.child("phone").val(); 
-        var classandsec = snap.child("classandsec").val();
+        var classAndSec = snap.child("classandsec").val();
+        var arrearCount = snap.child("arrearcount").val();
+        var department = snap.child("department").val();
+        var dob = snap.child("dob").val();
+        var leaveHistory = snap.child("leavehistory").val();
+
 
         //using localstorage to pass them into Javascript pages
 
-        localStorage.setItem("registernumber",regno);
-        localStorage.setItem("studentname", studentname);
+        localStorage.setItem("registernumber", regno);
+        localStorage.setItem("requestid", requestId);
+        localStorage.setItem("studentname", studentName);
         localStorage.setItem("email", email);
         localStorage.setItem("phone", phone);
-        localStorage.setItem("classandsec", classandsec);
+        localStorage.setItem("classandsec", classAndSec);
+        localStorage.setItem("arrearcount", arrearCount);
+        localStorage.setItem("department", department);
+        localStorage.setItem("dob",dob);
+        localStorage.setItem("leavehistory", leaveHistory);
         
         //redirect to index page
         window.location.href ='index.html';
