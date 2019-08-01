@@ -95,24 +95,22 @@
     </div>             
   </div>
 </center>
-  <table class="table table-bordered  table-responsive w-100 d-block d-md-table">
+  <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="request-table">
     <thead class="text-white" style="background-color:#7B757D;">
       <tr>
-        <th>Class-Section</th>
-        <th>Register-No</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
+        <th>RequestId</th>
+        <th>Request Type</th>
+        <th>Request Date</th>
+        <th>Reason Category</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>7b</td>
-        <td>311016104052</td>
-        <td>Lucky singh</td>
-        <td>lrlucky6042@gmail.com</td>
-        <td>9660636663</td>
-      </tr>
+      <td id="table-requestid"></td>
+      <td id="table-request-type"></td>
+      <td id="table-request-date"></td>
+      <td id="table-request-category"></td>
+      <td id="table-status"></td>
     </tbody>
   </table>
   <!-- Request Table Ends here -->
@@ -124,6 +122,9 @@
 
 <!-- Bootstrap CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
 
 <!-- Google Fonts API -->
 <link href="https://fonts.googleapis.com/css?family=Arapey|Julius+Sans+One|Megrim&display=swap" rel="stylesheet">
@@ -138,14 +139,11 @@
 <!-- Bootstrap CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<!-- Javascript Handler -->
-<script src="js/request.js"></script>
-
 <!-- Firebase Config File -->
 <script src="js/configFirebase.js"></script>
 
-<!-- Firebase CDN -->
-<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+<!-- Javascript Handler -->
+<script src="js/request.js"></script>
 
 </html>
 <!-- End of Html -->

@@ -1,5 +1,7 @@
 //////////////// JS Handler for request.html
 
+//Get Database Reference
+var tableRequest = firebase.database().ref("requests");
 $(document).ready(function(){
 
 //  Session Handling ////////////////////
@@ -26,6 +28,42 @@ else {
     $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
 
 }
+
+
+//Display Leave Form Data From Firebase to Table
+
+tableRequest.once("value", function(snapshot) {
+    snapshot.forEach(function(child) {
+      var content = '';
+        //Retrieve Request Data
+        var tableData = child.val();
+        var tableRegisterNumber = tableData.registernumber;
+     
+
+        if(tableRegisterNumber == localStorage.getItem("registernumber")){
+
+            //Get the other Attributes of the Matched Record
+            var tableRequestId = tableData.requestid;
+            var tableRequestType = tableData.requesttype;
+            var tableRequestDate = tableData.date;
+            var tableReasonCategory = tableData.reasoncategory;
+            var tableStatus = tableData.status;
+
+            //Display Request Data in Request-Tavble
+            content += '<tr>';
+            content += '<td>' + tableRequestId + '</td>';//Column RequestID
+            content += '<td>' + tableRequestType + '</td>';//Column RequestType
+            content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+            content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+            content += '<td>' + tableStatus + '</td>';//Column Status
+            content += '</tr>';
+            $('#request-table').append(content);
+        }
+  
+    });
+  });
+
+
 
 });
 
