@@ -76,8 +76,3 @@ tableRequest.once("value", function(snapshot) {
 
 
 });
-
-$("#requestid-link").click(function(){
-alert("hello!");
-});
-
