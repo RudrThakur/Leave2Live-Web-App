@@ -29,6 +29,16 @@ else {
 
 }
 
+////////////////////////////////////////////// Functions ///////////////////////////////////////////
+
+//function to reverse a date
+function rev(str){
+    return str.split("-").reverse().join("-");
+}
+
+
+
+//////////////////////////////////////////////// Data Retrieval ////////////////////////////////
 
 //Display Leave Form Data From Firebase to Table
 
@@ -51,9 +61,9 @@ tableRequest.once("value", function(snapshot) {
 
             //Display Request Data in Request-Tavble
             content += '<tr>';
-            content += '<td>' + tableRequestId + '</td>';//Column RequestID
+            content += '<td>' + '<a id="requestid-link" href="#">' + tableRequestId + '</a>'+ '</td>';//Column RequestID
             content += '<td>' + tableRequestType + '</td>';//Column RequestType
-            content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+            content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
             content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
             content += '<td>' + tableStatus + '</td>';//Column Status
             content += '</tr>';
@@ -65,5 +75,9 @@ tableRequest.once("value", function(snapshot) {
 
 
 
+});
+
+$("#requestid-link").click(function(){
+alert("hello!");
 });
 
