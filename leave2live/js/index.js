@@ -25,7 +25,7 @@ var multipleDaysFlag = false;
 
 //Error Flags 
 var validRequestFlag = false;
-var validDatesFlag = true;
+var validDatesFlag = false;
 var validWorkingDaysFlag = true;
 var validReasonCategoryFlag = false;
 var validReasonSpecificFlag = false;
@@ -56,6 +56,10 @@ $(document).ready(function(){
     if($("#day-mode").val() == "Choose Day Mode"){
         $(".day-mode-display").html("Please Choose A Day Mode");
         $(".day-mode-display").css("background-color","#FF9393");
+
+        $("#fromdate-box").hide();//Hide FromDate
+        $("#todate-box").hide();//Hide ToDate
+        $("#days-box").hide();//Hide Days
     }
 
     //From Date
@@ -204,6 +208,10 @@ $("#day-mode").change(function(){
     //When Day Mode is Not Selected
     if(globalDayMode == "Choose Day Mode"){
 
+        $("#fromdate-box").hide();//Hide fromDate
+        $("#todate-box").hide();//Hide toDate
+        $("#days-box").hide();//Hide Number of Days
+
         //Display Error Message
         $(".day-mode-display").html("Please Choose A Day Mode");
         $(".day-mode-display").css("background-color","#FF9393");
@@ -213,6 +221,8 @@ $("#day-mode").change(function(){
     }
 
     else{
+
+        $("#fromdate-box").show();//Show FromDate
 
         //Set the validDayModeFlag to Clear
         validDayModeFlag = true;
@@ -253,19 +263,16 @@ $("#fromdate").change(function(){
     //pass to function to check which day it is
     var displayFromDate = dayofweek(globalFromDay, globalFromMonth, globalFromYear);
  
-    if(fromdate &&
-       checkDateValidity(globalFromYear)){//If a Date is selected
+    if(fromdate && //If a Date is selected
+       checkDateValidity(globalFromYear)){//If the date Year is Valid
         $(".display-fromdate").html("The Selected Day is "+ displayFromDate);
         $(".display-fromdate").css("background-color","rgba(0, 0, 255, 0.212)");
-
-        //When one Day Flag is Set
-        if(oneDayFlag ||
-           halfDayFlag)
-        validDatesFlag = true;//Set the Global Flag to Clear
-        else //When the one Day Flag is NOT SET
-        validDatesFlag = false;//Set the Global Flag to Block
-
+    
+        if(!multipleDaysFlag)
+        //Switch Global Flag to set Clear
+        validDatesFlag = true;
     }
+
     if(!fromdate){//If No date is Selected
         $(".display-fromdate").html("Please Choose A Date");
         $(".display-fromdate").css("background-color","#FF9393");
@@ -288,7 +295,7 @@ $("#fromdate").change(function(){
     if(checkDateValidity(globalFromYear) && 
        checkDateValidity(globalToYear) && 
        $("#fromdate").val() &&
-       $("#todate").val()){// If the dates are VALID and oneDAY not Checked
+       $("#todate").val()){// If the dates are VALID
             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 ) + 1;
             if(totaldays < 2 ){// If ToDate is earlier than FromDate Raise Error
                 $(".display-totaldays").html("<br><br>Invalid Dates Please Check the Dates Again !");
@@ -323,7 +330,15 @@ $("#todate").change(function(){
     if(todate &&
         checkDateValidity(globalToYear)){//If a Date is selected
         $(".display-todate").html("The Selected Day is "+ displayToDate);
-        $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");    
+        $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");  
+        
+        if(globalFromYear &&
+           multipleDaysFlag)
+        //Set the Global Flag to Clear
+        validDatesFlag = true;
+
+        else
+        validDatesFlag = false;//Set the Global Flag to Block
      }
      if(!todate){//If No date is Selected
         $(".display-todate").html("Please Choose A Date");
