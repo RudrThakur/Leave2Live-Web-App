@@ -5,19 +5,16 @@
 /////////////////////////// GLOBALS //////////////////////////
 
 //FromDate Globals
-var globalFromDay, globalFromMonth, globalFromYear;
+var globalFromDateObject, globalFromDay, globalFromMonth, globalFromYear, globalDayDifferenceFromDate;
 
 //ToDate Globals
-var globalToDay, globalToMonth, globalToYear;
+var globalToDateObject, globalToDay, globalToMonth, globalToYear, globalDayDifferenceToDate;
 
 //DayMode Globals
 var globalDayMode;
 
 //Test Type Global 
 var globalTestType;
-
-//Global Total Number of Days
-var totaldays;
 
 //Global Flags
 var testCheckFlag = false;
@@ -160,18 +157,9 @@ function dayofweek(d, m, y)
     return days[dayNumber-1];
 } 
 
-
-//function to check the validity of entered date value
-
-function checkDateValidity (date1){
-    var currentDate = new Date();
-    var currentYear = currentDate.getFullYear();
-    if(currentYear - date1 != 0 ){
-            return 0;// return false if date Not Valid
-       }    
-    else{
-        return 1;//return true if date Valid
-    }
+//function to Calculate Difference between dates in Days Count
+function diffInDays(fromDateObject, toDateObject){
+    return fromDateObject.diff(toDateObject, 'days');
 }
 
 /////////////////////////// Event Handlers ////////////////////
@@ -209,8 +197,13 @@ $("#day-mode").change(function(){
     if(globalDayMode == "Choose Day Mode"){
 
         $("#fromdate-box").hide();//Hide fromDate
+        $("#fromdate").val("");//Reset FromDate
+
+        $(".display-fromdate").html("Please Choose A Date");//Display Error Message
+        $(".display-fromdate").css("background-color","#FF9393");
+
         $("#todate-box").hide();//Hide toDate
-        $("#days-box").hide();//Hide Number of Days
+        $("#days-box").hide();//Hide days
 
         //Display Error Message
         $(".day-mode-display").html("Please Choose A Day Mode");
@@ -223,6 +216,8 @@ $("#day-mode").change(function(){
     else{
 
         $("#fromdate-box").show();//Show FromDate
+        $("#todate-box").hide();//Hide ToDate
+        $("#days-box").hide();//Hide days
 
         //Set the validDayModeFlag to Clear
         validDayModeFlag = true;
@@ -232,18 +227,34 @@ $("#day-mode").change(function(){
         $(".day-mode-display").css("background-color","rgba(0, 0, 255, 0.212)");
 
         //When Day Mode is Selected
-        if(!(globalDayMode == "More Than a Day")){//When Day Mode is Half Day or Whole Day
-
-            $("#todate-box").hide();//Hide ToDate Box
-            $("#days-box").hide();//Hide Days Box
-        }
-
-        else{//When Day Mode is More Than A Day
+        if(globalDayMode == "More Than a Day"){//When Day Mode is Half Day or Whole Day
 
             multipleDaysFlag = true;//Set the multipleDaysFlag to Clear
-            $("#todate-box").show();//Hide ToDate Box
-            $("#days-box").show();//Hide Days Box
+
+            //If FromDate is Set & Valid
+            if(globalFromDateObject &&
+               globalDayDifferenceFromDate < 120){
+                   $("#todate-box").show();//Show ToDate
+                   $("#todate").val("");//Reset ToDate
+
+                   $(".display-todate").html("Please Choose A Date");//Display Error Message
+                   $(".display-todate").css("background-color","#FF9393");
+               }
+
+            if(globalFromDateObject &&
+               globalToDateObject &&
+               (globalDayDifferenceFromDate < 120) &&
+               (globalDayDifferenceToDate < 120)){
+                
+                //Display the Difference in Days
+                $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+globalDayDifferenceToDate +"</strong> (Approx)");
+                $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
+               }
         }
+        else{
+            multipleDaysFlag = false;//Set the multipleDaysFlag to Block
+        }
+
     }
 
 
@@ -252,6 +263,8 @@ $("#day-mode").change(function(){
 
 //From Date Handler
 $("#fromdate").change(function(){
+
+    debugger;
     var fromdate = $("#fromdate").val();//retrieved value is string but in reverse 
     //pass dates to reverse
     fromdate = rev(fromdate);
@@ -261,63 +274,66 @@ $("#fromdate").change(function(){
     globalFromMonth = parseInt(dateElements[1]);
     globalFromYear = parseInt(dateElements[2]);
     //pass to function to check which day it is
-    var displayFromDate = dayofweek(globalFromDay, globalFromMonth, globalFromYear);
- 
+    var displayFromDate = dayofweek(globalFromDay, globalFromMonth, globalFromYear);//Set the Day To Display
+    
+    //convert the date back to original format (YYYY-MM-DD)
+    fromdate = rev(fromdate);
+
+    //Using Momentjs Object to check Validity of the Year of FromDate
+    moment().format("YYYY-MM-DD");
+    var currentDateObject = moment.utc();
+    globalFromDateObject = moment.utc(fromdate);
+
+    globalDayDifferenceFromDate = Math.abs(diffInDays(currentDateObject, globalFromDateObject)) + 2;//Including the FromDate value
+
     if(fromdate && //If a Date is selected
-       checkDateValidity(globalFromYear)){//If the date Year is Valid
+       (globalDayDifferenceFromDate < 120)){//If the date Year is Valid
         $(".display-fromdate").html("The Selected Day is "+ displayFromDate);
         $(".display-fromdate").css("background-color","rgba(0, 0, 255, 0.212)");
     
-        if(!multipleDaysFlag)
         //Switch Global Flag to set Clear
         validDatesFlag = true;
+    
+        //If More than A Day is Selected
+        if(multipleDaysFlag){
+            $("#todate-box").show();//Show ToDate
+            $("#todate").val("");//Reset ToDate
+
+            $(".display-todate").html("Please Choose A Date");//Show error message
+            $(".display-todate").css("background-color","#FF9393");
+            
+        }
+    }
+
+    if(fromdate &&//if FromDate is Set
+       (globalDayDifferenceFromDate > 120)){//If Selected Date is Beyond 4 Months
+            //if dates are Invalid
+            $(".display-fromdate").html("Invalid Dates Please Check the Dates Again !");
+            $(".display-fromdate").css("background-color","#FF9393");
+            
+            //Set the Global Flag to Block
+            validDatesFlag = false;
+
     }
 
     if(!fromdate){//If No date is Selected
         $(".display-fromdate").html("Please Choose A Date");
         $(".display-fromdate").css("background-color","#FF9393");
 
+        //Hide ToDate
+        $("#todate-box").hide();
+        $("#todate").val("");//Reset ToDate
+        $(".display-todate").html("");//Hide display ToDate
+        $(".display-totaldays").html("");//Hide display TotalDays
+
         //Switch Global Flag to set Block
         validDatesFlag = false;
     }
-
-    //check the validity of the entered Date
-    if(!checkDateValidity(globalFromYear) && 
-       fromdate ){
-        //if dates are Invalid
-        $(".display-fromdate").html("Invalid Dates Please Check the Dates Again !");
-        $(".display-fromdate").css("background-color","#FF9393");
-        
-        //Set the Global Flag to Block
-        validDatesFlag = false;
-    }
-    
-    if(checkDateValidity(globalFromYear) && 
-       checkDateValidity(globalToYear) && 
-       $("#fromdate").val() &&
-       $("#todate").val()){// If the dates are VALID
-            totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 ) + 1;
-            if(totaldays < 2 ){// If ToDate is earlier than FromDate Raise Error
-                $(".display-totaldays").html("<br><br>Invalid Dates Please Check the Dates Again !");
-                $(".display-totaldays").css("background-color","#FF9393"); 
-
-                //Set the Global Flag to Block
-                validDatesFlag = false;
-   
-                }
-                else{// If Dates are Valid
-                   $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+totaldays +"</strong> (Approx)");
-                   $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
-
-                   //Set the Global Flag to Clear
-                   validDatesFlag = true;
-                }
-        }
-
-    });
+});
 
 //To Date Handler 
 $("#todate").change(function(){
+    debugger;
     var todate = $("#todate").val();
     //pass dates to reverse
     todate = rev(todate);
@@ -325,15 +341,28 @@ $("#todate").change(function(){
     globalToDay = parseInt(dateElements[0]);
     globalToMonth = parseInt(dateElements[1]);
     globalToYear = parseInt(dateElements[2])
-    var displayToDate = dayofweek(globalToDay, globalToMonth, globalToYear);
+    var displayToDate = dayofweek(globalToDay, globalToMonth, globalToYear);//Set the Day to Display
+
+    //reverse todate again as  original format (YYYY-MM-DD)
+    todate = rev(todate);
+
+    //Set the format of Momentjs Date
+    moment().format("YYYY-MM-DD");
+
+    //Convert ToDate to UTC Standard momentjs object 
+    var globalToDateObject = moment.utc(todate);
+
+    //Get the Day Difference between FromDate & ToDate
+    globalDayDifferenceToDate = Math.abs(diffInDays(globalFromDateObject, globalToDateObject)) + 1;//Including the FromDate value
+
    
-    if(todate &&
-        checkDateValidity(globalToYear)){//If a Date is selected
+    if(todate &&//If a Date is selected
+       globalDayDifferenceToDate < 120){//If the Difference in From Date & To Date is Less than 120 Days(4 Months Gap)
         $(".display-todate").html("The Selected Day is "+ displayToDate);
         $(".display-todate").css("background-color","rgba(0, 0, 255, 0.212)");  
         
-        if(globalFromYear &&
-           multipleDaysFlag)
+        if(globalFromYear &&//If FromDate is Set
+           multipleDaysFlag)//If Mode is set to Multiple Days
         //Set the Global Flag to Clear
         validDatesFlag = true;
 
@@ -344,6 +373,9 @@ $("#todate").change(function(){
         $(".display-todate").html("Please Choose A Date");
         $(".display-todate").css("background-color","#FF9393");
 
+        //Hide TotalDays 
+        $(".display-totaldays").html("");
+
         if(multipleDaysFlag){//If multipleDaysFlag is SET
         //Set the Global Flag to Block 
         validDatesFlag = false;
@@ -352,36 +384,31 @@ $("#todate").change(function(){
      }
  
      //check the validity of the entered Date
-     if(!checkDateValidity(globalToYear) && 
+     if((globalDayDifferenceToDate > 120) || 
+        (globalDayDifferenceToDate < 2) && 
         todate){
         //if dates are Invalid
-        $(".display-todate").html("<br><br>Invalid Date please Check the Date !");
+        $(".display-todate").html("Invalid Date please Check the Date !");
         $(".display-todate").css("background-color","#FF9393"); 
+
+        //Hide TotalDays 
+        $(".display-totaldays").html("");
 
         //Set the Global Flag to Block
         validDatesFlag = false;
      }
      
-     if(checkDateValidity(globalFromYear) && 
-        checkDateValidity(globalToYear) && 
-        $("#fromdate").val() &&
-        $("#todate").val()){// If the dates are VALID and oneDAY not Checked
-             totaldays = (globalToDay - globalFromDay) + ((globalToMonth - globalFromMonth) * 30 ) + 1;
-             if(totaldays < 2 ){// If ToDate is earlier than FromDate Raise Error
-                $(".display-totaldays").html("<br><br>Invalid Dates Please Check the Dates Again !");
-                $(".display-totaldays").css("background-color","#FF9393"); 
+     if(globalFromDateObject &&
+        globalToDateObject &&
+        (globalDayDifferenceToDate < 120) && 
+        (globalDayDifferenceToDate > 1)){// If the dates are VALID
+        
+            $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+globalDayDifferenceToDate +"</strong> (Approx)");
+            $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
 
-                //Set the Global Flag to Block
-                validDatesFlag = false;
-   
-                }
-                else{// If Dates are Valid
-                   $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+totaldays +"</strong> (Approx)");
-                   $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
-
-                   //Set the Global Flag to Clear 
-                   validDatesFlag = true;
-                }
+            //Set the Global Flag to Clear 
+            validDatesFlag = true;
+                
          }
  
 });
@@ -599,6 +626,8 @@ $("#leave-form-btn").click(function(){
        validAttendanceFlag &&
        validLeaveHistoryFlag){
            alert("All Clear");
+
+           return false;
     }
     else{
         alert("An Error Occured!");
