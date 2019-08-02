@@ -249,6 +249,12 @@ $("#day-mode").change(function(){
                 //Display the Difference in Days
                 $(".display-totaldays").html("<br><br>Total Number of Days are "+ "<strong>"+globalDayDifferenceToDate +"</strong> (Approx)");
                 $(".display-totaldays").css("background-color","rgba(0, 0, 255, 0.212)"); 
+
+                validDatesFlag = true;//Set the global Flag to Clear
+               }
+
+               else{
+                validDatesFlag = false;//Set the global Flag to Clear
                }
         }
         else{
@@ -264,7 +270,6 @@ $("#day-mode").change(function(){
 //From Date Handler
 $("#fromdate").change(function(){
 
-    debugger;
     var fromdate = $("#fromdate").val();//retrieved value is string but in reverse 
     //pass dates to reverse
     fromdate = rev(fromdate);
@@ -301,6 +306,9 @@ $("#fromdate").change(function(){
 
             $(".display-todate").html("Please Choose A Date");//Show error message
             $(".display-todate").css("background-color","#FF9393");
+
+            //Switch Global Flag to set Clear
+            validDatesFlag = false;
             
         }
     }
@@ -333,7 +341,7 @@ $("#fromdate").change(function(){
 
 //To Date Handler 
 $("#todate").change(function(){
-    debugger;
+
     var todate = $("#todate").val();
     //pass dates to reverse
     todate = rev(todate);
@@ -436,36 +444,38 @@ $("#days").on('input',function(){
 
 //Test Check Handler
 $("#test-check").change(function(){
+    debugger;
     if(!this.checked){
         $("#test-type-box").hide();//Hide Test Type
+        
+        if(globalTestType){
+            $("#test-type").prop('selectedIndex',0);//Reset TestType
+            validTestTypeFlag = false;// Set the global Flag to Clear
+        }
+        
+        //Display Error Message
+        $(".display-test-type").html("Please Specify the Exam");
+        $(".display-test-type").css("background-color","#FF9393"); 
 
-        //Set the global Flag to Block
-        testCheckFlag = false;
+        testCheckFlag = false;//Set the Global Flag to FALSE
 
-        //If Test Check is SET & Test Type is Valid
-        if(testCheckFlag &&
-           globalTestType){
-               //Set the Global Flag to Clear
-               validTestTypeFlag = true;
-           }
-
-           else
-           validTestTypeFlag = false;// Set the global Flag to Block
+        validTestTypeFlag = true;// Set the global Flag to Clear
     }
     if(this.checked){
+
         $("#test-type-box").show();//Show Test Type
 
-        //Set the global flag to Clear
-        testCheckFlag = true;
+        testCheckFlag = true;//Set the Global Flag to FALSE
 
         //If there is Scheduled Test & Test type is Selected
-        if(testCheckFlag &&
-           globalTestType){
-               //Set the global Flag to Clear
-               validTestTypeFlag = true;
+        if($("#test-type").val() != "Choose Test Type ..."){
+            //Set the global Flag to Clear
+            validTestTypeFlag = true;
         }
-        else
-        validTestTypeFlag = false;//Set the global Flag to Block
+        else{
+            //Set the global Flag to Block
+            validTestTypeFlag = false;
+        }
            
     }
 
@@ -594,18 +604,20 @@ $("#test-type").change(function(){
 
     var testType = $("#test-type").val();
     globalTestType = testType;
-    if(testType != "Choose Test Type ..."){
+    if(testType != "Choose Test Type ..."){//If No TestType is selected
         $(".display-test-type").html("Your Selected Test Type is " + testType);
         $(".display-test-type").css("background-color","rgba(0, 0, 255, 0.212)"); 
-        if(testCheckFlag)//If Test Check is TICKED
+        
         validTestTypeFlag = true;//Set the Global Error flag to Clear
     }
     else{
         $(".display-test-type").html("Please Specify the Exam");
         $(".display-test-type").css("background-color","#FF9393"); 
 
-        if(!testCheckFlag)//If Test Check is NOT TICKED
+        if(testCheckFlag)//If Test Check is TICKED
         validTestTypeFlag = false;//Set the Global Error flag to Block
+        else
+        validTestTypeFlag = true;
     }
 
 });
