@@ -52,22 +52,47 @@ tableRequest.once("value", function(snapshot) {
 
         if(tableRegisterNumber == localStorage.getItem("registernumber")){
 
-            //Get the other Attributes of the Matched Record
-            var tableRequestId = tableData.requestid;
+            ////////////////////////////Get the Request Data of the Matched Record
+            var tableRequestId = child.key;
             var tableRequestType = tableData.requesttype;
             var tableRequestDate = tableData.date;
             var tableReasonCategory = tableData.reasoncategory;
             var tableStatus = tableData.status;
+            var dayModeDetails = tableData.daymode;
+            var fromdateDetails = tableData.fromdate;
+            var todateDetails = tableData.todate;
+            var testCheckDetails = tableData.testcheck;
+            var testTypeDetails = tableData.testtype;
+            var reasonSpecificDetails = tableData.reasonspecific;
+            var arrearCountDetails = tableData.arrearcount;
+            var attendanceDetails = tableData.attendance;
+            var leaveHistoryDetails = tableData.leavehistory;
 
-            //Display Request Data in Request-Tavble
+            ///////////////////////////////Display Request Data in Request-Tavble
             content += '<tr>';
-            content += '<td>' + '<a id="requestid-link" href="#">' + tableRequestId + '</a>'+ '</td>';//Column RequestID
+            content += '<td>' + '<a href="#" data-toggle="modal" data-target="#request-details">' + tableRequestId + '</a>' + '</td>';//Column RequestID
             content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
             content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
             content += '<td>' + tableStatus + '</td>';//Column Status
             content += '</tr>';
             $('#request-table').append(content);
+
+            ///////////////////////////Display Data in the Request Details Modal
+            $("#requestid-details").html(tableRequestId);
+            $("#request-type-details").html(tableRequestType);
+            $("#request-date-details").html(rev(tableRequestDate));
+            $("#fromdate-details").html(rev(fromdateDetails));
+            $("#todate-details").html(rev(todateDetails));
+            $("#day-mode-details").html(dayModeDetails);
+            $("#test-check-details").html(testCheckDetails);
+            $("#test-type-details").html(testTypeDetails);
+            $("#reason-category-details").html(tableReasonCategory);
+            $("#reason-specific-details").html(reasonSpecificDetails);
+            $("#arrear-count-details").html(arrearCountDetails);
+            $("#attendance-details").html(attendanceDetails);
+            $("#leave-history-details").html(leaveHistoryDetails);
+            $("#status-details").html(tableStatus);
         }
   
     });
@@ -75,4 +100,6 @@ tableRequest.once("value", function(snapshot) {
 
 
 
+
 });
+
