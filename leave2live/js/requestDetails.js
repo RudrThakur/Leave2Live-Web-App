@@ -47,3 +47,10 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
     });
 });
  
+
+//When back button is Clicked
+$("#back-btn").click(function(){
+
+    //Go back to Previous Page
+    window.location.href ='request.html';
+});
