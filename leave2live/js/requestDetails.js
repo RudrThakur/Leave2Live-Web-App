@@ -12,9 +12,9 @@ function rev(str){
 //  Session Handling ////////////////////
 
 if (!localStorage.getItem("registernumber")) {
-    window.location.href = 'login.html';
-    return false;
 
+    //Redirect to login page If New User
+    window.location.href = 'login.html';
 } 
 else {
    

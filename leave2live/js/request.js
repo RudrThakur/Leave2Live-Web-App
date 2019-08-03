@@ -16,8 +16,9 @@ $(document).ready(function(){
 //  Session Handling ////////////////////
 
 if (!localStorage.getItem("registernumber")) {
+
+    //Redirect to login Page if New User
     window.location.href = 'login.html';
-    return false;
 
 } 
 else {
