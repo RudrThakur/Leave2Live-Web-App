@@ -624,7 +624,6 @@ $("#test-type").change(function(){
 
 $("#leave-form-btn").click(function(){
 
-    debugger;
     if(validDatesFlag &&
        validRequestFlag &&
        validDayModeFlag &&
