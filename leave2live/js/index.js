@@ -36,8 +36,6 @@ var validDayModeFlag = false;
 
 $(document).ready(function(){
 
-
-
 ///////////////////////////////// Initial Validations /////////////////////
 
     //Initial Validation Leave Form
@@ -647,6 +645,18 @@ $("#leave-form-btn").click(function(){
         return false;
         
     }
+});
+
+//Logout Handler
+
+$("#logout-btn").click(function(){
+
+    //Clear Session 
+    localStorage.clear();
+
+    //Redirect to login.html
+    window.location.href = 'login.html';
+
 });
 
 });

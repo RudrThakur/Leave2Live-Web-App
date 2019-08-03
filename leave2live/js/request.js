@@ -80,5 +80,18 @@ tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("regist
   
     });
   });
+
+//Logout Handler
+
+$("#logout-btn").click(function(){
+
+    //Clear Session 
+    localStorage.clear();
+
+    //Redirect to login.html
+    window.location.href = 'login.html';
+
+});
+
 });
 

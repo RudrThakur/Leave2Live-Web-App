@@ -9,6 +9,32 @@ function rev(str){
 
 /////////////////////////////////////// Data Retrieval From Firebase ////////////////////////////
 
+//  Session Handling ////////////////////
+
+if (!localStorage.getItem("registernumber")) {
+    window.location.href = 'login.html';
+    return false;
+
+} 
+else {
+   
+    //////////////////////////////////// Loading Student Profile ///////////////////////////
+
+
+    //Add values to Profile Modal 
+    $("#profile-register-number").html(localStorage.getItem("registernumber"));
+    $("#profile-student-name").html(localStorage.getItem("studentname"));
+    $("#profile-dob").html(localStorage.getItem("dob"));
+    $("#profile-department").html(localStorage.getItem("department"));
+    $("#profile-classandsec").html(localStorage.getItem("classandsec"));
+    $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
+    $("#profile-email").html(localStorage.getItem("email"));
+    $("#profile-phone").html(localStorage.getItem("phone"));
+    $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
+
+}
+
+
 var detailRequestRef = firebase.database().ref("requests");
 
 //Get current URL
