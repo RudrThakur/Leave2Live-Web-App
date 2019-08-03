@@ -5,9 +5,9 @@ var tableRequest = firebase.database().ref("requests");
 
 
 ////////////////////////////////////////GLOBALS ///////////////////////////////////
+
+//global Row Counter of Requests Table
 var rowInd = 0;
-
-
 
 ///////////////////////// document ready
 
@@ -53,7 +53,8 @@ function rev(str){
 
 tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("registernumber")).once("value", function(snapshot) {
     snapshot.forEach(function(child) {
-      var content = '';
+    
+        var content = '';
     //Retrieve Request Data
     var tableData = child.val();
 
@@ -68,7 +69,7 @@ tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("regist
 
     ///////////////////////////////Display Request Data in Request-Tavble
     content += '<tr>';
-    content += '<td>' + '<a href="#" data-toggle="modal" data-target="#request-details" id="requestid-' + rowInd + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
     content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
@@ -79,9 +80,5 @@ tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("regist
   
     });
   });
-
-
-
-
 });
 

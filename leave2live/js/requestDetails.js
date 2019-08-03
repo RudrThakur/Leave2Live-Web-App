@@ -1,4 +1,4 @@
-//////////////// JS Handler for request.html
+//////////////// JS Handler for requestDetails.html
 
 ////////////////////////////////////////////// Functions ///////////////////////////////////////////
 
@@ -7,23 +7,22 @@ function rev(str){
     return str.split("-").reverse().join("-");
 }
 
-
 /////////////////////////////////////// Data Retrieval From Firebase ////////////////////////////
-
 
 var detailRequestRef = firebase.database().ref("requests");
 
+//Get current URL
+var queryUrl = new URL(window.location.href);
 
-for (var i =1; i<=localStorage.getItem("rowcountrequesttable");i++){
-    
-}
+//Fetch queryId
+var queryRequestId = queryUrl.searchParams.get("queryid");
 
-var queryRequestId = "-Lasav74sP1W6wIW0dBx";
+
+//Retrieve Record from firebase of matching RequestId
 
 detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snapshot){
 
     snapshot.forEach(function(child) {
-
 
         //Retrieve Request Data
         var detailRequestData = child.val();
