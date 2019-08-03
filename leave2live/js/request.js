@@ -2,6 +2,15 @@
 
 //Get Database Reference
 var tableRequest = firebase.database().ref("requests");
+
+
+////////////////////////////////////////GLOBALS ///////////////////////////////////
+
+//global Row Counter of Requests Table
+var rowInd = 0;
+
+///////////////////////// document ready
+
 $(document).ready(function(){
 
 //  Session Handling ////////////////////
@@ -42,64 +51,34 @@ function rev(str){
 
 //Display Leave Form Data From Firebase to Table
 
-tableRequest.once("value", function(snapshot) {
+tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("registernumber")).once("value", function(snapshot) {
     snapshot.forEach(function(child) {
-      var content = '';
-        //Retrieve Request Data
-        var tableData = child.val();
-        var tableRegisterNumber = tableData.registernumber;
-     
+    
+        var content = '';
+    //Retrieve Request Data
+    var tableData = child.val();
 
-        if(tableRegisterNumber == localStorage.getItem("registernumber")){
+    rowInd = rowInd + 1;
 
-            ////////////////////////////Get the Request Data of the Matched Record
-            var tableRequestId = child.key;
-            var tableRequestType = tableData.requesttype;
-            var tableRequestDate = tableData.date;
-            var tableReasonCategory = tableData.reasoncategory;
-            var tableStatus = tableData.status;
-            var dayModeDetails = tableData.daymode;
-            var fromdateDetails = tableData.fromdate;
-            var todateDetails = tableData.todate;
-            var testCheckDetails = tableData.testcheck;
-            var testTypeDetails = tableData.testtype;
-            var reasonSpecificDetails = tableData.reasonspecific;
-            var arrearCountDetails = tableData.arrearcount;
-            var attendanceDetails = tableData.attendance;
-            var leaveHistoryDetails = tableData.leavehistory;
+    ////////////////////////////Get the Request Data of the Matched Record
+    var tableRequestId = child.key;
+    var tableRequestType = tableData.requesttype;
+    var tableRequestDate = tableData.date;
+    var tableReasonCategory = tableData.reasoncategory;
+    var tableStatus = tableData.status;
 
-            ///////////////////////////////Display Request Data in Request-Tavble
-            content += '<tr>';
-            content += '<td>' + '<a href="#" data-toggle="modal" data-target="#request-details">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-            content += '<td>' + tableRequestType + '</td>';//Column RequestType
-            content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
-            content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-            content += '<td>' + tableStatus + '</td>';//Column Status
-            content += '</tr>';
-            $('#request-table').append(content);
+    ///////////////////////////////Display Request Data in Request-Tavble
+    content += '<tr>';
+    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+    content += '<td>' + tableRequestType + '</td>';//Column RequestType
+    content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
+    content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+    content += '<td>' + tableStatus + '</td>';//Column Status
+    content += '</tr>';
+    $('#request-table').append(content);
 
-            ///////////////////////////Display Data in the Request Details Modal
-            $("#requestid-details").html(tableRequestId);
-            $("#request-type-details").html(tableRequestType);
-            $("#request-date-details").html(rev(tableRequestDate));
-            $("#fromdate-details").html(rev(fromdateDetails));
-            $("#todate-details").html(rev(todateDetails));
-            $("#day-mode-details").html(dayModeDetails);
-            $("#test-check-details").html(testCheckDetails);
-            $("#test-type-details").html(testTypeDetails);
-            $("#reason-category-details").html(tableReasonCategory);
-            $("#reason-specific-details").html(reasonSpecificDetails);
-            $("#arrear-count-details").html(arrearCountDetails);
-            $("#attendance-details").html(attendanceDetails);
-            $("#leave-history-details").html(leaveHistoryDetails);
-            $("#status-details").html(tableStatus);
-        }
   
     });
   });
-
-
-
-
 });
 
