@@ -1,50 +1,50 @@
-////////////////////////////////JS Handler for login.html 
-///////////////////// Staff Login Section
+////////////////////////////////JS Handler for staffDashboard.html
 
-var rootRef = firebase.database().ref("students");
-rootRef.once("child_added", snap =>{
-    var emailFromDB = snap.child("staffemail").val();
-    var passFromDB  = snap.child("staffpassword").val(); 
+///////////////////////////////////// GLOBALS /////////////////////////////////////////////
 
-    //onclick handler for login-btn
-    $("#login-btn").click(function(){
-        var email = $("#staffemail").val();
-        var pass = $("#staffpass").val();
+var rowInd = 0;
 
-        //If credentials are Correct
-        if (emailFromDB == email && passFromDB == pass){
-            
-        //alert success !
-        alert("Login Success");
+////////////////////////////////////////////// Functions ///////////////////////////////////////////
 
-        //getting staff profile from firebase
+//function to reverse a date
+function rev(str){
+    return str.split("-").reverse().join("-");
+}
 
-        var staffName = snap.child("staffname").val();
-        var staffEmail  = snap.child("email").val(); 
-        var staffPhone  = snap.child("phone").val(); 
-        var staffDepartment = snap.child("department").val();
+//////////////////////////////////////////////// Data Retrieval ////////////////////////////////
 
-        //using localstorage to pass them into Javascript pages
 
-        localStorage.setItem("staffname", staffName);
-        localStorage.setItem("staffemail", staffEmail);
-        localStorage.setItem("staffphone", staffPhone);
-        localStorage.setItem("staffdepartment", staffDepartment);
-        
-        //redirect to index page
-        window.location.href ='../staff/index.html';
+//Get Database Reference
+var staffDashboardRef = firebase.database().ref("requests");
 
-        return false;
-        }
+//Display Leave Form Data From Firebase to Table
 
-        //If Credentials are wrong
-        else{
-        //alert Failure !
-        alert("Invalid Credentials !");
+staffDashboardRef.once("value", function(snapshot) {
+    snapshot.forEach(function(child) {
+    
+        var content = '';
+    //Retrieve Request Data
+    var tableData = child.val();
 
-        return true;
-        }
+    rowInd = rowInd + 1;
+
+    ////////////////////////////Get the Request Data of the Matched Record
+    var tableRequestId = child.key;
+    var tableRequestType = tableData.requesttype;
+    var tableRequestDate = tableData.date;
+    var tableReasonCategory = tableData.reasoncategory;
+    var tableStatus = tableData.status;
+
+    ///////////////////////////////Display Request Data in Request-Tavble
+    content += '<tr>';
+    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+    content += '<td>' + tableRequestType + '</td>';//Column RequestType
+    content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
+    content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+    content += '<td>' + tableStatus + '</td>';//Column Status
+    content += '</tr>';
+    $('#staff-dashboard-table').append(content);
+
+  
     });
-
-});
-
+  });

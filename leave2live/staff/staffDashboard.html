@@ -17,28 +17,48 @@
     </ul>`
 
     <center>
+
             <h2><u>Dashboard</u></h2>
-            <table>
-                <thead>
-                    <tr>
-                        <td>RequestId</td>
-                        <td>RequestType</td>
-                        <td>RequestDate</td>
-                        <td>Register Number</td>
-                        <td>Student Name</td> 
-                        <td>Reason Category</td>
-                        <td>Status</td>
-                    </tr>
-                </thead>
-                <tbody>
-
-
-                </tbody>
-
-
-            </table>
-
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="staff-dashboard-table" style="pointer-events: all;">
+                    <thead class="text-white" style="background-color:rgb(51, 7, 66);">
+                      <tr>
+                        <th>RequestId</th>
+                        <th>Request Type</th>
+                        <th>Request Date</th>
+                        <th>Student Name</th>
+                        <th>Reason Category</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
     </center>
 
 </body>
+                                                        <!-- LINKS -->
+
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+
+<!-- Google Fonts API -->
+<link href="https://fonts.googleapis.com/css?family=Arapey|Julius+Sans+One|Megrim&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kodchasan&display=swap" rel="stylesheet">
+
+<!--  Jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Bootstrap CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Firebase Config File -->
+<script src="../js/configFirebase.js"></script>
+
+<!-- JavaScript Handler -->
+<script src="js/staffDashboard.js"></script>
+
 </html>
