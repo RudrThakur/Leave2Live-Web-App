@@ -1,5 +1,8 @@
 ////////////////////////////////JS Handler for login.html
 
+
+////////////////////STUDENTS LOGIN HANDLER //////////////////////////////
+
 var rootRef = firebase.database().ref("students");
 rootRef.once("child_added", snap =>{
     var regnofromdb = snap.child("registernumber").val();
@@ -58,6 +61,8 @@ rootRef.once("child_added", snap =>{
 
 });
 
+
+///////////////////////////////////// STAFF LOGIN HANDLER /////////////////////////////////////
 var staffDataRef = firebase.database().ref("staff");
 
 staffDataRef.once("child_added", snap =>{
