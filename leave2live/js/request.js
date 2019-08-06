@@ -59,7 +59,7 @@ tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("regist
     var tableReasonCategory = tableData.reasoncategory;
     var tableStatus = tableData.status;
 
-    ///////////////////////////////Display Request Data in Request-Tavble
+    ///////////////////////////////Display Request Data in Request-Table
     content += '<tr>';
     content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
