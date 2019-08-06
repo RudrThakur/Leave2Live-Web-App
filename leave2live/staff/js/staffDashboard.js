@@ -20,10 +20,11 @@ var staffDashboardRef = firebase.database().ref("requests");
 
 //Display Leave Form Data From Firebase to Table
 
-staffDashboardRef.once("value", function(snapshot) {
+staffDashboardRef.orderByChild("status").equalTo("submitted (CLASS TEACHER)").once("value", function(snapshot) {
     snapshot.forEach(function(child) {
     
-        var content = '';
+    var content = '';
+    
     //Retrieve Request Data
     var tableData = child.val();
 
@@ -44,7 +45,7 @@ staffDashboardRef.once("value", function(snapshot) {
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
     content += '<td>' + tableStatus + '</td>';//Column Status
     content += '</tr>';
-    $('#staff-dashboard-table').append(content);
+    $('#new-requests-table').append(content);
 
   
     });

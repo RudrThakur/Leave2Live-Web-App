@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Leave2Live - Staff Section</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -46,7 +46,7 @@
   <h3 style="text-align: center;">Staff Dashboard</h3>
   <br><br>
 
-<!-- Nav pills -->
+<!-- Navigation Pills -->
 <ul class="nav nav-pills">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="pill" href="#new-requests">New Requests</a>
@@ -61,10 +61,26 @@
         <a class="nav-link" data-toggle="pill" href="#history">History</a>
       </li>
   </ul>
+  <br><br><br>
   
   <!-- Tab panes -->
   <div class="tab-content">
-    <div class="tab-pane container active" id="new-requests">New Requests</div>
+    <div class="tab-pane container active" id="new-requests">
+      <!-- Staff Dashboard Table (New Requests) -->
+      <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="new-requests-table">
+        <thead class="text-white" style="background-color:#7B757D;">
+          <tr>
+            <th>RequestId</th>
+            <th>Request Type</th>
+            <th>Request Date</th>
+            <th>Reason Category</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
     <div class="tab-pane container fade" id="in-process">In Process</div>
     <div class="tab-pane container fade" id="cancelled">...</div>
     <div class="tab-pane container fade" id="history">...</div>
@@ -74,6 +90,9 @@
 </body>
                                             <!-- LINKS -->
 
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
 
 <!-- Jquery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -85,6 +104,14 @@
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="css/staffDashboard.css">
+
+<!-- Firebase Config File -->
+<script src="../js/configFirebase.js"></script>
+
+<!-- JavaScript Handler -->
+<script src="js/staffDashboard.js"></script>
+
+<!-- End of html -->
 </html>
 
 
