@@ -1,12 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Leave2Live - Staff</title>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <h1>Hello this is Staff Section - Leave2Live</h1>
+
+<nav class="navbar navbar-expand-md bg-info navbar-dark">
+  <a class="navbar-brand" href="#">LEAVE2LIVE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Applications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Profile</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="#">History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Feedback</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>  
+</nav>
+<br>
+
+
+
+<div class="container">
+  <h3 style="text-align: center;">Staff Dashboard</h3>
+  <br><br>
+
+<!-- Nav pills -->
+<ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#new-requests">New Requests</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#in-process">In Process</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#cancelled">Cancelled</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="pill" href="#history">History</a>
+      </li>
+  </ul>
+  
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane container active" id="new-requests">...</div>
+    <div class="tab-pane container fade" id="in-process">...</div>
+    <div class="tab-pane container fade" id="cancelled">...</div>
+    <div class="tab-pane container fade" id="history">...</div>
+  </div>
+
+ 
+</div>
+
+
 </body>
+                                            <!-- LINKS -->
+
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/staffDashboard.css">
 </html>
+
+
