@@ -22,7 +22,7 @@ else {
     $("#profile-staff-id").html(localStorage.getItem("staffid"));
     $("#profile-staff-email").html(localStorage.getItem("staffemail"));
     $("#profile-staff-department").html(localStorage.getItem("staffdepartment"));
-
+    $("#profile-staff-phone").html(localStorage.getItem("staffphone"));
 }
 
 

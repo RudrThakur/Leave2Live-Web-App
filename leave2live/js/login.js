@@ -92,7 +92,7 @@ staffDataRef.once("child_added", snap =>{
     var staffProfileEmail  = emailfromdb; 
     var staffProfilePhone  = snap.child("staffphone").val(); 
     var staffProfileId = snap.child("staffid").val();
-    var staffProfileDepartment = snap.child("staffdepartment").val();
+    var staffProfileDepartment = snap.child("staffdep").val();
 
 
     //using localstorage to pass them into Javascript pages
@@ -103,7 +103,7 @@ staffDataRef.once("child_added", snap =>{
     localStorage.setItem("staffid", staffProfileId);
     localStorage.setItem("staffdepartment", staffProfileDepartment);
 
-    //redirect to index page
+    //redirect to Dashboard page
     window.location.href ='staff/staffDashboard.html';
 
     return false;
