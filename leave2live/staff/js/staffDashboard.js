@@ -24,7 +24,7 @@ staffDashboardRef.orderByChild("status").equalTo("submitted (CLASS TEACHER)").on
     snapshot.forEach(function(child) {
     
     var content = '';
-    
+
     //Retrieve Request Data
     var tableData = child.val();
 
@@ -35,7 +35,7 @@ staffDashboardRef.orderByChild("status").equalTo("submitted (CLASS TEACHER)").on
     var tableRequestType = tableData.requesttype;
     var tableRequestDate = tableData.date;
     var tableReasonCategory = tableData.reasoncategory;
-    var tableStatus = tableData.status;
+    var tableDayMode = tableData.daymode;
 
     ///////////////////////////////Display Request Data in Request-Tavble
     content += '<tr>';
@@ -43,7 +43,7 @@ staffDashboardRef.orderByChild("status").equalTo("submitted (CLASS TEACHER)").on
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
     content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-    content += '<td>' + tableStatus + '</td>';//Column Status
+    content += '<td>' + tableDayMode + '</td>';//Column Status
     content += '</tr>';
     $('#new-requests-table').append(content);
 
