@@ -32,6 +32,12 @@ var validLeaveHistoryFlag = false;
 var validTestTypeFlag = true;
 var validDayModeFlag = false;
 
+////////////////////////////////////// Firebase Reference /////////////////////////////////////
+
+//Create a Reference to firebase
+var newRequestRef = firebase.database().ref("requests");
+
+
 // Document Ready
 
 $(document).ready(function(){
@@ -442,7 +448,7 @@ $("#days").on('input',function(){
 
 //Test Check Handler
 $("#test-check").change(function(){
-    debugger;
+
     if(!this.checked){
         $("#test-type-box").hide();//Hide Test Type
         
@@ -623,7 +629,6 @@ $("#test-type").change(function(){
 //////////////////////////////////// FORM SUBMISSION HANDLER //////////////////////////////////
 
 $("#leave-form-btn").click(function(){
-
     if(validDatesFlag &&
        validRequestFlag &&
        validDayModeFlag &&
@@ -634,11 +639,82 @@ $("#leave-form-btn").click(function(){
        validArrearCountFlag &&
        validAttendanceFlag &&
        validLeaveHistoryFlag){
-           alert("All Clear");
+           
+        
+        //Get Values of the inputs
+        var studentRequestType = $('[name="request-type"]').val();
+        var studentDayMode = $('#day-mode').val();
+        var studentFromDate = $('#fromdate').val();
+        var studentToDate, studentDays;
 
-           return false;
+        //if MultipleDays is Selected
+        if(multipleDaysFlag){
+            studentToDate = $('#todate').val();
+            studentDays = $('#days').val();
+        }
+        else{//else Set ToDate & Working Days as NA
+            studentToDate = 'NA';
+            studentDays = 'NA';
+        }
+        var studentTestCheck, studentTestType;
+
+        //If test is Scheduled
+        if(testCheckFlag)
+        {
+            studentTestCheck = 'yes';
+            studentTestType = $('#test-type').val();
+        }
+        else{
+            studentTestCheck = 'no';
+            studentTestType = 'NA';
+        }
+
+        var studentReasonCategory = $('#reason-category').val();
+        var studentReasonSpecific = $('#reasonspecific').val();
+        var studentArrearCount = $('#arrearcount').val();
+        var studentAttendance = $('#attendance').val();
+        var studentLeaveHistory = $('#leave-history').val();
+        var studentRequestStatus = 'submitted (CLASS TEACHER)';
+
+        //Get Current Date
+        debugger;
+        var studentRequestDate = new Date();
+        var dd = String(studentRequestDate.getDate()).padStart(2, '0');
+        var mm = String(studentRequestDate.getMonth() + 1).padStart(2, '0');
+        var yyyy = studentRequestDate.getFullYear();
+        studentRequestDate = dd + '-' + mm + '-' + yyyy;
+
+        //Store Request Data into a JS Object
+        var studentRequestDataObject = {
+            "arrearcount" : studentArrearCount,
+            "attendance" : studentAttendance,
+            "date" : studentRequestDate,
+            "daymode" : studentDayMode,
+            "fromdate" : studentFromDate,
+            "leavehistory" : studentLeaveHistory,
+            "reasoncategory" : studentReasonCategory,
+            "reasonspecific" : studentReasonSpecific,
+            "registernumber" : localStorage.getItem("registernumber"),
+            "requesttype" : studentRequestType,
+            "status" : studentRequestStatus,
+            "testcheck" : studentTestCheck,
+            "testtype" : studentTestType,
+            "todate" : studentToDate,
+            "workingdays" : studentDays
+        };
+
+        //push StudentRequestData Object to firebase
+        newRequestRef.push(studentRequestDataObject);
+
+        //Alert Success
+        alert("Your Request Has Been Submitted Successfully");
+
+        return true;
     }
+
     else{
+
+        //alert Failure
         alert("An Error Occured!");
 
         return false;
