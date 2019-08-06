@@ -32,6 +32,29 @@ var validLeaveHistoryFlag = false;
 var validTestTypeFlag = true;
 var validDayModeFlag = false;
 
+//  Session Handling ////////////////////
+
+if (!localStorage.getItem("registernumber")) {
+    window.location.href = 'login.html';
+} 
+else {
+   
+    //////////////////////////////////// Loading Student Profile ///////////////////////////
+
+
+    //Add values to Profile Modal 
+    $("#profile-register-number").html(localStorage.getItem("registernumber"));
+    $("#profile-student-name").html(localStorage.getItem("studentname"));
+    $("#profile-dob").html(localStorage.getItem("dob"));
+    $("#profile-department").html(localStorage.getItem("department"));
+    $("#profile-classandsec").html(localStorage.getItem("classandsec"));
+    $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
+    $("#profile-email").html(localStorage.getItem("email"));
+    $("#profile-phone").html(localStorage.getItem("phone"));
+    $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
+
+}
+
 ////////////////////////////////////// Firebase Reference /////////////////////////////////////
 
 //Create a Reference to firebase
@@ -119,31 +142,7 @@ $(document).ready(function(){
         $(".display-test-type").css("background-color","#FF9393");
     }
 
-//  Session Handling ////////////////////
-
-if (!localStorage.getItem("registernumber")) {
-    window.location.href = 'login.html';
-    return false;
-
-} 
-else {
-   
-    //////////////////////////////////// Loading Student Profile ///////////////////////////
-
-
-    //Add values to Profile Modal 
-    $("#profile-register-number").html(localStorage.getItem("registernumber"));
-    $("#profile-student-name").html(localStorage.getItem("studentname"));
-    $("#profile-dob").html(localStorage.getItem("dob"));
-    $("#profile-department").html(localStorage.getItem("department"));
-    $("#profile-classandsec").html(localStorage.getItem("classandsec"));
-    $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
-    $("#profile-email").html(localStorage.getItem("email"));
-    $("#profile-phone").html(localStorage.getItem("phone"));
-    $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
-
-}
-
+    
 //////////////////// Functions //////////////////////
 
 //function to reverse a date

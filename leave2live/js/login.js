@@ -1,6 +1,10 @@
 ////////////////////////////////JS Handler for login.html
 
+
+////////////////////////// Login Handler for Students
+
 var rootRef = firebase.database().ref("students");
+
 rootRef.once("child_added", snap =>{
     var regnofromdb = snap.child("registernumber").val();
     var passfromdb  = snap.child("password").val(); 
@@ -58,6 +62,9 @@ rootRef.once("child_added", snap =>{
 
 });
 
+
+////////////////////////////////// Login Handler for Staff
+
 var staffDataRef = firebase.database().ref("staff");
 
 staffDataRef.once("child_added", snap =>{
@@ -78,31 +85,24 @@ staffDataRef.once("child_added", snap =>{
     //alert success !
     alert("Login Success");
     
-    /*
-    //getting student profile from firebase
+    
+    //getting staff profile from firebase
 
-    var studentName = snap.child("studentname").val();
-    var email  = snap.child("email").val(); 
-    var phone  = snap.child("phone").val(); 
-    var classAndSec = snap.child("classandsec").val();
-    var arrearCount = snap.child("arrearcount").val();
-    var department = snap.child("department").val();
-    var dob = snap.child("dob").val();
-    var leaveHistory = snap.child("leavehistory").val();
+    var staffProfileName = snap.child("staffname").val();
+    var staffProfileEmail  = emailfromdb; 
+    var staffProfilePhone  = snap.child("staffphone").val(); 
+    var staffProfileId = snap.child("staffid").val();
+    var staffProfileDepartment = snap.child("staffdepartment").val();
 
 
     //using localstorage to pass them into Javascript pages
-    /*
-    localStorage.setItem("registernumber", regno);
-    localStorage.setItem("studentname", studentName);
-    localStorage.setItem("email", email);
-    localStorage.setItem("phone", phone);
-    localStorage.setItem("classandsec", classAndSec);
-    localStorage.setItem("arrearcount", arrearCount);
-    localStorage.setItem("department", department);
-    localStorage.setItem("dob", dob);
-    localStorage.setItem("leavehistory", leaveHistory);
-    */
+    
+    localStorage.setItem("staffname", staffProfileName);
+    localStorage.setItem("staffemail", staffProfileEmail);
+    localStorage.setItem("staffphone", staffProfilePhone);
+    localStorage.setItem("staffid", staffProfileId);
+    localStorage.setItem("staffdepartment", staffProfileDepartment);
+
     //redirect to index page
     window.location.href ='staff/staffDashboard.html';
 

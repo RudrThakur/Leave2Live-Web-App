@@ -6,6 +6,26 @@
 //Global Row Indexes
 var rowInd = 0, rowIndInProcess = 0, rowIndCancelled = 0, rowIndHistory = 0;
 
+//  Session Handling ////////////////////
+
+if (!localStorage.getItem("staffemail")) {
+    window.location.href = 'login.html';
+
+} 
+else {
+   
+    //////////////////////////////////// Loading Student Profile ///////////////////////////
+
+
+    //Add values to Staff Profile Modal 
+    $("#profile-staff-name").html(localStorage.getItem("staffname"));
+    $("#profile-staff-id").html(localStorage.getItem("staffid"));
+    $("#profile-staff-email").html(localStorage.getItem("staffemail"));
+    $("#profile-staff-department").html(localStorage.getItem("staffdepartment"));
+
+}
+
+
 //////////////////////////////////////////////// Data Retrieval ////////////////////////////////
 
 
@@ -140,3 +160,5 @@ staffDashboardRef.orderByKey().once("value", function(snapshot) {
 
     });
 });
+
+$("")
