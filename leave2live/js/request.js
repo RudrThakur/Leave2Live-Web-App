@@ -4,7 +4,7 @@
 var tableRequest = firebase.database().ref("requests");
 
 
-////////////////////////////////////////GLOBALS ///////////////////////////////////
+//////////////////////////////////////// GLOBALS ///////////////////////////////////
 
 //global Row Counter of Requests Table
 var rowInd = 0;
@@ -39,20 +39,11 @@ else {
 
 }
 
-////////////////////////////////////////////// Functions ///////////////////////////////////////////
-
-//function to reverse a date
-function rev(str){
-    return str.split("-").reverse().join("-");
-}
-
-
-
 //////////////////////////////////////////////// Data Retrieval ////////////////////////////////
 
 //Display Leave Form Data From Firebase to Table
 
-tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("registernumber")).once("value", function(snapshot) {
+tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("registernumber")).on("value", function(snapshot) {
     snapshot.forEach(function(child) {
     
         var content = '';
@@ -72,13 +63,12 @@ tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("regist
     content += '<tr>';
     content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
-    content += '<td>' + rev(tableRequestDate) + '</td>'; //Column RequestDate
+    content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
     content += '<td>' + tableStatus + '</td>';//Column Status
     content += '</tr>';
     $('#request-table').append(content);
 
-  
     });
   });
 

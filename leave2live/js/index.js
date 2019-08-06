@@ -682,7 +682,7 @@ $("#leave-form-btn").click(function(){
         var dd = String(studentRequestDate.getDate()).padStart(2, '0');
         var mm = String(studentRequestDate.getMonth() + 1).padStart(2, '0');
         var yyyy = studentRequestDate.getFullYear();
-        studentRequestDate = dd + '/' + mm + '/' + yyyy;
+        studentRequestDate = dd + '-' + mm + '-' + yyyy;
 
         //Store Request Data into a JS Object
         var studentRequestDataObject = {
