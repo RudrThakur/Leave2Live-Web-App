@@ -6,10 +6,10 @@
 //Global Row Indexes
 var rowInd = 0, rowIndInProcess = 0, rowIndCancelled = 0, rowIndHistory = 0;
 
-//  Session Handling ////////////////////
+///////////  Session Handling ////////////////////
 
 if (!localStorage.getItem("staffemail")) {
-    window.location.href = 'login.html';
+    window.location.href = '../login.html';
 
 } 
 else {
@@ -161,4 +161,14 @@ staffDashboardRef.orderByKey().once("value", function(snapshot) {
     });
 });
 
-$("")
+//Logout Handler
+
+$("#logout-btn").click(function(){
+
+    //Clear Session 
+    localStorage.clear();
+
+    //Redirect to login.html
+    window.location.href = '../login.html';
+
+});
