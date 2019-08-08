@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leave form</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="staffleaveform.css">
+
+</head>
+<body>
+<div class="container-fluid jumbotron">
+	<div class="card col-lg-8 col-xl-8 m-auto">
+		<div class="card-header text-white text-center text-capitalize bg-info">
+			<h2>Leave application<span><button class="float-right btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle" aria-hidden="true"></i></button></span></h2>
+
+		</div>
+		<div class="card-body">
+			<form>
+				<div class="row form-group">
+				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+				   	  <label for="name">Name</label>
+				   	  <input type="text" name="" value="" class="form-control" placeholder="applicant name">
+				   </div>
+				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+				   	  <label for="empno">EMP_No</label>
+				   	  <input type="text" name="" value="" class="form-control" placeholder="emp no.">
+				   </div>
+				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+				   	  <label for="doj">DOJ</label>
+				   	  <input type="text" name="" value="" class="form-control" placeholder="enter doj">
+				   </div>
+			    </div>
+			    <div class="row form-group">
+				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+				   	  <label for="days">No. of days</label>
+				   	  <input type="number" name="" value="" min="1" max="60" class="form-control" placeholder="no of days">
+				   </div>
+				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+				   	  <label for="from">From</label>
+				   	  <input type="date" name="" value="" class="form-control" placeholder="from">
+				   </div>
+				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+				   	  <label for="to">To</label>
+				   	  <input type="date" name="" value="" class="form-control" placeholder="to">
+				   </div>
+			    </div>
+			        <div class="row form-group">
+			    	   <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+			    	   	  <label for="reason">Reason for leave</label>
+			    	   	  <input type="text" name="" value="" class="form-control" placeholder="describe your reason">
+			    	   </div>
+			    	   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+			    	   	   	<label for="days">Nature of leave</label><br>
+			    	   	   	    <select name="teams" id="teams" multiple="multiple" class="form-control">
+			    	   	   	       <option value="CL">CL</option>
+			    	   	   	       <option value="VL/EL">VL/EL</option>
+			    	   	   	       <option value="ML">ML</option>
+			    	   	   	       <option value="LLP">LLP</option>
+			    	   	   	       <option value="C.OFF">C.OFF</option>
+			    	   	   	       <option value="MTL">MTL</option>
+			    	   	   	       <option value="SPL">SPL</option>
+			    	   	   	    </select>
+			    	   	   </div>
+			    	   </div>
+			    	<div class="row form-group">
+			    	   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+			    	   	  <label for="designation">Designation</label>
+			    	   	  <input type="text" name="" value="" class="form-control" placeholder="your designation">
+			    	   </div>
+			    	   <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+			    	   	  <label for="department">Department</label>
+			    	   	  <input type="text" name="" value="" class="form-control" placeholder="your department">
+			    	   </div>
+			        </div>
+			       
+			        <div class="row form-group">
+			    	   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+			    	   		<label for="c.off claimed">Date worked for which C.OFF is claimed</label>
+			    	   		<input type="text" name="" value="" placeholder="mention here" class="form-control">
+			    	   </div>
+			    	   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+			    	   		<label for="worknature">Nature of Work</label>
+			    	   		<input type="text" name="" value="" placeholder="mention here" class="form-control">
+			    	   </div>
+			    	</div>
+			    	<div class="row form-group">
+			    		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+			    		    <label for="date" data-toggle="tooltip" data-placement="top" title="Recommended/Not Recommended">Date<i class="fa fa-question-circle" aria-hidden="true"></i></label>
+			    		    <input type="date" name="" value="" placeholder="mention here" class="form-control">
+			    		</div>
+			    		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+			    			<label for="phone">Phone no.</label>
+			    			<input type="phone" name="" value="" placeholder="contact number" class="form-control">
+			    		</div>  
+			    	</div>
+			    	<div class="form-group row">
+			    		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			    			<label for="address">Contact Address</label>
+			    			<textarea name="" rows="2" placeholder="enter your address" class="form-control"></textarea>
+			    		</div>
+			    	</div>
+			    	<div>
+			    	   <center> <button class="btn btn-outline-primary">Request Hod for approval</button></center>
+			    	</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header bg-dark text-white">
+        <h4 class="modal-title  text-center">Rules for leave application</h4>
+        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <ul class="list-group">
+	         <li class="text-primary ml-1">Leave application to be submitted for approval three days in advance.</li>
+	         <li class="text-primary ml-1">In emergency situations,it can't be submitted in the day of reporting for duty.</li>
+	         <li class="text-primary ml-1">Alternative arrangements must be certified by HOD at the reverse of this form.</li>
+	         <li class="text-primary ml-1">Leave application should be completed in all aspects,otherwise it will not be considered.</li>
+         </ul>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="staffleaveform.js"></script>
+</body>
+</html>
