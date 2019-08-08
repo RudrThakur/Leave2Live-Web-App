@@ -1,51 +1,58 @@
-body{
-    background-image:url("../img/login-bg.jpg");
+body {
+    background-image: url("../img/login-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
 }
 
-.login-heading{
-    color:white;
-    text-align:center;
-    margin:1%;
+.login-heading {
+    color: white;
+    text-align: center;
+    margin: 1%;
     font-family: 'Julius Sans One', sans-serif;
     letter-spacing: 5px;
-    font-size:40px;
+    font-size: 40px;
 }
 
-.login-box{
-    padding:2%;
+.login-box {
+    padding: 2%;
 }
 
-.form-control{
-    background:transparent !important;
+.form-control {
+    background: transparent !important;
 }
 
-.login-box-caption{
-    color:white;
+.login-box-caption {
+    color: white;
 }
 
-.login-form ::placeholder{
-    color:rgba(255, 255, 255, 0.849) !important;
+.login-form ::placeholder {
+    color: rgba(255, 255, 255, 0.849) !important;
     font-family: 'Arapey', serif;
     letter-spacing: 2px;
     font-weight: lighter;
-    font-size:20px;
-    opacity: 1; /* Firefox */
-}
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: rgba(255, 255, 255, 0.849) !important;
-}
-  
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: rgba(255, 255, 255, 0.849) !important;
-}
-.login-form{
-    margin-top:30% !important;
+    font-size: 20px;
+    opacity: 1;
+    /* Firefox */
 }
 
-.login-form input[type="text"],.login-form input[type="password"] {
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(255, 255, 255, 0.849) !important;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(255, 255, 255, 0.849) !important;
+}
+
+.login-form {
+    margin-top: 30% !important;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
     outline: none;
     font-size: 1.1em;
     border: none;
@@ -56,52 +63,52 @@ body{
     font-weight: 600;
 }
 
-.login-box-caption{
+.login-box-caption {
     font-family: 'Megrim', cursive;
-    font-size:20px;
+    font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 5px;
-    font-size:30px;
-    margin-bottom:10%;
+    font-size: 30px;
+    margin-bottom: 10%;
     text-align: center;
-    border-bottom:1px solid white;
+    border-bottom: 1px solid white;
     padding-bottom: 3px
-    
 }
 
-.btn{
-    border-radius:10% !important;
-    font-size:20px;
-    display:block;
+.btn {
+    border-radius: 10% !important;
+    font-size: 20px;
+    display: block;
     margin: 0 auto;
     font-family: 'Megrim', cursive;
-    color:white;
-    
-   
+    color: white;
+
+
 }
 
-.btn:hover{
-    background-color:black;
-    color:white;
+.btn:hover {
+    background-color: black;
+    color: white;
 }
 
-.login-button-box{
-    background:rgba(255, 255, 255, 0.336);
-    padding:2%;
+.login-button-box {
+    background: rgba(255, 255, 255, 0.336);
+    padding: 2%;
 }
 
-a{
+.staff-login-link {
     font-family: 'Times New Roman', Times, serif;
-    color:skyblue !important;
+    color: skyblue !important;
 }
 
-.modal-header{
+.modal-header {
     font-family: 'Megrim', cursive;
     font-weight: bolder;
-    
+
 }
 
-.staff-login-form input[type="text"],.staff-login-form input[type="password"] {
+.staff-login-form input[type="text"],
+.staff-login-form input[type="password"] {
     outline: none;
     font-size: 1.1em;
     border: none;
@@ -112,17 +119,106 @@ a{
     font-weight: 600;
 }
 
-.staff-login-form ::placeholder{
-    color:black !important;
+.staff-login-form ::placeholder {
+    color: black !important;
 }
 
-.staff-login-form{
+.staff-login-form {
     max-width: 50%;
-    margin:auto;
+    margin: auto;
 
 }
 
-.modal-content{
-    background-color:rgba(255, 255, 255, 0.897);
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.897);
 
+}
+
+/* Login Slider For HOD and Admin */
+
+.loginslider {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(102, 102, 100);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.loginslider a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #eef113;
+    display: block;
+    transition: 0.3s;
+}
+
+.loginslider a:hover {
+    color: #f1f1f1;
+}
+
+.loginslider .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 50px;
+    margin-left: 50px;
+    color: white;
+}
+
+@media screen and (max-height: 450px) {
+    .loginslider {
+        padding-top: 15px;
+    }
+
+    .loginslider a {
+        font-size: 18px;
+    }
+}
+
+/* Login Slider Login Boxes */
+
+.box-login-slider{
+    max-width: 50%;
+    background-color: white;
+    margin: auto;
+    padding: 5%;
+}
+
+.box-login-slider h1{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Login Slider Hoverable Navbar Items */
+
+#roleselector a {
+    position: absolute;
+    left: -60px;
+    transition: 0.3s;
+    padding: 20px 0 20px 0;
+    width: 100px;
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+#roleselector a:hover {
+    left: 0;
+}
+
+#admin {
+    top: 20px;
+    background-color: #4CAF50;
+}
+
+#hod {
+    top: 100px;
+    background-color: #2196F3;
 }

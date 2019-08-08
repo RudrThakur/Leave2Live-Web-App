@@ -121,4 +121,28 @@ staffDataRef.once("child_added", snap =>{
     }
     });
 });
+  
+//Login Slider for HOD and Admin 
+
+function openLoginSlider() {
+    document.getElementById("loginnav").style.width = "100%";
+}
+  
+function closeLoginSlider() {
+    document.getElementById("loginnav").style.width = "0";
+}
+
+// Role Changer for Login Slider
+
+function askAdminLogin(){
     
+    $("#hod-login-box").fadeOut();//Hide Hod Login
+    $("#admin-login-box").fadeIn();//Show Admin Login
+
+}
+
+function askHodLogin(){
+
+    $("#admin-login-box").fadeOut();//Hide Admin Login
+    $("#hod-login-box").fadeIn();//Show Admin Login
+}
