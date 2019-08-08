@@ -30,7 +30,7 @@ rootRef.once("child_added", snap =>{
         var arrearCount = snap.child("arrearcount").val();
         var department = snap.child("department").val();
         var dob = snap.child("dob").val();
-        var leaveHistory = snap.child("leavehistory").val();
+        var leaveCount = snap.child("leavecount").val();
 
 
         //using localstorage to pass them into Javascript pages
@@ -43,7 +43,7 @@ rootRef.once("child_added", snap =>{
         localStorage.setItem("arrearcount", arrearCount);
         localStorage.setItem("department", department);
         localStorage.setItem("dob", dob);
-        localStorage.setItem("leavehistory", leaveHistory);
+        localStorage.setItem("leavecount", leaveCount);
         
         //redirect to index page
         window.location.href ='index.html';
@@ -93,7 +93,8 @@ staffDataRef.once("child_added", snap =>{
     var staffProfilePhone  = snap.child("staffphone").val(); 
     var staffProfileId = snap.child("staffid").val();
     var staffProfileDepartment = snap.child("staffdep").val();
-
+    var staffProfileIsClassTeacherOf = snap.child("isclassteacherof").val();
+    var staffProfileIsAcoOf = snap.child("isacoof").val();
 
     //using localstorage to pass them into Javascript pages
     
@@ -102,6 +103,8 @@ staffDataRef.once("child_added", snap =>{
     localStorage.setItem("staffphone", staffProfilePhone);
     localStorage.setItem("staffid", staffProfileId);
     localStorage.setItem("staffdepartment", staffProfileDepartment);
+    localStorage.setItem("staffisclassteacherof", staffProfileIsClassTeacherOf);
+    localStorage.setItem("staffisacoof", staffProfileIsAcoOf);
 
     //redirect to Dashboard page
     window.location.href ='staff/staffDashboard.html';

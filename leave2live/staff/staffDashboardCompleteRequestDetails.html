@@ -1,0 +1,103 @@
+<!-- Satff Dashboard Request Details Modal -->
+<!-- Details of a Request is expanded using this modal -->
+<!-- Rudr Thakur -->
+
+
+<body onload="pageReloadFunction()" style="margin:0;">
+
+    <!-- Loader Overlay -->
+    <div id="loader"></div>   
+
+        <!--  requestDetailsModalDiv -->
+    <div id="mainDiv" class="animate-bottom" style="display: none;">
+
+                                    <!-- Request Details Modal -->
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title" style="margin: 0 auto;">REQUEST DETAILS</h4>
+        </div>
+
+
+        <!-- Action Messages -->
+        <div class="alert alert-success" id="action-success-message" style="display: none;">
+            <strong>Success!</strong> The Request was Successfully Updated
+        </div>
+
+        <div class="alert alert-danger" id="action-failure-message" style="display: none;">
+            <strong>Failure!</strong> Sorry Something went Wrong
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body" style="background-color: white;">
+            <ul style="color: black;list-style: none;">
+                <!-- JS Handler - index.js -->
+                <li><strong>Request Id</strong> : <span id="requestid-details"></span></li>
+                <li><strong>Request Type</strong> : <span id="request-type-details"></span></li>
+                <li><strong>Request Date</strong> : <span id="request-date-details"></span></li>
+                <li><strong>Day Mode</strong> : <span id="day-mode-details"></span></li>
+                <li><strong>FROM Date</strong> : <span id="fromdate-details"></span></li>
+                <li><strong>TO Date</strong> : <span id="todate-details"></span></li>
+                <li><strong>Scheduled Tests</strong> : <span id="test-check-details"></span></li>
+                <li><strong>Type of Test</strong> : <span id="test-type-details"></span></li>
+                <li><strong>Reason Category</strong> : <span id="reason-category-details"></span></li>
+                <li><strong>Reason Specific</strong> : <span id="reason-specific-details"></span></li>
+                <li><strong>Number of Arrears</strong> : <span id="arrear-count-details"></span></li>
+                <li><strong>Attendance Percentage</strong> : <span id="attendance-details"></span></li>
+                <li><strong>Leave Count Per Month</strong> : <span id="leave-count-details"></span></li>
+                <li><strong>Status</strong> : <span id="status-details"></span></li>
+            </ul>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        <button type="button" class="btn btn-info" id="back-btn"><i class="fa fa-arrow-circle-left" style="font-size:20px;">&nbsp;Back</i></button>
+        </div>
+
+                                    <!-- End of Request Details Modal -->
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <!-- Approve -->
+            <button type="button" class="btn btn-success" id="approve-btn" style="margin: 20px;"><i class="fa fa-check" style="font-size:20px;color:white"></i>&nbsp;Approve</button>
+
+            <!-- Deny -->
+            <button type="button" class="btn btn-danger" id="deny-btn"><i class="fa fa-times" style="font-size:20px;color:white"></i>&nbsp;Deny</button>
+        </div>
+
+    </div>
+    <!-- End of requestDetailsModalDiv -->  
+
+</body>
+<!-- End of Body -->
+
+                                                        <!-- LINKS -->
+
+<!--  Jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="../css/reloader.css">
+
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+
+<!-- Google Fonts API -->
+<link href="https://fonts.googleapis.com/css?family=Arapey|Julius+Sans+One|Megrim&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kodchasan&display=swap" rel="stylesheet">
+
+<!-- Font Awesome CDN -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<!-- Bootstrap CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Firebase Config File -->
+<script src="../js/configFirebase.js"></script>
+
+<!-- External JS -->
+<script src="js/staffDashboardCompleteRequestDetails.js"></script>
+<script src="../js/reloader.js"></script>

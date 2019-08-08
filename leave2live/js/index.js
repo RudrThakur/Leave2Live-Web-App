@@ -28,7 +28,7 @@ var validReasonCategoryFlag = false;
 var validReasonSpecificFlag = false;
 var validArrearCountFlag = false;
 var validAttendanceFlag = false;
-var validLeaveHistoryFlag = false;
+var validLeaveCountFlag = false;
 var validTestTypeFlag = true;
 var validDayModeFlag = false;
 
@@ -51,7 +51,7 @@ else {
     $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
     $("#profile-email").html(localStorage.getItem("email"));
     $("#profile-phone").html(localStorage.getItem("phone"));
-    $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
+    $("#profile-leave-count").html(localStorage.getItem("leavecount"));
 
 }
 
@@ -124,10 +124,10 @@ $(document).ready(function(){
         $(".display-attendance").css("background-color","#FF9393");
     }
 
-    //Leave History
-    if(!$("#leave-history").val()){
-        $(".display-leave-history").html("Please Enter Number of Days leave taken earlier");
-        $(".display-leave-history").css("background-color","#FF9393");
+    //Leave count
+    if(!$("#leave-count").val()){
+        $(".display-leave-count").html("Please Enter Number of Days leave taken earlier this Month");
+        $(".display-leave-count").css("background-color","#FF9393");
     }
 
     //Reason Specific
@@ -565,21 +565,21 @@ $("#attendance").on('input', function(){
     }
 });
 
-//Leave History Handler
-$("#leave-history").on('input', function(){
-    var leaveHistory = $("#leave-history").val();
+//Leave count Handler
+$("#leave-count").on('input', function(){
+    var leavecount = $("#leave-count").val();
 
-    if(leaveHistory == ""){
-        $(".display-leave-history").html("Please enter Number of Days leave taken earlier");
-        $(".display-leave-history").css("background-color","#FF9393"); 
+    if(leavecount == ""){
+        $(".display-leave-count").html("Please enter Number of Days leave taken earlier this Month");
+        $(".display-leave-count").css("background-color","#FF9393"); 
         //Set the Global Error flag to Block
-        validLeaveHistoryFlag = false;
+        leavecount = false;
     }
     else{
-        $(".display-leave-history").html("Your leave history is " + leaveHistory + " days");
-        $(".display-leave-history").css("background-color","rgba(0, 0, 255, 0.212)"); 
+        $(".display-leave-count").html("Your leave count is " + leavecount + " days");
+        $(".display-leave-count").css("background-color","rgba(0, 0, 255, 0.212)"); 
         //Set the Global Error flag to Clear
-        validLeaveHistoryFlag = true;
+        leavecount = true;
     }
 
 });
@@ -637,7 +637,7 @@ $("#leave-form-btn").click(function(){
        validTestTypeFlag &&
        validArrearCountFlag &&
        validAttendanceFlag &&
-       validLeaveHistoryFlag){
+       validLeaveCountFlag){
            
         
         //Get Values of the inputs
@@ -672,7 +672,7 @@ $("#leave-form-btn").click(function(){
         var studentReasonSpecific = $('#reasonspecific').val();
         var studentArrearCount = $('#arrearcount').val();
         var studentAttendance = $('#attendance').val();
-        var studentLeaveHistory = $('#leave-history').val();
+        var studentLeaveCount = $('#leave-count').val();
         var studentRequestStatus = 'submitted (CLASS TEACHER)';
 
         //Get Current Date
@@ -690,7 +690,7 @@ $("#leave-form-btn").click(function(){
             "date" : studentRequestDate,
             "daymode" : studentDayMode,
             "fromdate" : studentFromDate,
-            "leavehistory" : studentLeaveHistory,
+            "leavecount" : studentLeaveCount,
             "reasoncategory" : studentReasonCategory,
             "reasonspecific" : studentReasonSpecific,
             "registernumber" : localStorage.getItem("registernumber"),

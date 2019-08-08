@@ -55,7 +55,7 @@ staffDashboardRef.orderByChild("status").equalTo("submitted (CLASS TEACHER)").on
 
     ///////////////////////////////Display Request Data in Request-Table
     content += '<tr>';
-    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
     content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
@@ -87,7 +87,7 @@ staffDashboardRef.orderByChild("status").equalTo("submitted (HOD)").once("value"
 
     ///////////////////////////////Display Request Data in Request-Table
     content += '<tr>';
-    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
     content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
@@ -119,7 +119,7 @@ staffDashboardRef.orderByChild("status").equalTo("cancelled (CLASS TEACHER)").on
 
     ///////////////////////////////Display Request Data in Request-Table
     content += '<tr>';
-    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
     content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
@@ -147,14 +147,16 @@ staffDashboardRef.orderByKey().once("value", function(snapshot) {
     var tableRequestDate = tableData.date;
     var tableReasonCategory = tableData.reasoncategory;
     var tableDayMode = tableData.daymode;
+    var tableStatus = tableData.status;
 
     ///////////////////////////////Display Request Data in Request-Table
     content += '<tr>';
-    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
     content += '<td>' + tableRequestType + '</td>';//Column RequestType
     content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
     content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
     content += '<td>' + tableDayMode + '</td>';//Column Day Mode
+    content += '<td>' + tableStatus + '</td>';//Column Day Mode
     content += '</tr>';
     $('#history-requests-table').append(content);
 

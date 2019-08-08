@@ -31,7 +31,7 @@ else {
     $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
     $("#profile-email").html(localStorage.getItem("email"));
     $("#profile-phone").html(localStorage.getItem("phone"));
-    $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
+    $("#profile-leave-count").html(localStorage.getItem("leavecount"));
 
 }
 
@@ -68,7 +68,7 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
         $("#reason-specific-details").html(detailRequestData.reasonspecific);
         $("#arrear-count-details").html(detailRequestData.arrearcount);
         $("#attendance-details").html(detailRequestData.attendance);
-        $("#leave-history-details").html(detailRequestData.leavehistory);
+        $("#leave-count-details").html(detailRequestData.leavecount);
         $("#status-details").html(detailRequestData.status);
  
     });

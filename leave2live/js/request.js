@@ -35,7 +35,7 @@ else {
     $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
     $("#profile-email").html(localStorage.getItem("email"));
     $("#profile-phone").html(localStorage.getItem("phone"));
-    $("#profile-leave-history").html(localStorage.getItem("leavehistory"));
+    $("#profile-leave-count").html(localStorage.getItem("leavecount"));
 
 }
 
