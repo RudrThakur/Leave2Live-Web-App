@@ -87,17 +87,17 @@ $("#approve-btn").click(function(){
     detailRequestRef.child(queryRequestId).update({status : "submitted (HOD)"});
 
     //Show Success Message
-    $("#action-success-message").show();
+    $("#action-success-message").fadeIn(1000);
     //Hide after 5 seconds
     setTimeout(function() { 
-        $("#action-success-message").hide(); 
+        $("#action-success-message").fadeOut(); 
     }, 5000);
 
     //Hide after 5 seconds
     setTimeout(function() { 
     //reload the page
     location.reload();
-    }, 5000);
+    }, 7000);
 });
 
 
@@ -108,16 +108,16 @@ $("#deny-btn").click(function(){
     detailRequestRef.child(queryRequestId).update({status : "cancelled (CLASS TEACHER)"});
         
     //Show Success Message
-    $("#action-success-message").show();
+    $("#action-success-message").fadeIn(1000);
     //Hide after 5 seconds
     setTimeout(function() { 
-        $("#action-success-message").hide(); 
+        $("#action-success-message").fadeOut(); 
     }, 5000);
 
     //Hide after 5 seconds
     setTimeout(function() { 
     //reload the page
     location.reload();
-    }, 5000)
+    }, 7000)
     
 });
