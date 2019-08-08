@@ -83,20 +83,27 @@ $("#back-btn").click(function(){
 //Approve Request
 $("#approve-btn").click(function(){
 
-    //Set the status of the Request as SUBMITTED
-    detailRequestRef.child(queryRequestId).update({status : "submitted (HOD)"});
+    $("#status-details").hide();
+    $("#updating-message").show();
 
-    //Show Success Message
-    $("#action-success-message").fadeIn(1000);
+    setTimeout(function(){
+        //Set the status of the Request as SUBMITTED
+        detailRequestRef.child(queryRequestId).update({status : "submitted (HOD)"});
+        //Show Success Message
+        $("#action-success-message").fadeIn(1000);
+    }, 5000);
+
     //Hide after 5 seconds
     setTimeout(function() { 
+        $("#updating-message").hide();
         $("#action-success-message").fadeOut(); 
     }, 5000);
 
     //Hide after 5 seconds
     setTimeout(function() { 
-    //reload the page
-    location.reload();
+        //reload the page
+        location.reload();
+        $("#status-details").show();
     }, 7000);
 });
 
@@ -104,20 +111,27 @@ $("#approve-btn").click(function(){
 //Deny Request
 $("#deny-btn").click(function(){
 
-    //Set the status of the Request as CANCELLED
-    detailRequestRef.child(queryRequestId).update({status : "cancelled (CLASS TEACHER)"});
-        
-    //Show Success Message
-    $("#action-success-message").fadeIn(1000);
+    $("#status-details").hide();
+    $("#updating-message").show();
+
+    setTimeout(function(){
+        //Set the status of the Request as CANCELLED
+        detailRequestRef.child(queryRequestId).update({status : "cancelled (CLASS TEACHER)"});
+        //Show Success Message
+        $("#action-success-message").fadeIn(1000);
+    }, 5000);
+   
     //Hide after 5 seconds
     setTimeout(function() { 
+        $("#updating-message").hide();
         $("#action-success-message").fadeOut(); 
     }, 5000);
 
     //Hide after 5 seconds
     setTimeout(function() { 
-    //reload the page
-    location.reload();
+        //reload the page
+        location.reload();
+        $("#status-details").show();
     }, 7000)
     
 });
