@@ -146,3 +146,25 @@ function askHodLogin(){
     $("#admin-login-box").fadeOut();//Hide Admin Login
     $("#hod-login-box").fadeIn();//Show Admin Login
 }
+
+/////////////////////////////////////////////////// Login Handler for HOD
+
+$("#hod-login-btn").click(function(){
+
+var hodDepartment = $("#hod-department").val();
+var hodPassword = $("#hodpass").val();
+
+//////////////////// HOD LOGIN VALIDATION
+
+//If password field is empty
+if (!hodPassword){
+    $("#hod-login-message-failed").show();
+    $("#hod-login-message-failed").fadeTo(2000, 500).slideUp(500, function(){
+        $("#hod-login-message-failed").slideUp(500);
+    });
+}
+
+
+
+
+});

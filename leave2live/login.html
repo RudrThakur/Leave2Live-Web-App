@@ -101,16 +101,29 @@
 
 <div id="roleselector">
     <a href="#" id="hod" onclick="askHodLogin()">DEPARTMENT HEAD</a>
-    <a href="javascript:void(0)" id="admin" onclick="askAdminLogin()">&nbsp;&nbsp;&nbsp;ADMIN</a>
+    <a href="javascript:void(0)" id="admin" onclick="askAdminLogin()">ADMIN</a>
 </div>
 
 <!-- HOD Login -->
 <div id="hod-login-box" class="box-login-slider">
-  <h1>Leave2Live - HOD Login</h1>
+  <div id="hod-alert-div">
+  <span id="hod-login-message-success" class="alert alert-success alert-dismissible" style="display: none;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    You Have Been Successfully Logged In ! Please wait a few Seconds We are redirecting you to your Dashboard
+  </span>
+  <span id="hod-login-message-failed" class="alert alert-danger alert-dismissible" style="display: none;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    Sorry Your Credentials are wrong .. Login Failed !
+  </span>
+  </div>
+  <br><br>
+  <h1>Leave2Live</h1>
+  <br>
+  <h3>Head of Department - Login Panel</h3>
   <div class="form-group">
     <label for="hod-department">Select Department:</label>
     <select class="form-control" id="hod-department">
-      <option>CSE</option>
+      <option selected>CSE</option>
       <option>ECE</option>
       <option>EEE</option>
       <option>MECH</option>
@@ -118,19 +131,24 @@
   </div>
   <div class="form-group">
     <label for="hodpass">Enter Your Password:</label>
-    <input type="password" id="hodpass">
+    <input type="password" class="form-control" id="hodpass" placeholder="Please Enter the Password">
   </div>
+  <br>
+  <button type="submit" class="btn btn-primary" id="hod-login-btn">Login</button>
 </div>
-<!-- End pf HOD Login -->
+<!-- End of HOD Login -->
 
 <!-- Admin Login -->
 <div id="admin-login-box" class="box-login-slider" style="display: none;">
-    <h1>Leave2Live - ADMIN Login</h1>
-
+    <h1>Leave2Live</h1>
+    <br>
+    <h3>Admin Access</h3>
     <div class="form-group">
       <label for="adminpass">Enter the Master Code:</label>
-      <input class="form-control" type="password" id="adminpass">
+      <input class="form-control" type="password" id="adminpass" placeholder="Please Enter the Admin Master Code">
     </div>
+    <br>
+    <button type="submit" class="btn btn-danger" id="admin-login-btn">Boom</button>
 
 </div>
 <!-- End of Admin Login -->
