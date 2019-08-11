@@ -189,8 +189,15 @@ else{
             //Hide after 5 seconds
             setTimeout(function() { 
                 $("#hod-login-message-success").fadeOut(); 
+                
             }, 5000);
 
+            //Display Redirect Message
+            setTimeout(function(){
+                $("#hod-login-redirect-message").show();
+            }, 2000);
+
+            //Redirect
             setTimeout(function(){
 
                 //Save HOD Profile in Local
@@ -199,6 +206,7 @@ else{
                 localStorage.setItem("hodphone", hodData.hodphone);
                 localStorage.setItem("hoddepartment", hodData.hodDepartment);
 
+                
                 //Redirect to HOD Dashboard
                 window.location.href = 'hod/hodDashboard.html';
 
