@@ -106,13 +106,24 @@
 
 <!-- HOD Login -->
 <div id="hod-login-box" class="box-login-slider">
+  <div id="hod-alert-div">
+  <span id="hod-login-message-success" class="alert alert-success alert-dismissible" style="display: none;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    You Have Been Successfully Logged In ! Please wait a few Seconds We are redirecting you to your Dashboard
+  </span>
+  <span id="hod-login-message-failed" class="alert alert-danger alert-dismissible" style="display: none;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    Sorry Your Credentials are wrong .. Login Failed !
+  </span>
+  </div>
+  <br><br>
   <h1>Leave2Live</h1>
   <br>
   <h3>Head of Department - Login Panel</h3>
   <div class="form-group">
     <label for="hod-department">Select Department:</label>
     <select class="form-control" id="hod-department">
-      <option>CSE</option>
+      <option selected>CSE</option>
       <option>ECE</option>
       <option>EEE</option>
       <option>MECH</option>
@@ -123,7 +134,7 @@
     <input type="password" class="form-control" id="hodpass" placeholder="Please Enter the Password">
   </div>
   <br>
-  <button type="submit" class="btn btn-primary">Login</button>
+  <button type="submit" class="btn btn-primary" id="hod-login-btn">Login</button>
 </div>
 <!-- End of HOD Login -->
 
@@ -137,7 +148,7 @@
       <input class="form-control" type="password" id="adminpass" placeholder="Please Enter the Admin Master Code">
     </div>
     <br>
-    <button type="submit" class="btn btn-danger">Boom</button>
+    <button type="submit" class="btn btn-danger" id="admin-login-btn">Boom</button>
 
 </div>
 <!-- End of Admin Login -->

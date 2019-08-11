@@ -241,3 +241,7 @@ body {
 #hod-login-box label, #admin-login-box label{
     color: white !important;
 }
+
+#hod-alert-div{
+    text-align: center;
+}
