@@ -211,8 +211,6 @@ else{
                 window.location.href = 'hod/hodDashboard.html';
 
             }, 5000);
-
-           
         }
 
         else{
