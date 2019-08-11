@@ -58,7 +58,7 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
         ///////////////////////////Display Data in the Request Details Modal
         $("#requestid-details").html(child.key);
         $("#request-type-details").html(detailRequestData.requesttype);
-        $("#request-date-details").html(rev(detailRequestData.date));
+        $("#request-date-details").html(detailRequestData.date);
         $("#fromdate-details").html(rev(detailRequestData.fromdate));
         $("#todate-details").html(rev(detailRequestData.todate));
         $("#day-mode-details").html(detailRequestData.daymode);
