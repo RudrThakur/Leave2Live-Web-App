@@ -158,13 +158,54 @@ var hodPassword = $("#hodpass").val();
 
 //If password field is empty
 if (!hodPassword){
-    $("#hod-login-message-failed").show();
-    $("#hod-login-message-failed").fadeTo(2000, 500).slideUp(500, function(){
-        $("#hod-login-message-failed").slideUp(500);
-    });
+    //Show Failed Message When No Credentials entered
+    $("#hod-login-message-failed").fadeIn();
+
+    //Hide after 5 seconds
+    setTimeout(function() { 
+        $("#hod-login-message-failed").fadeOut(); 
+    }, 5000);
 }
 
+else{
 
+    //Reference to firebase for table HOD
+    var hodLoginRef = firebase.database().ref("hod");
+    var hodPassFromDB;
+    hodLoginRef.child(hodDepartment).once("value", function(hodSnap){
+  
+        //Retrieve HOD Profile data by passing the deparment as Search Key
+        var hodData = hodSnap.val();
+
+        //Get HOD Credentials
+        hodPassFromDB = hodData.hodpass;
+
+        if(hodPassFromDB == hodPassword){
+
+            //Show Success Message When Logged In
+            $("#hod-login-message-success").fadeIn();
+
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#hod-login-message-success").fadeOut(); 
+            }, 5000);
+        }
+
+        else{
+             //Show Failed Message When Wrong Credentials
+             $("#hod-login-message-failed").fadeIn();
+
+             //Hide after 5 seconds
+             setTimeout(function() { 
+                 $("#hod-login-message-failed").fadeOut(); 
+             }, 5000);
+        }
+
+
+    })
+
+
+}
 
 
 });
