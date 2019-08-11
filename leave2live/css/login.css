@@ -242,6 +242,6 @@ body {
     color: white !important;
 }
 
-#hod-alert-div{
+#hod-alert-div, #admin-alert-div{
     text-align: center;
 }

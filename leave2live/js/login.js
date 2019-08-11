@@ -171,15 +171,16 @@ else{
 
     //Reference to firebase for table HOD
     var hodLoginRef = firebase.database().ref("hod");
-    var hodPassFromDB;
+
     hodLoginRef.child(hodDepartment).once("value", function(hodSnap){
   
         //Retrieve HOD Profile data by passing the deparment as Search Key
         var hodData = hodSnap.val();
 
         //Get HOD Credentials
-        hodPassFromDB = hodData.hodpass;
+        var hodPassFromDB = hodData.hodpass;
 
+        
         if(hodPassFromDB == hodPassword){
 
             //Show Success Message When Logged In
@@ -200,12 +201,68 @@ else{
                  $("#hod-login-message-failed").fadeOut(); 
              }, 5000);
         }
-
-
     })
-
-
 }
 
-
 });
+
+///////////////////////////////// Login Handler for ADMIN
+
+$("#admin-login-btn").click(function(){
+
+
+    //Get the password entered by the user
+    var adminPassword = $("#adminpass").val();
+
+        //If password field is empty
+    if (!adminPassword){
+        //Show Failed Message When No Credentials entered
+        $("#admin-login-message-failed").fadeIn();
+
+        //Hide after 5 seconds
+        setTimeout(function() { 
+            $("#admin-login-message-failed").fadeOut(); 
+        }, 5000);
+    }
+
+
+    else{
+
+    //Reference to firebase for table ADMIN
+    var adminDataRef = firebase.database().ref("admin");
+
+    //Iterate through the ADMIN Table
+    adminDataRef.once("value", function(adminSnap){
+
+        //Retrieve the admin Credentials
+        var adminCredentials = adminSnap.val();
+
+        var adminPassFromDB = adminCredentials.adminpass;
+
+        if(adminPassword == adminPassFromDB){
+   
+            //Show Success Message When Logged In
+            $("#admin-login-message-success").fadeIn();
+
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#admin-login-message-success").fadeOut(); 
+            }, 5000);
+        }
+        
+        else{
+            //Show Failed Message When Wrong Credentials
+            $("#admin-login-message-failed").fadeIn();
+
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#admin-login-message-failed").fadeOut(); 
+            }, 5000);
+
+        }
+
+        });
+
+    }
+
+})
