@@ -32,6 +32,10 @@ nav a{
     font-size: 15px;
 }
 
+.navbar-nav li :hover{
+    border-bottom: solid #dff9fb;
+} 
+
 th, td{
     font-family: 'Strait', sans-serif;
 }
