@@ -190,6 +190,21 @@ else{
             setTimeout(function() { 
                 $("#hod-login-message-success").fadeOut(); 
             }, 5000);
+
+            setTimeout(function(){
+
+                //Save HOD Profile in Local
+                localStorage.setItem("hodemail", hodData.hodemail);
+                localStorage.setItem("hodname", hodData.hodname);
+                localStorage.setItem("hodphone", hodData.hodphone);
+                localStorage.setItem("hoddepartment", hodData.hodDepartment);
+
+                //Redirect to HOD Dashboard
+                window.location.href = 'hod/hodDashboard.html';
+
+            }, 5000);
+
+           
         }
 
         else{
