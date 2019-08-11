@@ -14,7 +14,7 @@
                                     <!-- Request Details Modal -->
         <!-- Modal Header -->
         <div class="modal-header">
-            <h4 class="modal-title" style="margin: 0 auto;">REQUEST DETAILS</h4>
+            <h4 class="modal-title display-4" style="margin: 0 auto;">REQUEST DETAILS</h4>
         </div>
 
 
@@ -29,8 +29,98 @@
 
         <!-- Modal body -->
         <div class="modal-body" style="background-color: white;">
-            <ul style="color: black;list-style: none;">
-                <!-- JS Handler - index.js -->
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xl-8 mx-auto">
+                    <div class="card">
+                        <table class="table responsive table-borderless">
+                            <thead class="text-primary">
+                                  <tr>
+                                    <th>Request Id</th>
+                                    <th>Request Type</th>
+                                    <th>Register No.</th>
+                                  </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="requestid-details"></td>
+                                    <td id="request-type-details"></td>
+                                    <td id="register-number-details"></td>
+                                </tr>
+                            </tbody>
+                            <thead class="text-primary">
+                                  <tr>
+                                    <th>Student name</th>
+                                    <th>Request Date</th>
+                                    <th>Day Mode</th>
+                                  </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="student-name-details"></td>
+                                    <td id="request-date-details"></td>
+                                    <td id="day-mode-details"></td>
+                                </tr>
+                            </tbody>
+                            <thead class="text-primary">
+                                  <tr>
+                                    <th>From Date</th>
+                                    <th>TO Date</th>
+                                    <th>Scheduled Tests</th>
+                                  </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="fromdate-details"></td>
+                                    <td id="todate-details"></td>
+                                    <td id="test-check-details"></td>
+                                </tr>
+                            </tbody>
+                            <thead class="text-primary">
+                                  <tr>
+                                    <th>Type of Test</th>
+                                    <th>Reason Category</th>
+                                    <th>Reason Specific</th>
+                                  </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="test-type-details"></td>
+                                    <td id="reason-category-details"></td>
+                                    <td id="reason-specific-details"></td>
+                                </tr>
+                            </tbody>
+                            <thead class="text-primary">
+                                  <tr>
+                                    <th>Number of Arrears</th>
+                                    <th>Attendance Percentage</th>
+                                    <th>Leave Count Per Month</th>
+                                  </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="arrear-count-details"></td>
+                                    <td id="attendance-details"></td>
+                                    <td id="leave-count-details"></td>
+                                </tr>
+                            </tbody>
+                            <thead class="text-danger text-center">
+                                <tr>
+                                    <th colspan="3" rowspan="" headers="" scope="">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr>
+                                    <td>
+                                    <div class="cssload-loader" id="updating-message" style="display: none;font-size:10px;">updating</div> <span id="status-details"></span></td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </div>
+                </div> 
+            </div>
+              
+            <!-- <ul style="color: black;list-style: none;">
+                JS Handler - index.js
                 <li><strong>Request Id</strong> : <span id="requestid-details"></span></li>
                 <li><strong>Request Type</strong> : <span id="request-type-details"></span></li>
                 <li><strong>Student Register Number</strong> : <span id="register-number-details"></span></li>
@@ -47,7 +137,7 @@
                 <li><strong>Attendance Percentage</strong> : <span id="attendance-details"></span></li>
                 <li><strong>Leave Count Per Month</strong> : <span id="leave-count-details"></span></li>
                 <li><strong>Status</strong> :<div class="cssload-loader" id="updating-message" style="display: none;font-size:10px;">updating</div> <span id="status-details"></span></li>
-            </ul>
+            </ul> -->
         </div>
 
         <!-- Modal footer -->
