@@ -30,6 +30,8 @@ function rev(str){
 
 /////////////////////////////////////// Data Retrieval From Firebase ////////////////////////////
 
+
+//Reference to display Requests Data
 var detailRequestRef = firebase.database().ref("requests");
 
 //Get current URL
@@ -38,21 +40,46 @@ var queryUrl = new URL(window.location.href);
 //Fetch queryId
 var queryRequestId = queryUrl.searchParams.get("queryid");
 
+//Fetch Student Record for the query data
+var queryStudentRegisterNumber;
+
+
 
 //Retrieve Record from firebase of matching RequestId
 
 detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snapshot){
 
     snapshot.forEach(function(child) {
-
+   
         //Retrieve Request Data
         var detailRequestData = child.val();
 
+  
+        //getting the register number of the current query data and then retrieving the student data of the corresponding register number
+        queryStudentRegisterNumber = detailRequestData.registernumber;
+
+        //Reference to display Student Data
+        var detailStudenteRef = firebase.database().ref("students");
+
+        //////////////////////////////JOIN ON REQUESTS TABLE & STUDENT TABLE USING PRIMARY KEY (registernumber)
+
+        //Retrieve Student Record from firebase of matching Register Number
+        detailStudenteRef.child(queryStudentRegisterNumber).once("value", function (snapshot) {
+
+            //Retrieve Student Data
+            var detailStudentData = snapshot.val();
+
+            ///////////////////////////Display Data in the Request Details Modal
+            $("#student-name-details").html(detailStudentData.studentname);
+        });
+
+        ////////////////////////////////////////////////// JOIN END 
 
         ///////////////////////////Display Data in the Request Details Modal
 
         $("#requestid-details").html(child.key);
         $("#request-type-details").html(detailRequestData.requesttype);
+        $("#register-number-details").html(detailRequestData.registernumber);
         $("#request-date-details").html(rev(detailRequestData.date));
         $("#fromdate-details").html(rev(detailRequestData.fromdate));
         $("#todate-details").html(rev(detailRequestData.todate));

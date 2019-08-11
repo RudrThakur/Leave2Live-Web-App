@@ -48,21 +48,35 @@ staffDashboardRef.orderByChild("status").equalTo("submitted (CLASS TEACHER)").on
 
     ////////////////////////////Get the Request Data of the Matched Record
     var tableRequestId = child.key;
+    var tableRegisterNumber = tableData.registernumber;
     var tableRequestType = tableData.requesttype;
     var tableRequestDate = tableData.date;
     var tableReasonCategory = tableData.reasoncategory;
     var tableDayMode = tableData.daymode;
+    var tableStudentName;
 
-    ///////////////////////////////Display Request Data in Request-Table
-    content += '<tr>';
-    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-    content += '<td>' + tableRequestType + '</td>';//Column RequestType
-    content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
-    content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-    content += '<td>' + tableDayMode + '</td>';//Column Day Mode
-    content += '</tr>';
-    $('#new-requests-table').append(content);
+    ////////////////////////////////Join Requests table and Students table using Regsiter Number
 
+    //reference to table - students
+    tableStudentsDataRef = firebase.database().ref("students");
+
+    tableStudentsDataRef.child(tableRegisterNumber).once("value", function(snap){
+
+        tableStudentName = snap.val().studentname;
+
+        //Append acquired data to table
+        ///////////////////////////////Display Request Data in Request-Table
+        content += '<tr>';
+        content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+        content += '<td>' + tableRequestType + '</td>';//Column RequestType
+        content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
+        content += '<td>' + tableStudentName + '</td>';//Column StudentName
+        content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+        content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+        content += '<td>' + tableDayMode + '</td>';//Column Day Mode
+        content += '</tr>';
+        $('#new-requests-table').append(content);
+        });
     });
 });
 
@@ -80,21 +94,35 @@ staffDashboardRef.orderByChild("status").equalTo("submitted (HOD)").once("value"
 
     ////////////////////////////Get the Request Data of the Matched Record
     var tableRequestId = child.key;
+    var tableRegisterNumber = tableData.registernumber;
     var tableRequestType = tableData.requesttype;
     var tableRequestDate = tableData.date;
     var tableReasonCategory = tableData.reasoncategory;
     var tableDayMode = tableData.daymode;
+    var tableStudentName;
 
-    ///////////////////////////////Display Request Data in Request-Table
-    content += '<tr>';
-    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-    content += '<td>' + tableRequestType + '</td>';//Column RequestType
-    content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
-    content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-    content += '<td>' + tableDayMode + '</td>';//Column Day Mode
-    content += '</tr>';
-    $('#inprocess-requests-table').append(content);
+    ////////////////////////////////Join Requests table and Students table using Regsiter Number
 
+    //reference to table - students
+    tableStudentsDataRef = firebase.database().ref("students");
+
+    tableStudentsDataRef.child(tableRegisterNumber).once("value", function(snap){
+
+        tableStudentName = snap.val().studentname;
+
+        //Append acquired data to table
+        ///////////////////////////////Display Request Data in Request-Table
+        content += '<tr>';
+        content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+        content += '<td>' + tableRequestType + '</td>';//Column RequestType
+        content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
+        content += '<td>' + tableStudentName + '</td>';//Column StudentName
+        content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+        content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+        content += '<td>' + tableDayMode + '</td>';//Column Day Mode
+        content += '</tr>';
+        $('#inprocess-requests-table').append(content);
+        });
     });
 });
 
@@ -112,19 +140,35 @@ staffDashboardRef.orderByChild("status").equalTo("cancelled (CLASS TEACHER)").on
 
     ////////////////////////////Get the Request Data of the Matched Record
     var tableRequestId = child.key;
+    var tableRegisterNumber = tableData.registernumber;
     var tableRequestType = tableData.requesttype;
     var tableRequestDate = tableData.date;
     var tableReasonCategory = tableData.reasoncategory;
     var tableDayMode = tableData.daymode;
+    var tableStudentName;
 
-    ///////////////////////////////Display Request Data in Request-Table
-    content += '<tr>';
-    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-    content += '<td>' + tableRequestType + '</td>';//Column RequestType
-    content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
-    content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-    content += '<td>' + tableDayMode + '</td>';//Column Day Mode
-    $('#cancelled-requests-table').append(content);
+    ////////////////////////////////Join Requests table and Students table using Regsiter Number
+
+    //reference to table - students
+    tableStudentsDataRef = firebase.database().ref("students");
+
+    tableStudentsDataRef.child(tableRegisterNumber).once("value", function(snap){
+
+        tableStudentName = snap.val().studentname;
+
+        //Append acquired data to table
+        ///////////////////////////////Display Request Data in Request-Table
+        content += '<tr>';
+        content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+        content += '<td>' + tableRequestType + '</td>';//Column RequestType
+        content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
+        content += '<td>' + tableStudentName + '</td>';//Column StudentName
+        content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+        content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+        content += '<td>' + tableDayMode + '</td>';//Column Day Mode
+        content += '</tr>';
+        $('#cancelled-requests-table').append(content);
+        });
 
     });
 });
@@ -143,22 +187,35 @@ staffDashboardRef.orderByKey().once("value", function(snapshot) {
 
     ////////////////////////////Get the Request Data of the Matched Record
     var tableRequestId = child.key;
+    var tableRegisterNumber = tableData.registernumber;
     var tableRequestType = tableData.requesttype;
     var tableRequestDate = tableData.date;
     var tableReasonCategory = tableData.reasoncategory;
     var tableDayMode = tableData.daymode;
-    var tableStatus = tableData.status;
+    var tableStudentName;
 
-    ///////////////////////////////Display Request Data in Request-Table
-    content += '<tr>';
-    content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-    content += '<td>' + tableRequestType + '</td>';//Column RequestType
-    content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
-    content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-    content += '<td>' + tableDayMode + '</td>';//Column Day Mode
-    content += '<td>' + tableStatus + '</td>';//Column Day Mode
-    content += '</tr>';
-    $('#history-requests-table').append(content);
+    ////////////////////////////////Join Requests table and Students table using Regsiter Number
+
+    //reference to table - students
+    tableStudentsDataRef = firebase.database().ref("students");
+
+    tableStudentsDataRef.child(tableRegisterNumber).once("value", function(snap){
+
+        tableStudentName = snap.val().studentname;
+
+        //Append acquired data to table
+        ///////////////////////////////Display Request Data in Request-Table
+        content += '<tr>';
+        content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+        content += '<td>' + tableRequestType + '</td>';//Column RequestType
+        content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
+        content += '<td>' + tableStudentName + '</td>';//Column StudentName
+        content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+        content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+        content += '<td>' + tableDayMode + '</td>';//Column Day Mode
+        content += '</tr>';
+        $('#history-requests-table').append(content);
+        });
 
     });
 });

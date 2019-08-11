@@ -14,7 +14,7 @@
 <!-- End of Head -->
 <body onload="pageReloadFunction()" style="margin:0;">
 
-<nav class="navbar navbar-expand-md bg-info navbar-dark">
+<nav class="navbar navbar-light navbar-expand-md" style="background-color: #0a3d62;">
   <a class="navbar-brand" href="#">LEAVE2LIVE</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Dashboard</a>
+        <a class="nav-link active" href="javascript:void(0);">Dashboard</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="staffLeaveForm.html">Applications</a>
@@ -32,6 +32,9 @@
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="#">History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">ACO Role</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Feedback</a>
@@ -54,7 +57,7 @@
   <!-- Staff Dashboard -->
 
   <div class="container">
-    <h3 style="text-align: center;">Staff Dashboard</h3>
+    <h3 class="main-heading">Staff Dashboard</h3>
     <br><br>
 
     <!-- Navigation Pills -->
@@ -82,10 +85,12 @@
       <div class="tab-pane container active" id="new-requests">
         <!-- Staff Dashboard Table (New Requests) -->
         <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="new-requests-table">
-          <thead class="text-white" style="background-color:#7B757D;">
+          <thead class="text-white" style="background-color:#4b4b4b;">
             <tr>
               <th>RequestId</th>
               <th>Request Type</th>
+              <th>Register Number</th>
+              <th>Student Name</th>
               <th>Request Date</th>
               <th>Reason Category</th>
               <th>Day Mode</th>
@@ -104,6 +109,8 @@
             <tr>
               <th>RequestId</th>
               <th>Request Type</th>
+              <th>Register Number</th>
+              <th>Student Name</th>
               <th>Request Date</th>
               <th>Reason Category</th>
               <th>Day Mode</th>
@@ -119,10 +126,12 @@
       <div class="tab-pane container fade" id="cancelled">
         <!-- Staff Dashboard Table (Cancelled) -->
         <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="cancelled-requests-table">
-          <thead class="text-white" style="background-color:#7B757D;">
+          <thead class="text-white" style="background-color:#130f40;">
             <tr>
               <th>RequestId</th>
               <th>Request Type</th>
+              <th>Register Number</th>
+              <th>Student Name</th>
               <th>Request Date</th>
               <th>Reason Category</th>
               <th>Day Mode</th>
@@ -138,14 +147,15 @@
       <div class="tab-pane container fade" id="history">
         <!-- Staff Dashboard Table (History) -->
         <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="history-requests-table">
-          <thead class="text-white" style="background-color:#7B757D;">
+          <thead class="text-white" style="background-color:#22a6b3;">
             <tr>
               <th>RequestId</th>
               <th>Request Type</th>
+              <th>Register Number</th>
+              <th>Student Name</th>
               <th>Request Date</th>
               <th>Reason Category</th>
               <th>Day Mode</th>
-              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -202,6 +212,9 @@
 
 <!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+
+<!-- Google Fonts API -->
+<link href="https://fonts.googleapis.com/css?family=Akronim|Emilys+Candy|Strait&display=swap" rel="stylesheet">
 
 <!-- Jquery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
