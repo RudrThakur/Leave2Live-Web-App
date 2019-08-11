@@ -128,3 +128,9 @@
 		width: 15px;
 	}
 }
+thead{
+	background-color:#F4EEF5;
+}
+.card:hover{
+	box-shadow:4px 4px 4px 4px #DBC4E0;
+}
