@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #f1f1f1;
+    background-color: #f5f6fa;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -80,4 +80,22 @@ div#mainDiv {
 }
 .space-logo-nav-links{
     margin-bottom: 70%;
+}
+
+/* LeaveOD section */
+
+#leaveod-section{
+    margin: 2%;
+}
+
+#leaveod-section h2{
+    text-align: center;
+    background-color:#6c5ce74d;
+    padding: 2%;
+}
+
+@media screen and (max-width: 400px) {
+    #leaveod-section h2{
+        font-size: 30px !important;
+    }
 }

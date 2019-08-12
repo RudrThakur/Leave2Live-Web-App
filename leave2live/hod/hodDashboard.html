@@ -16,7 +16,7 @@
     <!-- Space between Logo and Nav Links -->
     <div class="space-logo-nav-links"></div>
     <!-- Space between Logo and Nav Links -->
-    <a class="active" href="#home">Leave/OD</a>
+    <a class="active" href="#leaveodsection">Leave/OD</a>
     <a href="#applications">Applications</a>
     <a href="#history">History</a>
     <a href="#about">Gate Pass</a>
@@ -27,13 +27,16 @@
 
 
   <div id="mainDiv" class="animate-bottom" style="display: none;">
-    <div id="home">
-      <h2>Responsive Sidebar Example</h2>
-      <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or less.</p>
-      <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
-      <h3>Resize the browser window to see the effect.</h3>
-    </div>
 
+    <!-- leaveod Section -->
+    <section id="leaveod-section">
+      <h2>Leave/OD Requests</h2>
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+        <label class="custom-control-label" for="switch1">Toggle Request Type</label>
+      </div>
+    </section>
+    <!-- End of LeaveOD section -->
   </div>
 
 </body>
@@ -46,4 +49,11 @@
 
 <!--External JS -->
 <script src="../animations/js/reloader.js"></script>
+
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </html>
