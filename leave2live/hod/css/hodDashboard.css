@@ -32,10 +32,10 @@ body {
     color: white;
 }
 
-div.content {
+div#mainDiv {
     margin-left: 200px;
     padding: 1px 16px;
-    height: 1000px;
+    height: 100%;
 }
 
 @media screen and (max-width: 700px) {
@@ -45,7 +45,7 @@ div.content {
         position: relative;
     }
     .sidebar a {float: left;}
-    div.content {margin-left: 0;}
+    div#mainDiv {margin-left: 0;}
 
     .space-logo-nav-links{
         margin-bottom: 0;

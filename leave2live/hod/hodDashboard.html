@@ -1,5 +1,7 @@
-<!--  hodDashboard Page -->
-<!-- Rudr Thakur -->
+<!-- Main Page : hodDashboard.html -->
+<!-- Author : Rudraksh -->
+<!-- Description : LeaveApplication Form Automated Using a Web Application -->
+<!-- WILL SERVE TO KCG COLLEGE OF TECHNOLOGY -->
 
 <!DOCTYPE html>
 <html>
@@ -7,30 +9,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leave2Live - HOD Section</title>
 </head>
-<body>
+<body onload="pageReloadFunction()" style="margin:0;">
 
-<div class="sidebar">
-  <img class="leave2live-logo" src="../img/logo.png" alt="Leave2Live Logo" height="100" width="200" style="position: absolute;top: 0;left: 0;">
-  <!-- Space between Logo and Nav Links -->
-  <div class="space-logo-nav-links"></div>
-   <!-- Space between Logo and Nav Links -->
-  <a class="active" href="#home">Leave/OD</a>
-  <a href="#applications">Applications</a>
-  <a href="#history">History</a>
-  <a href="#about">Gate Pass</a>
-</div>
+  <div class="sidebar">
+    <img class="leave2live-logo" src="../img/logo.png" alt="Leave2Live Logo" height="100" width="200" style="position: absolute;top: 0;left: 0;">
+    <!-- Space between Logo and Nav Links -->
+    <div class="space-logo-nav-links"></div>
+    <!-- Space between Logo and Nav Links -->
+    <a class="active" href="#home">Leave/OD</a>
+    <a href="#applications">Applications</a>
+    <a href="#history">History</a>
+    <a href="#about">Gate Pass</a>
+  </div>
 
-<div class="content">
-  <h2>Responsive Sidebar Example</h2>
-  <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or less.</p>
-  <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
-  <h3>Resize the browser window to see the effect.</h3>
-</div>
+  <!-- Loader Overlay -->
+  <div id="loader"></div>   
+
+
+  <div id="mainDiv" class="animate-bottom" style="display: none;">
+    <div id="home">
+      <h2>Responsive Sidebar Example</h2>
+      <p>This example use media queries to transform the sidebar to a top navigation bar when the screen size is 700px or less.</p>
+      <p>We have also added a media query for screens that are 400px or less, which will vertically stack and center the navigation links.</p>
+      <h3>Resize the browser window to see the effect.</h3>
+    </div>
+
+  </div>
 
 </body>
+<!-- End of Body -->
 
                                                                   <!-- LINKS -->
 <!-- External CSS -->
 <link rel="stylesheet" href="css/hodDashboard.css">
+<link rel="stylesheet" href="../animations/css/reloader.css">
 
+<!--External JS -->
+<script src="../animations/js/reloader.js"></script>
 </html>
