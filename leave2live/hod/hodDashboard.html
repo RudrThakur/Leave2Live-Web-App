@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body>
+<body onload="pageReloadFunction()">
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -28,24 +28,28 @@
            
             <ul class="nav navbar-nav navbar-right">
                     <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><a href="#">Dashboard</a></li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">New Requests&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
+                                    <li><a href="#">Leave</a></li>
+                                    <li><a href="#">On-Duty</a></li>
+                                    <li><a href="#">Gate Pass</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
+                            <li><a href="#">Applications</a></li>
+                            <li><a href="#">History</a></li>
                         </ul>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container">
+<!-- Loader Overlay -->
+<div id="loader"></div>
+
+
+<div id="mainDiv" class="animate-bottom" style="display: none;">
     <h3>Collapsible Navbar</h3>
     <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner
         (try to re-size this window).
