@@ -47,3 +47,19 @@ th, td{
 .nav-pills .nav-item{
     margin-right: 90px !important;
 }
+
+#staff-role-box, #current-view-box{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin:2%;
+}
+
+#staff-role-box a{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#current-view-box{
+    margin-top: 7%;
+    margin-left: 7%;
+}

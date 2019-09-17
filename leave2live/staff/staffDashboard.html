@@ -33,9 +33,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#">History</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ACO Role</a>
-      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="javascript:void(0)" onclick="acoRedirect()">ACO Role</a>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="#">Feedback</a>
       </li> 
@@ -58,6 +58,7 @@
 
   <div class="container">
     <h3 class="main-heading">Staff Dashboard</h3>
+
     <br><br>
 
     <!-- Navigation Pills -->
@@ -76,6 +77,22 @@
           </li>
     </ul>
     <br><br><br>
+
+<!-- ////////////////////////
+  // Staff Role Switch
+///////////////////////////// -->
+    <div id="staff-role-box">
+      <label for="staff-role" style="font-size: 10px;">Switch Role</label>
+      <select class="form-control form-control-sm" id="staff-role" onchange="setStaffRole()">
+        <option value="Class Teacher">Class Teacher</option>
+        <option value="ACO">ACO</option>
+      </select>
+    </div>
+
+    <!-- Current Role Box -->
+    <div id="current-view-box">
+    <p style="font-size: 10px;">Currently Viewing as: <span class="current-view" style="color: red;">Class Teacher</span></p>
+    </div>
 
     <!-- Tab panes -->
     <div class="tab-content">
@@ -147,7 +164,7 @@
       <div class="tab-pane container fade" id="history">
         <!-- Staff Dashboard Table (History) -->
         <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="history-requests-table">
-          <thead class="text-white" style="background-color:#22a6b3;">
+          <thead class="text-white" style="background-color:#6872c7;">
             <tr>
               <th>RequestId</th>
               <th>Request Type</th>
@@ -232,8 +249,8 @@
 <script src="../js/configFirebase.js"></script>
 
 <!-- External JS -->
-<script src="js/staffDashboard.js"></script>
 <script src="../animations/js/reloader.js"></script>
+<script src="js/staffDashboard.js"></script>
 
 <!-- End of html -->
 </html>

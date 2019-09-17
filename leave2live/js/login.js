@@ -105,6 +105,7 @@ staffDataRef.once("child_added", snap =>{
     localStorage.setItem("staffdepartment", staffProfileDepartment);
     localStorage.setItem("staffisclassteacherof", staffProfileIsClassTeacherOf);
     localStorage.setItem("staffisacoof", staffProfileIsAcoOf);
+    localStorage.setItem("staffRole", "Class Teacher");
 
     //redirect to Dashboard page
     window.location.href ='staff/staffDashboard.html';
