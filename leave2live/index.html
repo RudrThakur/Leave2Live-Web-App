@@ -60,7 +60,8 @@
           <label for="day-mode"><strong>Select Day Mode:</strong></label>
           <select name="day-mode" class="form-control" id="day-mode">
             <option selected>Choose Day Mode</option>
-            <option value="Half Day">Half Day</option>
+            <option value="Half Day(Pre-Lunch)">Half Day(PRE-LUNCH)</option>
+            <option value="Half Day(Post-Lunch)">Half Day(POST-LUNCH)</option>
             <option value="Whole Day">Whole Day</option>
             <option value="More Than a Day">More Than a Day</option>
           </select>
@@ -82,7 +83,7 @@
         </div><br>
 
         <!-- Number of Working Days -->
-        <div class="form-group" id="days-box">
+        <div class="form-group" id="days-box" style="display: none;">
           <label for="days"><strong>Number of Working Days:</strong></label>
           <input type="number" name="days" class="form-control" id="days" placeholder="Please Enter Number of Working Days">
           <span class="response-display" id="days-display"></span>
@@ -126,23 +127,21 @@
         <div class="form-group" id="reason-category-box">
             <label for="reason-category"><strong>Please Select a Reason Category:</strong></label>
             <select class="form-control form-control-md" id="reason-category">
-              <option selected>Choose Reason Category ...</option>
+              <option selected>Choose Reason Category</option>
               <option>Medical </option>
               <option>Events </option>
               <option>Vacations </option>
               <option>Outstation Plans </option>
               <option>Other </option>
             </select>
-            <br>
-            <span class="response-display"></span>
+            <span class="response-display" id="reason-category-display"></span>
         </div>
 
         <!-- Reason Specific -->
         <div class="form-group" id="reason-specific-box">
           <label for="reasonspecific"><strong>Please Specify Your Reason ?</strong></label>
           <textarea name="reasonspecific" class="form-control" id="reasonspecific" rows="4" cols="50"></textarea>
-        <br>
-          <span class="response-display"></span>
+          <span class="response-display" id="reason-specific-display"></span>
         </div>
 
           <!-- Submit button -->

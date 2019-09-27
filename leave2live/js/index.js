@@ -39,9 +39,11 @@ $("#day-mode").change(function(){
 
     if($("#day-mode").val() == "More Than a Day"){
         $("#todate-box").show();
+        $("#days-box").show();
     }
     else{
         $("#todate-box").hide();
+        $("#days-box").hide();
     }
 });
 
@@ -125,7 +127,8 @@ $("#leave-form-btn").click(function(){
     }
 
     // Number of Working Days
-    if(studentDays == ""){
+    if(studentDays == "" && 
+       studentDayMode == "More Than a Day"){
         $("#days-display").html("This Field is Required");
         validFlag = false;
     }
@@ -141,6 +144,28 @@ $("#leave-form-btn").click(function(){
     else{
         $("#test-type-display").html("");
     }
+
+    // Reason Category
+
+    if(studentReasonCategory == "Choose Reason Category"){
+        $("#reason-category-display").html("This Field is Required");
+        validFlag = false;
+    }
+    else{
+        $("#reason-category-display").html("");
+    }
+
+    // Reason Specific
+
+    if(studentReasonSpecific == ""){
+        $("#reason-specific-display").html("This Field is Required");
+        validFlag = false;
+    }
+    else{
+        $("#reason-specific-display").html("");
+    }
+
+
     //Store Request Data into a JS Object
 
     if(validFlag){
@@ -155,9 +180,9 @@ $("#leave-form-btn").click(function(){
             "requesttype" : studentRequestType,
             "status" : studentRequestStatus,
             "testcheck" : studentTestCheck,
-            "testtype" : studentTestType,
+            "testtype" : (studentTestCheck == "YES") ? studentTestType : "NA",
             "todate" : (studentDayMode == "More Than a Day") ? studentToDate : "NA",
-            "workingdays" : studentDays
+            "workingdays" :(studentDayMode == "More Than a Day") ? studentDays : "NA",
         };
         
         //push StudentRequestData Object to firebase
