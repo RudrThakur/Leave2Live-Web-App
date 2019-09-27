@@ -51,21 +51,9 @@
 
                                       <!-- Leave Form -->
     <form>
-      <!-- Request Type Section -->
-      <div class="container">
-        <h3>Please Select A Request Type</h3><hr>
-          <select name="request-type" class="custom-select">
-            <option selected value="leave">Leave Request</option>
-            <option value="od">On Duty Request</option>
-          </select>
-        <br><br>
-        <span class="request-type-display"></span>
-        <br><br>
-      </div>
-
       <!-- Leave Form -->
       <div class="container" id="leave-form-box">
-        <h4 class="leave-form-heading">Leave/OD Form</h4><hr>
+        <h4 class="leave-form-heading">Application Form</h4><hr>
 
           <!-- Day Check -->
         <div class="form-group" id="daymode-box">
@@ -76,16 +64,16 @@
             <option value="Whole Day">Whole Day</option>
             <option value="More Than a Day">More Than a Day</option>
           </select>
-          <br>
           <span class="day-mode-display"></span>
         </div>
+
         <!-- From Date -->
         <div class="form-group" id="fromdate-box">
           <label for="fromdate"><strong>Select From Date:</strong></label>
           <input type="date" class="form-control" id="fromdate" placeholder="Enter From Date" name="fromdate">
         <br>
           <span class="display-fromdate"></span>
-        </div>
+        <div>
 
         <!-- To Date -->
         <div class="form-group" id="todate-box">
@@ -104,6 +92,17 @@
           <span class="display-days"></span>
         </div>
 
+        <!-- Request Type Section -->
+        <div class="form-group" id="requesttype-box">
+          <label for="request-type"><strong>Select Request Type:</strong></label>
+          <select name="request-type" class="custom-select">
+            <option selected value="leave">Leave Request</option>
+            <option value="od">On Duty Request</option>
+          </select>
+          <br>
+          <span class="request-type-display"></span>
+        </div>
+        <br>
         <!-- Scheduled Tests -->
         <div class="form-group" id="test-check-box">
           <input type="checkbox" id="test-check" class="big-checkbox"/>
@@ -113,7 +112,7 @@
         </div>
 
         <!-- Test Type -->
-        <div class="form-group" id="test-type-box" style="display:none">
+        <div class="form-group" id="test-type-box">
           <h6><strong>Please Specify the Test:</strong></h6>
           <select class="form-control form-control-sm" id="test-type">
             <option selected>Choose Test Type ...</option>
@@ -144,7 +143,7 @@
         </div>
 
         <!-- Reason Specific -->
-        <div class="form-group" id="reason-specific-box" style="display:none">
+        <div class="form-group" id="reason-specific-box">
           <label for="reasonspecific"><strong>Please Specify Your Reason ?</strong></label>
           <textarea name="reasonspecific" class="form-control" id="reasonspecific" rows="4" cols="50"></textarea>
         <br>
@@ -152,28 +151,28 @@
         </div>
 
         <!-- Arrear Count -->
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="arrearcount"><strong>Number of Arrears:</strong></label>
             <input type="number" name="arrearcount" class="form-control" id="arrearcount" placeholder="Number of Arrears">
           <br>
             <span class="display-arrearcount"></span>
-        </div>
+        </div> -->
 
         <!-- Attendance -->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="attendance"><strong>Attendance Percentage:</strong></label>
           <input type="number" name="attendance" class="form-control" id="attendance" placeholder="Your Attendance Percentage">
         <br>
           <span class="display-attendance"></span>
-        </div>
+        </div> -->
             
         <!-- Leave count -->
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="leave-count"><strong>Number of Days taken Leave Earlier This Month:</strong></label>
           <input type="number" name="leave-count" class="form-control" id="leave-count" placeholder="Your Leave count">
         <br>
           <span class="display-leave-count"></span>
-        </div>
+        </div> -->
 
           <!-- Submit button -->
           <button type="submit" class="btn btn-primary" id="leave-form-btn">Submit</button>
