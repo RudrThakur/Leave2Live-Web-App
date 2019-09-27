@@ -64,32 +64,28 @@
             <option value="Whole Day">Whole Day</option>
             <option value="More Than a Day">More Than a Day</option>
           </select>
-          <span class="day-mode-display"></span>
+          <span class="response-display" id="day-mode-display"></span>
         </div>
 
         <!-- From Date -->
         <div class="form-group" id="fromdate-box">
           <label for="fromdate"><strong>Select From Date:</strong></label>
           <input type="date" class="form-control" id="fromdate" placeholder="Enter From Date" name="fromdate">
-        <br>
-          <span class="display-fromdate"></span>
-        <div>
+          <span class="response-display" id="fromdate-display"></span>
+        <div><br>
 
         <!-- To Date -->
-        <div class="form-group" id="todate-box">
+        <div class="form-group" id="todate-box" style="display: none;">
           <label for="todate"><strong>Select To Date:</strong></label>
           <input type="date" class="form-control" id="todate" placeholder="Enter To Date" name="todate">
-        <br>
-        <span class="display-todate"></span>
-        <span class="display-totaldays"></span>
-        </div>
+        <span class="response-display" id="todate-display"></span>
+        </div><br>
 
         <!-- Number of Working Days -->
         <div class="form-group" id="days-box">
           <label for="days"><strong>Number of Working Days:</strong></label>
           <input type="number" name="days" class="form-control" id="days" placeholder="Please Enter Number of Working Days">
-        <br>
-          <span class="display-days"></span>
+          <span class="response-display" id="days-display"></span>
         </div>
 
         <!-- Request Type Section -->
@@ -99,8 +95,8 @@
             <option selected value="leave">Leave Request</option>
             <option value="od">On Duty Request</option>
           </select>
-          <br>
-          <span class="request-type-display"></span>
+
+          <span class="response-display"></span>
         </div>
         <br>
         <!-- Scheduled Tests -->
@@ -108,14 +104,14 @@
           <input type="checkbox" id="test-check" class="big-checkbox"/>
           <label for="test-check"><strong>There is a Scheduled Test</strong></label>
         <br>
-          <span class="display-test"></span>
+          <span class="response-display" id="test-check-display"></span>
         </div>
 
         <!-- Test Type -->
-        <div class="form-group" id="test-type-box">
+        <div class="form-group" id="test-type-box" style="display: none;">
           <h6><strong>Please Specify the Test:</strong></h6>
           <select class="form-control form-control-sm" id="test-type">
-            <option selected>Choose Test Type ...</option>
+            <option selected>Choose Test Type</option>
             <option>Unit Tests - 1 </option>
             <option>Unit Tests - 2 </option>
             <option>Unit Tests - 3 </option>
@@ -123,13 +119,12 @@
             <option>Model Exam - 2 </option>
             <option>Model Practicals </option>
           </select>
-          <br>
-          <span class="display-test-type"></span>
+          <span class="response-display" id="test-type-display"></span>
         </div>
 
         <!-- Reason Category -->
         <div class="form-group" id="reason-category-box">
-            <label for="reason-category">Please Select a Reason Category:</label>
+            <label for="reason-category"><strong>Please Select a Reason Category:</strong></label>
             <select class="form-control form-control-md" id="reason-category">
               <option selected>Choose Reason Category ...</option>
               <option>Medical </option>
@@ -139,7 +134,7 @@
               <option>Other </option>
             </select>
             <br>
-            <span class="display-reason-category"></span>
+            <span class="response-display"></span>
         </div>
 
         <!-- Reason Specific -->
@@ -147,32 +142,8 @@
           <label for="reasonspecific"><strong>Please Specify Your Reason ?</strong></label>
           <textarea name="reasonspecific" class="form-control" id="reasonspecific" rows="4" cols="50"></textarea>
         <br>
-          <span class="display-reasonspecific"></span>
+          <span class="response-display"></span>
         </div>
-
-        <!-- Arrear Count -->
-        <!-- <div class="form-group">
-            <label for="arrearcount"><strong>Number of Arrears:</strong></label>
-            <input type="number" name="arrearcount" class="form-control" id="arrearcount" placeholder="Number of Arrears">
-          <br>
-            <span class="display-arrearcount"></span>
-        </div> -->
-
-        <!-- Attendance -->
-        <!-- <div class="form-group">
-          <label for="attendance"><strong>Attendance Percentage:</strong></label>
-          <input type="number" name="attendance" class="form-control" id="attendance" placeholder="Your Attendance Percentage">
-        <br>
-          <span class="display-attendance"></span>
-        </div> -->
-            
-        <!-- Leave count -->
-        <!-- <div class="form-group">
-          <label for="leave-count"><strong>Number of Days taken Leave Earlier This Month:</strong></label>
-          <input type="number" name="leave-count" class="form-control" id="leave-count" placeholder="Your Leave count">
-        <br>
-          <span class="display-leave-count"></span>
-        </div> -->
 
           <!-- Submit button -->
           <button type="submit" class="btn btn-primary" id="leave-form-btn">Submit</button>

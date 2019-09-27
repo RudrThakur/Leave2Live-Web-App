@@ -32,6 +32,28 @@ var newRequestRef = firebase.database().ref("requests");
 
 $(document).ready(function(){
 
+
+/////////////////////////////// FORM INTERACTION //////////////////////////////////////////////
+
+$("#day-mode").change(function(){
+
+    if($("#day-mode").val() == "More Than a Day"){
+        $("#todate-box").show();
+    }
+    else{
+        $("#todate-box").hide();
+    }
+});
+
+$("#test-check").click(function(){
+    if($(this).prop("checked") == true){
+        $("#test-type-box").show();
+    }
+    else{
+        $("#test-type-box").hide();
+    }
+});
+
 //////////////////////////////////// FORM SUBMISSION HANDLER //////////////////////////////////
 
 $("#leave-form-btn").click(function(){
@@ -40,30 +62,16 @@ $("#leave-form-btn").click(function(){
     var studentRequestType = $('[name="request-type"]').val();
     var studentDayMode = $('#day-mode').val();
     var studentFromDate = $('#fromdate').val();
-    var studentToDate, studentDays;
+    var studentToDate = $('#todate').val();
+    var studentDays = $('#days').val();
+    var studentTestCheck = "NO";
 
-    //if MultipleDays is Selected
-    if(multipleDaysFlag){
-        studentToDate = $('#todate').val();
-        studentDays = $('#days').val();
-    }
-    else{//else Set ToDate & Working Days as NA
-        studentToDate = 'NA';
-        studentDays = 'NA';
-    }
-    var studentTestCheck, studentTestType;
+    if($("#test-check").prop("checked") == true)
+        studentTestCheck = "YES";
+    else
+        studentTestCheck = "NO";
 
-    //If test is Scheduled
-    if(testCheckFlag)
-    {
-        studentTestCheck = 'yes';
-        studentTestType = $('#test-type').val();
-    }
-    else{
-        studentTestCheck = 'no';
-        studentTestType = 'NA';
-    }
-
+    var studentTestType = $('#test-type').val();
     var studentReasonCategory = $('#reason-category').val();
     var studentReasonSpecific = $('#reasonspecific').val();
     var studentRequestStatus = 'submitted (CLASS TEACHER)';
@@ -75,30 +83,95 @@ $("#leave-form-btn").click(function(){
     var yyyy = studentRequestDate.getFullYear();
     studentRequestDate = dd + '-' + mm + '-' + yyyy;
 
+    //////////////////////// 
+    // Validation 
+    ///////////////////////
+
+    var validFlag = true;
+
+
+    // Day Mode
+
+    if(studentDayMode == "Choose Day Mode"){
+        $("#day-mode-display").html("This Field is Required");
+        validFlag = false;
+    }
+
+    else{
+        $("#day-mode-display").html("");
+    }
+
+    // From Date
+
+    if(studentFromDate == ""){
+        $("#fromdate-display").html("This Field is Required");
+        validFlag = false;
+    }
+
+    else{
+        $("#fromdate-display").html("");
+    }
+
+
+    //To Date
+
+    if(studentDayMode == "More Than a Day" &&
+       studentToDate == ""){
+        $("#todate-display").html("This Field is Required");
+        validFlag = false;
+    }
+    else{
+        $("#todate-display").html("");
+    }
+
+    // Number of Working Days
+    if(studentDays == ""){
+        $("#days-display").html("This Field is Required");
+        validFlag = false;
+    }
+    else{
+        $("#days-display").html("");
+    }
+
+    if(studentTestCheck == "YES" && 
+       studentTestType == "Choose Test Type"){
+        $("#test-type-display").html("This Field is Required");
+        validFlag = false;
+    }
+    else{
+        $("#test-type-display").html("");
+    }
     //Store Request Data into a JS Object
-    var studentRequestDataObject = {
+
+    if(validFlag){
+        var studentRequestDataObject = {
     
-        "date" : studentRequestDate,
-        "daymode" : studentDayMode,
-        "fromdate" : studentFromDate,
-        "reasoncategory" : studentReasonCategory,
-        "reasonspecific" : studentReasonSpecific,
-        "registernumber" : localStorage.getItem("registernumber"),
-        "requesttype" : studentRequestType,
-        "status" : studentRequestStatus,
-        "testcheck" : studentTestCheck,
-        "testtype" : studentTestType,
-        "todate" : studentToDate,
-        "workingdays" : studentDays
-    };
+            "date" : studentRequestDate,
+            "daymode" : studentDayMode,
+            "fromdate" : studentFromDate,
+            "reasoncategory" : studentReasonCategory,
+            "reasonspecific" : studentReasonSpecific,
+            "registernumber" : localStorage.getItem("registernumber"),
+            "requesttype" : studentRequestType,
+            "status" : studentRequestStatus,
+            "testcheck" : studentTestCheck,
+            "testtype" : studentTestType,
+            "todate" : (studentDayMode == "More Than a Day") ? studentToDate : "NA",
+            "workingdays" : studentDays
+        };
+        
+        //push StudentRequestData Object to firebase
+        newRequestRef.push(studentRequestDataObject);
 
-    //push StudentRequestData Object to firebase
-    newRequestRef.push(studentRequestDataObject);
+        //Alert Success
+        alert("Your Request Has Been Submitted Successfully");
 
-    //Alert Success
-    alert("Your Request Has Been Submitted Successfully");
+        return true;
+    }
 
-    return true;
+    else{
+        return false;
+    }
 
 });
 
