@@ -32,7 +32,7 @@
             <a class="nav-link" href="request.html">My Requests</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#student-profile">Profile</a>
+            <a class="nav-link" href="javascript:void(0)" data-toggle="modal" data-target="#student-profile">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Gatepass</a>
@@ -51,24 +51,19 @@
 
                                       <!-- Leave Form -->
     <form>
-      <!-- Request Section -->
+      <!-- Request Type Section -->
       <div class="container">
         <h3>Please Select A Request Type</h3><hr>
-        <label class="radio-container">On Duty
-          <input type="radio" name="request-type" value="On Duty">
-          <span class="checkmark"></span>
-        </label>
-        &emsp14;
-        <label class="radio-container">Leave
-          <input type="radio" name="request-type" value="Leave">
-          <span class="checkmark"></span>
-        </label>
-        <br>
+          <select name="request-type" class="custom-select">
+            <option selected value="leave">Leave Request</option>
+            <option value="od">On Duty Request</option>
+          </select>
+        <br><br>
         <span class="request-type-display"></span>
         <br><br>
       </div>
 
-      <!-- Application Form -->
+      <!-- Leave Form -->
       <div class="container" id="leave-form-box">
         <h4 class="leave-form-heading">Leave/OD Form</h4><hr>
 
