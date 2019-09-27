@@ -3,13 +3,14 @@
 //////////////
 // GLOBALS
 /////////////
-var loginFlag = false;
+var studentLoginFlag = false;
+var staffLoginFlag = false;
 
 ////////////////////////// Login Handler for Students
 
 var rootRef = firebase.database().ref("students");
 
-rootRef.on("value", snap =>{
+rootRef.once("value", snap =>{
 
     //onclick handler for login-btn
     $("#login-btn").click(function(){
@@ -20,23 +21,23 @@ rootRef.on("value", snap =>{
 
             var regnofromdb = childNode.child("registernumber").val();
             var passfromdb  = childNode.child("password").val(); 
-            
+
             //If credentials are Correct
             if (regnofromdb == regno && passfromdb == pass){
                    
                 // Set Login Success Flag
-                loginFlag = true;
+                studentLoginFlag = true;
                 
                 //getting student profile from firebase
 
-                var studentName = snap.child("studentname").val();
-                var email  = snap.child("email").val(); 
-                var phone  = snap.child("phone").val(); 
-                var classAndSec = snap.child("classandsec").val();
-                var arrearCount = snap.child("arrearcount").val();
-                var department = snap.child("department").val();
-                var dob = snap.child("dob").val();
-                var leaveCount = snap.child("leavecount").val();
+                var studentName = childNode.child("studentname").val();
+                var email  = childNode.child("email").val(); 
+                var phone  = childNode.child("phone").val(); 
+                var classAndSec = childNode.child("classandsec").val();
+                var arrearCount = childNode.child("arrearcount").val();
+                var department = childNode.child("department").val();
+                var dob = childNode.child("dob").val();
+                var leaveCount = childNode.child("leavecount").val();
 
 
                 //using localstorage to pass them into Javascript pages
@@ -52,25 +53,20 @@ rootRef.on("value", snap =>{
                 localStorage.setItem("leavecount", leaveCount);
                 
             }
-
-           
         });
 
-        if(loginFlag){
+        if(studentLoginFlag){
             alert("Login Success !");
             //redirect to index page
             window.location.href ='index.html';
             return false;
         }
-
+    
         else{
             alert("Login Failed !");
             return true;
         }
-    
-      
     });
-
 });
 
 
@@ -78,59 +74,61 @@ rootRef.on("value", snap =>{
 
 var staffDataRef = firebase.database().ref("staff");
 
-staffDataRef.once("child_added", snap =>{
-
-    var emailfromdb = snap.child("staffemail").val();
-    var passwordfromdb  = snap.child("staffpass").val(); 
+staffDataRef.once("value", snap =>{
 
     $("#stafflogin-btn").click(function(){
 
-    //Get Staff Credentials from Login Form
-    var staffemailid = $("#staffemail").val();
-    var staffpassword = $("#staffpass").val();
+          //Get Staff Credentials from Login Form
+          var staffemailid = $("#staffemail").val();
+          var staffpassword = $("#staffpass").val();
 
+            snap.forEach(function(childNode){
 
-    //If credentials are Correct
-    if (emailfromdb == staffemailid && passwordfromdb == staffpassword){
-        
-    //alert success !
-    alert("Login Success");
+                var emailfromdb = childNode.child("staffemail").val();
+                var passwordfromdb  = childNode.child("staffpass").val(); 
+
+                //If credentials are Correct
+                if (emailfromdb == staffemailid && passwordfromdb == staffpassword){
+                    
+                // Set Login Flag to TRUE
+                staffLoginFlag = true;
+                
+                //getting staff profile from firebase
+
+                var staffProfileName = childNode.child("staffname").val();
+                var staffProfileEmail  = emailfromdb; 
+                var staffProfilePhone  = childNode.child("staffphone").val(); 
+                var staffProfileId = childNode.child("staffid").val();
+                var staffProfileDepartment = childNode.child("staffdep").val();
+                var staffProfileIsClassTeacherOf = childNode.child("isclassteacherof").val();
+                var staffProfileIsAcoOf = childNode.child("isacoof").val();
+
+                //using localstorage to pass them into Javascript pages
+                
+                localStorage.setItem("staffname", staffProfileName);
+                localStorage.setItem("staffemail", staffProfileEmail);
+                localStorage.setItem("staffphone", staffProfilePhone);
+                localStorage.setItem("staffid", staffProfileId);
+                localStorage.setItem("staffdepartment", staffProfileDepartment);
+                localStorage.setItem("staffisclassteacherof", staffProfileIsClassTeacherOf);
+                localStorage.setItem("staffisacoof", staffProfileIsAcoOf);
+                localStorage.setItem("staffRole", "Class Teacher");
+
+                }
+
+            });
+
+        if(staffLoginFlag){
+            alert("Login Success !");
+            //redirect to index page
+            window.location.href ='staff/staffDashboard.html';
+            return false;
+        }
     
-    
-    //getting staff profile from firebase
-
-    var staffProfileName = snap.child("staffname").val();
-    var staffProfileEmail  = emailfromdb; 
-    var staffProfilePhone  = snap.child("staffphone").val(); 
-    var staffProfileId = snap.child("staffid").val();
-    var staffProfileDepartment = snap.child("staffdep").val();
-    var staffProfileIsClassTeacherOf = snap.child("isclassteacherof").val();
-    var staffProfileIsAcoOf = snap.child("isacoof").val();
-
-    //using localstorage to pass them into Javascript pages
-    
-    localStorage.setItem("staffname", staffProfileName);
-    localStorage.setItem("staffemail", staffProfileEmail);
-    localStorage.setItem("staffphone", staffProfilePhone);
-    localStorage.setItem("staffid", staffProfileId);
-    localStorage.setItem("staffdepartment", staffProfileDepartment);
-    localStorage.setItem("staffisclassteacherof", staffProfileIsClassTeacherOf);
-    localStorage.setItem("staffisacoof", staffProfileIsAcoOf);
-    localStorage.setItem("staffRole", "Class Teacher");
-
-    //redirect to Dashboard page
-    window.location.href ='staff/staffDashboard.html';
-
-    return false;
-    }
-
-    //If Credentials are wrong
-    else{
-    //alert Failure !
-    alert("Invalid Credentials !");
-
-    return true;
-    }
+        else{
+            alert("Login Failed !");
+            return true;
+        }
     });
 });
   
