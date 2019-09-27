@@ -51,10 +51,10 @@ function setStaffRole(){
         showRequestsForACO();
     }
 
-    if($("#staff-role").val() == "Class Teacher"){
+    if($("#staff-role").val() == "CLASS TEACHER"){
         // If Role - CLASS TEACHER
 
-        localStorage.setItem("staffRole", "Class Teacher");
+        localStorage.setItem("staffRole", "CLASS TEACHER");
         $(".current-view").html(localStorage.getItem("staffRole"));
         
         // Display the Request for Class Teacher

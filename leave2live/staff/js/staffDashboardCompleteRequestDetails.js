@@ -114,17 +114,21 @@ $("#approve-btn").click(function(){
     var currentStatus;
     getCurrentStatusRef.once('value').then(function(snapshot){
     currentStatus = snapshot.child("status").val();
-    });
 
     $("#status-details").hide();
     $("#updating-message").show();
 
-    if (currentStatus == "submitted(ACO)" ||
-    currentStatus == "cancelled(ACO)"){
+    if (currentStatus == "submitted("+ localStorage.getItem("staffRole") + ")" ||
+    currentStatus == "cancelled("+ localStorage.getItem("staffRole") + ")"){
 
     setTimeout(function(){
         //Set the status of the Request as SUBMITTED
-        detailRequestRef.child(queryRequestId).update({status : "submitted (HOD)"});
+
+        if(localStorage.getItem("staffRole") == "CLASS TEACHER")
+            detailRequestRef.child(queryRequestId).update({status : "submitted(ACO)"});
+        if(localStorage.getItem("staffRole") == "ACO")
+            detailRequestRef.child(queryRequestId).update({status : "submitted(HOD)"});
+  
         //Show Success Message
         $("#action-success-message").fadeIn(1000);
     }, 5000);
@@ -143,7 +147,7 @@ $("#approve-btn").click(function(){
     }, 7000);
 
     }
-    
+
     else{
         setTimeout(function() { 
             $("#updating-message").hide();
@@ -158,6 +162,7 @@ $("#approve-btn").click(function(){
         }, 7000)
     }
 
+    });
 });
 
 
@@ -173,12 +178,15 @@ $("#deny-btn").click(function(){
     $("#status-details").hide();
     $("#updating-message").show();
 
-    if (currentStatus == "submitted(ACO)" ||
-        currentStatus == "cancelled(ACO)"){
+    if (currentStatus == "submitted("+ localStorage.getItem("staffRole") + ")" ||
+        currentStatus == "cancelled("+ localStorage.getItem("staffRole") + ")"){
 
         setTimeout(function(){
             //Set the status of the Request as CANCELLED
-            detailRequestRef.child(queryRequestId).update({status : "cancelled (CLASS TEACHER)"});
+            if(localStorage.getItem("staffRole") == "CLASS TEACHER")
+                detailRequestRef.child(queryRequestId).update({status : "cancelled(ACO)"});
+            if(localStorage.getItem("staffRole") == "ACO")
+                detailRequestRef.child(queryRequestId).update({status : "cancelled(HOD)"});
             //Show Success Message
             $("#action-success-message").fadeIn(1000);
         }, 5000);

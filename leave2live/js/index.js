@@ -76,7 +76,7 @@ $("#leave-form-btn").click(function(){
     var studentTestType = $('#test-type').val();
     var studentReasonCategory = $('#reason-category').val();
     var studentReasonSpecific = $('#reasonspecific').val();
-    var studentRequestStatus = 'submitted (CLASS TEACHER)';
+    var studentRequestStatus = 'submitted(CLASS TEACHER)';
 
     //Get Current Date
     var studentRequestDate = new Date();
