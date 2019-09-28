@@ -23,6 +23,8 @@ else {
     $("#profile-staff-email").html(localStorage.getItem("staffemail"));
     $("#profile-staff-department").html(localStorage.getItem("staffdepartment"));
     $("#profile-staff-phone").html(localStorage.getItem("staffphone"));
+    $("#profile-staff-isclassteacherof").html(localStorage.getItem("staffisclassteacherof"));
+    $("#profile-staff-isacoof").html(localStorage.getItem("staffisacoof"));
 }
 
 //Get Database Reference

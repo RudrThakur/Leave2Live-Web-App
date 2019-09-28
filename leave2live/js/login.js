@@ -112,7 +112,7 @@ staffDataRef.once("value", snap =>{
                 localStorage.setItem("staffdepartment", staffProfileDepartment);
                 localStorage.setItem("staffisclassteacherof", staffProfileIsClassTeacherOf);
                 localStorage.setItem("staffisacoof", staffProfileIsAcoOf);
-                localStorage.setItem("staffRole", "Class Teacher");
+                localStorage.setItem("staffRole", "CLASS TEACHER");
 
                 }
 
