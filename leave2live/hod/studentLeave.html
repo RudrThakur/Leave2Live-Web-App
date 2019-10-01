@@ -1,0 +1,124 @@
+<!-- Main Page : hodDashboard.html -->
+<!-- Author : Rudraksh -->
+<!-- Description : LeaveApplication Form Automated Using a Web Application -->
+<!-- WILL SERVE TO KCG COLLEGE OF TECHNOLOGY -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Leave2Live - HOD Dashboard (Student Leave Requests)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body onload="pageReloadFunction()">
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color: #fff;">LEAVE2LIVE</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+           
+            <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav">
+                            <li><a href="hodDashboard.html">Staff Requests</a></li>
+                            <li class="dropdown active">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Student Requests&nbsp;<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Leave</a></li>
+                                    <li><a href="#">On-Duty</a></li>
+                                    <li><a href="#">Gate Pass</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Applications</a></li>
+                            <li><a href="#">History</a></li>
+                        </ul>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Loader Overlay -->
+<div id="loader"></div>
+
+
+<div id="mainDiv" class="animate-bottom" style="display: none;">
+
+    <!-- Student LEAVE Requests -->
+    <div class="container-fluid">   
+        <h3>Student LEAVE Requests</h3>
+        <p>Switch between Request Categories:</p>
+        
+        <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'new-requests')" id="defaultOpen">New Requests</button>
+        <button class="tablinks" onclick="openCity(event, 'approved-requests')">Approved Requests</button>
+        <button class="tablinks" onclick="openCity(event, 'cancelled-requests')">Cancelled Requests</button>
+        </div>
+        
+        <div id="new-requests" class="tabcontent">
+            <center><h4>NEW REQUESTS</h4></center>
+            <hr>
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="new-requests-table">
+                <thead class="text-white" style="background-color:#fff;">
+                <tr>
+                    <th>RequestId</th>
+                    <th>Request Type</th>
+                    <th>Register Number</th>
+                    <th>Student Name</th>
+                    <th>Request Date</th>
+                    <th>Reason Category</th>
+                    <th>Day Mode</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="approved-requests" class="tabcontent">
+        <h3>Paris</h3>
+        <p>Paris is the capital of France.</p> 
+        </div>
+        
+        <div id="cancelled-requests" class="tabcontent">
+        <h3>Tokyo</h3>
+        <p>Tokyo is the capital of Japan.</p>
+        </div>
+    </div>  
+</div>
+
+</body>
+
+                                                                  <!-- LINKS -->
+
+                                             
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!-- External CSS -->
+<link rel="stylesheet" href="css/hodDashboard.css">
+<link rel="stylesheet" href="../animations/css/reloader.css">
+<link rel="stylesheet" href="css/studentLeave.css">
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+
+<!-- Firebase Config File -->
+<script src="../js/configFirebase.js"></script>
+
+<!--External JS -->
+<script src="../animations/js/reloader.js"></script>
+<script src="js/hodDashboard.js"></script>
+<script src="js/studentLeave.js"></script>
+
+
+</html>
