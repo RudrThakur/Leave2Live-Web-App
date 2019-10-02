@@ -1,4 +1,4 @@
-////////////////////////////////JS Handler for studentLeave.html
+////////////////////////////////JS Handler for studentOnduty.html
 // Rudr Thakur
 
 ///////////////////////////////////// GLOBALS /////////////////////////////////////////////
@@ -49,7 +49,7 @@ function openCity(evt, cityName) {
 studentLeaveRequestsRef = firebase.database().ref("requests");
 
 
-////////////////////////// NEW REQUESTS (LEAVE) - STUDENTS ///////////////////////////////////
+////////////////////////// NEW REQUESTS - STUDENTS ///////////////////////////////////
 studentLeaveRequestsRef.orderByChild("status").equalTo("submitted(HOD)").once("value", function(snapshot) {
     snapshot.forEach(function(child) {
     
@@ -69,7 +69,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("submitted(HOD)").once("v
     var tableDayMode = tableData.daymode;
     var tableStudentName;
 
-    if(tableRequestType == "leave"){
+    if(tableRequestType == "onduty"){
         ////////////////////////////////Join Requests table and Students table using Register Number
 
         //reference to table - students
@@ -90,7 +90,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("submitted(HOD)").once("v
                 content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
                 content += '<td>' + tableDayMode + '</td>';//Column Day Mode
                 content += '</tr>';
-                $('#students-leave-table-new').append(content);
+                $('#students-onduty-table-new').append(content);
         
             });
         }
@@ -98,7 +98,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("submitted(HOD)").once("v
     });
 });
 
-////////////////////////// APPROVED REQUESTS (LEAVE) - STUDENTS ///////////////////////////////////
+////////////////////////// APPROVED REQUESTS - STUDENTS ///////////////////////////////////
 studentLeaveRequestsRef.orderByChild("status").equalTo("approved(HOD)").once("value", function(snapshot) {
     snapshot.forEach(function(child) {
     
@@ -118,7 +118,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("approved(HOD)").once("va
     var tableDayMode = tableData.daymode;
     var tableStudentName;
 
-    if(tableRequestType == "leave"){
+    if(tableRequestType == "onduty"){
     ////////////////////////////////Join Requests table and Students table using Register Number
 
     //reference to table - students
@@ -139,7 +139,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("approved(HOD)").once("va
             content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
             content += '<td>' + tableDayMode + '</td>';//Column Day Mode
             content += '</tr>';
-            $('#students-leave-table-approved').append(content);
+            $('#students-onduty-table-approved').append(content);
      
             });
         }
@@ -166,7 +166,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("cancelled(HOD)").once("v
     var tableDayMode = tableData.daymode;
     var tableStudentName;
 
-    if(tableRequestType == "leave"){
+    if(tableRequestType == "onduty"){
         ////////////////////////////////Join Requests table and Students table using Register Number
 
         //reference to table - students
@@ -187,7 +187,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("cancelled(HOD)").once("v
             content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
             content += '<td>' + tableDayMode + '</td>';//Column Day Mode
             content += '</tr>';
-            $('#students-leave-table-cancelled').append(content);
+            $('#students-onduty-table-cancelled').append(content);
 
             });
         }
@@ -216,7 +216,7 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
 
     ////////////////////////////////Join Requests table and Students table using Register Number
 
-    if(tableRequestType == "leave"){
+    if(tableRequestType == "onduty"){
         
     //reference to table - students
     tableStudentsDataRef = firebase.database().ref("students");
@@ -236,7 +236,7 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
             content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
             content += '<td>' + tableDayMode + '</td>';//Column Day Mode
             content += '</tr>';
-            $('#students-leave-table-history').append(content);
+            $('#students-onduty-table-history').append(content);
      
             });
         }

@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Leave2Live - HOD Dashboard (Student Leave Requests)</title>
+  <title>Leave2Live - HOD Dashboard (Student On Duty Requests)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,8 +32,8 @@
                             <li class="dropdown active">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Student Requests&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Leave</a></li>
-                                    <li><a href="studentOnduty.html">On-Duty</a></li>
+                                    <li><a href="studentLeave.html">Leave</a></li>
+                                    <li><a href="#">On-Duty</a></li>
                                     <li><a href="#">Gate Pass</a></li>
                                 </ul>
                             </li>
@@ -52,10 +52,10 @@
 <div id="mainDiv" class="animate-bottom" style="display: none;">
 
     <!-- Student LEAVE Requests -->
-    <div class="container-fluid">   
+    <div class="container-fluid">  
         <center>
-        <h3 style="background-color: rgba(253, 167, 223, 0.541);color: black;font-family: 'Times New Roman', Times, serif;">Student LEAVE Requests</h3>
-        </center>
+        <h3 style="background-color: #dff9fb;color: black;font-family: 'Times New Roman', Times, serif;">Student ON DUTY Requests</h3>
+        </center> 
         <p>Switch between Request Categories:</p>
         
         <div class="tab">
@@ -68,7 +68,7 @@
         <div id="new-requests" class="tabcontent">
             <center><h4>NEW REQUESTS</h4></center>
             <hr>
-            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-new">
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-onduty-table-new">
                 <thead class="text-white" style="background-color:#fff;">
                 <tr>
                     <th>RequestId</th>
@@ -88,7 +88,7 @@
         <div id="approved-requests" class="tabcontent">
             <center><h4>APPROVED REQUESTS</h4></center>
             <hr>
-            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-approved">
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-onduty-table-approved">
                 <thead class="text-white" style="background-color:#fff;">
                 <tr>
                     <th>RequestId</th>
@@ -108,7 +108,7 @@
         <div id="cancelled-requests" class="tabcontent">
             <center><h4>CANCELLED REQUESTS</h4></center>
             <hr>
-            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-cancelled">
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-onduty-table-cancelled">
                 <thead class="text-white" style="background-color:#fff;">
                 <tr>
                     <th>RequestId</th>
@@ -128,7 +128,7 @@
         <div id="history-requests" class="tabcontent">
             <center><h4>HISTORY</h4></center>
             <hr>
-            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-history">
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-onduty-table-history">
                 <thead class="text-white" style="background-color:#fff;">
                 <tr>
                     <th>RequestId</th>
@@ -160,7 +160,7 @@
 <!-- External CSS -->
 <link rel="stylesheet" href="css/hodDashboard.css">
 <link rel="stylesheet" href="../animations/css/reloader.css">
-<link rel="stylesheet" href="css/studentLeave.css">
+<link rel="stylesheet" href="css/studentOnduty.css">
 
 <!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
@@ -171,7 +171,7 @@
 <!--External JS -->
 <script src="../animations/js/reloader.js"></script>
 <script src="js/hodDashboard.js"></script>
-<script src="js/studentLeave.js"></script>
+<script src="js/studentOnduty.js"></script>
 
 
 </html>
