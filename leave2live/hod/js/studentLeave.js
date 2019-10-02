@@ -69,29 +69,32 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("submitted(HOD)").once("v
     var tableDayMode = tableData.daymode;
     var tableStudentName;
 
-    ////////////////////////////////Join Requests table and Students table using Register Number
+    if(tableRequestType == "leave"){
+        ////////////////////////////////Join Requests table and Students table using Register Number
 
-    //reference to table - students
-    tableStudentsDataRef = firebase.database().ref("students");
+        //reference to table - students
+        tableStudentsDataRef = firebase.database().ref("students");
 
-    tableStudentsDataRef.child(tableRegisterNumber).once("value", function(snap){
+        tableStudentsDataRef.child(tableRegisterNumber).once("value", function(snap){
 
-            tableStudentName = snap.val().studentname;
+                tableStudentName = snap.val().studentname;
 
-            //Append acquired data to table
-            ///////////////////////////////Display Request Data in Request-Table
-            content += '<tr>';
-            content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-            content += '<td>' + tableRequestType + '</td>';//Column RequestType
-            content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
-            content += '<td>' + tableStudentName + '</td>';//Column StudentName
-            content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
-            content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-            content += '<td>' + tableDayMode + '</td>';//Column Day Mode
-            content += '</tr>';
-            $('#students-leave-table-new').append(content);
-     
-        });
+                //Append acquired data to table
+                ///////////////////////////////Display Request Data in Request-Table
+                content += '<tr>';
+                content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+                // content += '<td>' + tableRequestType + '</td>';//Column RequestType
+                content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
+                content += '<td>' + tableStudentName + '</td>';//Column StudentName
+                content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+                content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+                content += '<td>' + tableDayMode + '</td>';//Column Day Mode
+                content += '</tr>';
+                $('#students-leave-table-new').append(content);
+        
+            });
+        }
+
     });
 });
 
@@ -128,7 +131,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("approved(HOD)").once("va
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
             content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-            content += '<td>' + tableRequestType + '</td>';//Column RequestType
+            // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
             content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
@@ -161,7 +164,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("cancelled(HOD)").once("v
     var tableDayMode = tableData.daymode;
     var tableStudentName;
 
-    if(tableRequestType == "Leave"){
+    if(tableRequestType == "leave"){
         ////////////////////////////////Join Requests table and Students table using Register Number
 
         //reference to table - students
@@ -175,7 +178,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("cancelled(HOD)").once("v
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
             content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-            content += '<td>' + tableRequestType + '</td>';//Column RequestType
+            // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
             content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
@@ -183,7 +186,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("cancelled(HOD)").once("v
             content += '<td>' + tableDayMode + '</td>';//Column Day Mode
             content += '</tr>';
             $('#students-leave-table-cancelled').append(content);
-            
+
             });
         }
     });
@@ -211,6 +214,8 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
 
     ////////////////////////////////Join Requests table and Students table using Register Number
 
+    if(tableRequestType == "leave"){
+        
     //reference to table - students
     tableStudentsDataRef = firebase.database().ref("students");
 
@@ -222,7 +227,7 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
             content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-            content += '<td>' + tableRequestType + '</td>';//Column RequestType
+            // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
             content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
@@ -231,6 +236,8 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
             content += '</tr>';
             $('#students-leave-table-history').append(content);
      
-        });
+            });
+        }
     });
+
 });
