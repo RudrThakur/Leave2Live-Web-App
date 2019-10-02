@@ -41,7 +41,7 @@ body {font-family: "Lato", sans-serif;}
 .tabcontent {
     float: left;
     padding: 0px 12px;
-    border: 1px solid #ccc;
+    border: none;
     width: 90%;
     border-left: none;
     height: 300px;

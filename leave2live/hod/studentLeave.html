@@ -60,12 +60,13 @@
         <button class="tablinks" onclick="openCity(event, 'new-requests')" id="defaultOpen">New Requests</button>
         <button class="tablinks" onclick="openCity(event, 'approved-requests')">Approved Requests</button>
         <button class="tablinks" onclick="openCity(event, 'cancelled-requests')">Cancelled Requests</button>
+        <button class="tablinks" onclick="openCity(event, 'history-requests')">History</button>
         </div>
         
         <div id="new-requests" class="tabcontent">
             <center><h4>NEW REQUESTS</h4></center>
             <hr>
-            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="new-requests-table">
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-new">
                 <thead class="text-white" style="background-color:#fff;">
                 <tr>
                     <th>RequestId</th>
@@ -83,13 +84,63 @@
         </div>
         
         <div id="approved-requests" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p> 
+            <center><h4>APPROVED REQUESTS</h4></center>
+            <hr>
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-approved">
+                <thead class="text-white" style="background-color:#fff;">
+                <tr>
+                    <th>RequestId</th>
+                    <th>Request Type</th>
+                    <th>Register Number</th>
+                    <th>Student Name</th>
+                    <th>Request Date</th>
+                    <th>Reason Category</th>
+                    <th>Day Mode</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
         
         <div id="cancelled-requests" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
+            <center><h4>CANCELLED REQUESTS</h4></center>
+            <hr>
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-cancelled">
+                <thead class="text-white" style="background-color:#fff;">
+                <tr>
+                    <th>RequestId</th>
+                    <th>Request Type</th>
+                    <th>Register Number</th>
+                    <th>Student Name</th>
+                    <th>Request Date</th>
+                    <th>Reason Category</th>
+                    <th>Day Mode</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="history-requests" class="tabcontent">
+            <center><h4>HISTORY</h4></center>
+            <hr>
+            <table class="table table-bordered  table-responsive w-100 d-block d-md-table" id="students-leave-table-history">
+                <thead class="text-white" style="background-color:#fff;">
+                <tr>
+                    <th>RequestId</th>
+                    <th>Request Type</th>
+                    <th>Register Number</th>
+                    <th>Student Name</th>
+                    <th>Request Date</th>
+                    <th>Reason Category</th>
+                    <th>Day Mode</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>  
 </div>
