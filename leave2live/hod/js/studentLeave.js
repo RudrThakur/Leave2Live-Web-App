@@ -8,24 +8,20 @@ var rowInd = 0, rowIndInProcess = 0, rowIndCancelled = 0, rowIndHistory = 0;
 
 ///////////  Session Handling ////////////////////
 
-// if (!localStorage.getItem("staffemail")) {
-//     window.location.href = '../login.html';
+if (!localStorage.getItem("hodemail")) {
+    window.location.href = '../login.html';
 
-// } 
-// else {
+} 
+else {
    
-    //////////////////////////////////// Loading Student Profile ///////////////////////////
-
+    //////////////////////////////////// Loading HOD Profile ///////////////////////////
 
     //Add values to Staff Profile Modal 
-    // $("#profile-staff-name").html(localStorage.getItem("staffname"));
-    // $("#profile-staff-id").html(localStorage.getItem("staffid"));
-    // $("#profile-staff-email").html(localStorage.getItem("staffemail"));
-    // $("#profile-staff-department").html(localStorage.getItem("staffdepartment"));
-    // $("#profile-staff-phone").html(localStorage.getItem("staffphone"));
-    // $("#profile-staff-isclassteacherof").html(localStorage.getItem("staffisclassteacherof"));
-    // $("#profile-staff-isacoof").html(localStorage.getItem("staffisacoof"));
-// }
+    $("#profile-hod-email").html(localStorage.getItem("hodemail"));
+    $("#profile-hod-name").html(localStorage.getItem("hodname"));
+    $("#profile-hod-phone").html(localStorage.getItem("hodphone"));
+    $("#profile-hod-department").html(localStorage.getItem("hoddepartment"));
+}
 
 
 // Get the element with id="defaultOpen" and click on it
@@ -82,7 +78,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("submitted(HOD)").once("v
                 //Append acquired data to table
                 ///////////////////////////////Display Request Data in Request-Table
                 content += '<tr>';
-                content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+                content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
                 // content += '<td>' + tableRequestType + '</td>';//Column RequestType
                 content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
                 content += '<td>' + tableStudentName + '</td>';//Column StudentName
@@ -131,7 +127,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("approved(HOD)").once("va
             //Append acquired data to table
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
-            content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+            content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
             // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
@@ -179,7 +175,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("cancelled(HOD)").once("v
             //Append acquired data to table
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
-            content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+            content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
             // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
@@ -228,7 +224,7 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
             //Append acquired data to table
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
-            content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+            content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
             // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName

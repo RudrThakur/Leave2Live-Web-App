@@ -82,7 +82,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("submitted(HOD)").once("v
                 //Append acquired data to table
                 ///////////////////////////////Display Request Data in Request-Table
                 content += '<tr>';
-                content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+                content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
                 // content += '<td>' + tableRequestType + '</td>';//Column RequestType
                 content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
                 content += '<td>' + tableStudentName + '</td>';//Column StudentName
@@ -131,7 +131,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("approved(HOD)").once("va
             //Append acquired data to table
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
-            content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+            content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
             // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
@@ -179,7 +179,7 @@ studentLeaveRequestsRef.orderByChild("status").equalTo("cancelled(HOD)").once("v
             //Append acquired data to table
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
-            content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+            content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
             // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
@@ -228,7 +228,7 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
             //Append acquired data to table
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
-            content += '<td>' + '<a href="staffDashboardCompleteRequestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+            content += '<td>' + '<a href="hodDashboardCompleteDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
             // content += '<td>' + tableRequestType + '</td>';//Column RequestType
             content += '<td>' + tableRegisterNumber + '</td>';//Column RegisterNumber
             content += '<td>' + tableStudentName + '</td>';//Column StudentName
