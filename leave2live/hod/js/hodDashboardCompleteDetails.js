@@ -137,3 +137,59 @@ $("#hod-approve-btn").click(function(){
 
     });
 });
+
+//Deny Request
+$("#hod-deny-btn").click(function(){
+    
+    var getCurrentStatusRef = firebase.database().ref("requests/" + queryRequestId);
+    var currentStatus;
+    getCurrentStatusRef.once('value').then(function(snapshot){
+    currentStatus = snapshot.child("status").val();
+    });
+
+    $("#status-details").hide();
+    $("#updating-message").show();
+
+    if (currentStatus == "submitted("+ localStorage.getItem("staffRole") + ")" ||
+        currentStatus == "cancelled("+ localStorage.getItem("staffRole") + ")"){
+
+        setTimeout(function(){
+            //Set the status of the Request as CANCELLED
+            if(localStorage.getItem("staffRole") == "CLASS TEACHER")
+                detailRequestRef.child(queryRequestId).update({status : "cancelled(ACO)"});
+            if(localStorage.getItem("staffRole") == "ACO")
+                detailRequestRef.child(queryRequestId).update({status : "cancelled(HOD)"});
+            //Show Success Message
+            $("#action-success-message").fadeIn(1000);
+        }, 5000);
+    
+        //Hide after 5 seconds
+        setTimeout(function() { 
+            $("#updating-message").hide();
+            $("#action-success-message").fadeOut(); 
+        }, 5000);
+
+        //Hide after 5 seconds
+        setTimeout(function() { 
+            //reload the page
+            location.reload();
+            $("#status-details").show();
+        }, 7000)
+
+    }
+
+    else{
+        setTimeout(function() { 
+            $("#updating-message").hide();
+            $("#action-failure-message").fadeIn(); 
+        }, 5000);
+      
+        //Hide after 5 seconds
+        setTimeout(function() { 
+            //reload the page
+            $("#action-failure-message").fadeOut();
+            $("#status-details").show();
+        }, 7000)
+    }
+    
+});
