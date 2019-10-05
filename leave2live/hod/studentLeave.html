@@ -39,8 +39,8 @@
                             </li>
                             <li><a href="#">Applications</a></li>
                             <li><a href="#">History</a></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="javascript:void(0)" data-toggle="modal" data-target="#hod-profile">Profile</a></li>
+                            <li><a href="javascript:logout()">Logout</a></li>
                         </ul>
             </ul>
         </div>
@@ -148,6 +148,43 @@
         </div>
     </div>  
 </div>
+
+ <!-- HOD Profile Modal -->
+
+<!-- The Modal -->
+<div class="modal fade" id="hod-profile">
+    <div class="modal-dialog">
+      <div class="modal-content bg-white text-dark">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="margin: 0 auto;">PROFILE DETAILS</h4>
+          <button type="button" class="close text-dark" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body" style="background-color: white;">
+          <ul style="color: black;list-style: none;">
+            <!-- JS Handler - index.js -->
+            <li><strong>Name</strong> : <span id="profile-hod-name"></span></li>
+            <li><strong>Staff Id</strong> : <span id="profile-hod-staffid"></span></li>
+            <li><strong>Email</strong> : <span id="profile-hod-email"></span></li>
+            <li><strong>Department</strong> : <span id="profile-hod-department"></span></li>
+            <li><strong>Phone</strong> : <span id="profile-hod-phone"></span></li>
+            <li><strong>Is Class Teacher Of</strong> : <span id="profile-hod-isclassteacherof"></span></li>
+            <li><strong>Is ACO Of</strong> : <span id="profile-hod-isacoof"></span></li>
+          </ul>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!-- End of Student Profile Modal -->  
 
 </body>
 

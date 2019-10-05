@@ -21,17 +21,14 @@ else {
    
     //////////////////////////////////// Loading HOD Profile ///////////////////////////
 
-
-    //Add values to Profile Modal 
-    // $("#profile-register-number").html(localStorage.getItem("registernumber"));
-    // $("#profile-student-name").html(localStorage.getItem("studentname"));
-    // $("#profile-dob").html(localStorage.getItem("dob"));
-    // $("#profile-department").html(localStorage.getItem("department"));
-    // $("#profile-classandsec").html(localStorage.getItem("classandsec"));
-    // $("#profile-arrearcount").html(localStorage.getItem("arrearcount"));
-    // $("#profile-email").html(localStorage.getItem("email"));
-    // $("#profile-phone").html(localStorage.getItem("phone"));
-    // $("#profile-leave-count").html(localStorage.getItem("leavecount"));
+    //Add values to HOD Profile Modal 
+    $("#profile-hod-email").html(localStorage.getItem("hodemail"));
+    $("#profile-hod-name").html(localStorage.getItem("hodname"));
+    $("#profile-hod-phone").html(localStorage.getItem("hodphone"));
+    $("#profile-hod-department").html(localStorage.getItem("hoddepartment"));
+    $("#profile-hod-staffid").html(localStorage.getItem("hodstaffid"));
+    $("#profile-hod-isacoof").html(localStorage.getItem("hodisacoof"));
+    $("#profile-hod-isclassteacherof").html(localStorage.getItem("hodisclassteacherof"));
 
 }
 

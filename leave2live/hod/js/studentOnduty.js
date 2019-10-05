@@ -8,24 +8,24 @@ var rowInd = 0, rowIndInProcess = 0, rowIndCancelled = 0, rowIndHistory = 0;
 
 ///////////  Session Handling ////////////////////
 
-// if (!localStorage.getItem("staffemail")) {
-//     window.location.href = '../login.html';
+if (!localStorage.getItem("hodemail")) {
+    window.location.href = '../login.html';
 
-// } 
-// else {
-   
-    //////////////////////////////////// Loading Student Profile ///////////////////////////
+} 
+else {
 
 
-    //Add values to Staff Profile Modal 
-    // $("#profile-staff-name").html(localStorage.getItem("staffname"));
-    // $("#profile-staff-id").html(localStorage.getItem("staffid"));
-    // $("#profile-staff-email").html(localStorage.getItem("staffemail"));
-    // $("#profile-staff-department").html(localStorage.getItem("staffdepartment"));
-    // $("#profile-staff-phone").html(localStorage.getItem("staffphone"));
-    // $("#profile-staff-isclassteacherof").html(localStorage.getItem("staffisclassteacherof"));
-    // $("#profile-staff-isacoof").html(localStorage.getItem("staffisacoof"));
-// }
+    //////////////////////////////////// Loading HOD Profile ///////////////////////////
+
+    //Add values to HOD Profile Modal 
+    $("#profile-hod-email").html(localStorage.getItem("hodemail"));
+    $("#profile-hod-name").html(localStorage.getItem("hodname"));
+    $("#profile-hod-phone").html(localStorage.getItem("hodphone"));
+    $("#profile-hod-department").html(localStorage.getItem("hoddepartment"));
+    $("#profile-hod-staffid").html(localStorage.getItem("hodstaffid"));
+    $("#profile-hod-isacoof").html(localStorage.getItem("hodisacoof"));
+    $("#profile-hod-isclassteacherof").html(localStorage.getItem("hodisclassteacherof"));
+}
 
 
 // Get the element with id="defaultOpen" and click on it
@@ -243,3 +243,11 @@ studentLeaveRequestsRef.once("value", function(snapshot) {
     });
 
 });
+
+//When Logout button is Clicked
+function logout(){
+
+    localStorage.clear();
+    //Go back to Login Page
+    window.location.href ='../login.html';
+};

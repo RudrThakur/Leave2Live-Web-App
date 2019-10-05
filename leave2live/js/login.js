@@ -214,8 +214,10 @@ else{
                 localStorage.setItem("hodemail", hodData.hodemail);
                 localStorage.setItem("hodname", hodData.hodname);
                 localStorage.setItem("hodphone", hodData.hodphone);
-                localStorage.setItem("hoddepartment", hodData.hodDepartment);
-
+                localStorage.setItem("hoddepartment", hodData.hoddepartment);
+                localStorage.setItem("hodstaffid", hodData.hodstaffid);
+                localStorage.setItem("hodisacoof", hodData.isacoof);
+                localStorage.setItem("hodisclassteacherof", hodData.isclassteacherof);
                 
                 //Redirect to HOD Dashboard
                 window.location.href = 'hod/hodDashboard.html';
