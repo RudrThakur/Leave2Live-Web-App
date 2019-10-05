@@ -151,6 +151,29 @@
 <button type="button" class="btn btn-danger" id="back-btn">Back</button>
 </div>
 
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <!-- Approve -->
+        <button type="button" class="btn btn-success" id="hod-approve-btn" style="margin: 20px;"><i class="fa fa-check" style="font-size:20px;color:white"></i>&nbsp;Approve</button>
+
+        <!-- Deny -->
+        <button type="button" class="btn btn-danger" id="hod-deny-btn"><i class="fa fa-times" style="font-size:20px;color:white"></i>&nbsp;Deny</button>
+    
+        <div class="form-group">
+            <label for="hod-remarks">Remarks</label>
+            <textarea class="form-control" id="hod-remarks" rows="3" maxlength="100" placeholder="Please Enter Remarks"></textarea>
+        </div>
+    </div>
+
+    <!-- Action Messages -->
+    <div class="alert alert-success" id="action-success-message" style="display: none;">
+        <strong>Success!</strong> The Request was Successfully Updated
+    </div>
+    <div class="alert alert-danger" id="action-failure-message" style="display: none;">
+        <strong>Failure!</strong> Sorry Something went Wrong
+    </div>
+    
+</div>
 <!-- End of Request Details Modal -->
 
 </body>
@@ -164,8 +187,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <!-- External CSS -->
-<link rel="stylesheet" href="css/hodDashboard.css">
 <link rel="stylesheet" href="../animations/css/reloader.css">
+<link rel="stylesheet" href="css/hodDashboardCompleteDetails.css">
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Firebase CDN -->
 <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>

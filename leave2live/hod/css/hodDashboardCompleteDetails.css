@@ -1,0 +1,15 @@
+/* Author : Rudr Thakur */
+/* External CSS : hodDashboardCompleteDetails.css */
+/* Related HTML :  hodDashboardCompleteDetails.html */
+
+/* Action Buttons */
+.action-buttons{
+   position: absolute;
+   right: 0;
+   top: 0;
+   margin: 5%;
+}
+
+textarea {
+   resize: none;
+}
