@@ -4,3 +4,10 @@ thead{
 .card:hover{
 	box-shadow:4px 4px 4px 4px #DBC4E0;
 }
+
+#staff-remarks-box{
+	margin: 2%;
+}
+#staff-remarks{
+	resize: none;
+}
