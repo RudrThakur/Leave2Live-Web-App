@@ -92,6 +92,9 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
         $("#attendance-details").html(detailRequestData.attendance);
         $("#leave-count-details").html(detailRequestData.leavecount);
         $("#status-details").html(detailRequestData.status);
+        $("#classteacher-remarks-details").html(detailRequestData.classteacherremarks);
+        $("#aco-remarks-details").html(detailRequestData.acoremarks);
+        $("#hod-remarks-details").html(detailRequestData.hodremarks);
  
     });
 });
