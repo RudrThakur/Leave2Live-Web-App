@@ -90,7 +90,7 @@ $("#hod-approve-btn").click(function(){
     var getCurrentStatusRef = firebase.database().ref("requests/" + queryRequestId);
     var currentStatus;
     var hodRemarks = $("#hod-remarks").val();
-    
+
     getCurrentStatusRef.once('value').then(function(snapshot){
 
         currentStatus = snapshot.child("status").val();
@@ -198,3 +198,11 @@ $("#hod-deny-btn").click(function(){
     });
     
 });
+
+//When Logout button is Clicked
+function logout(){
+
+    localStorage.clear();
+    //Go back to Login Page
+    window.location.href ='../login.html';
+};
