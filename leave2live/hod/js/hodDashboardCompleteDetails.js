@@ -89,80 +89,27 @@ $("#hod-approve-btn").click(function(){
 
     var getCurrentStatusRef = firebase.database().ref("requests/" + queryRequestId);
     var currentStatus;
-    getCurrentStatusRef.once('value').then(function(snapshot){
-    currentStatus = snapshot.child("status").val();
-
-    $("#status-details").hide();
-    $("#updating-message").show();
-
-    if(currentStatus == "submitted(HOD)"){
-
-    setTimeout(function(){
-        //Set the status of the Request as SUBMITTED
-
-            detailRequestRef.child(queryRequestId).update({status : "approved(HOD)"});
-  
-        //Show Success Message
-        $("#action-success-message").fadeIn(1000);
-    }, 5000);
-
-    //Hide after 5 seconds
-    setTimeout(function() { 
-        $("#updating-message").hide();
-        $("#action-success-message").fadeOut(); 
-    }, 5000);
-
-    //Hide after 5 seconds
-    setTimeout(function() { 
-        //reload the page
-        location.reload();
-        $("#status-details").show();
-    }, 7000);
-
-    }
-
-    else{
-        setTimeout(function() { 
-            $("#updating-message").hide();
-            $("#action-failure-message").fadeIn(); 
-        }, 5000);
-      
-        //Hide after 5 seconds
-        setTimeout(function() { 
-            //reload the page
-            $("#action-failure-message").fadeOut();
-            $("#status-details").show();
-        }, 7000)
-    }
-
-    });
-});
-
-//Deny Request
-$("#hod-deny-btn").click(function(){
+    var hodRemarks = $("#hod-remarks").val();
     
-    var getCurrentStatusRef = firebase.database().ref("requests/" + queryRequestId);
-    var currentStatus;
     getCurrentStatusRef.once('value').then(function(snapshot){
-    currentStatus = snapshot.child("status").val();
-    });
 
-    $("#status-details").hide();
-    $("#updating-message").show();
+        currentStatus = snapshot.child("status").val();
 
-    if (currentStatus == "submitted("+ localStorage.getItem("staffRole") + ")" ||
-        currentStatus == "cancelled("+ localStorage.getItem("staffRole") + ")"){
+        $("#status-details").hide();
+        $("#updating-message").show();
+
+        if(currentStatus == "submitted(HOD)" &&
+           hodRemarks != ""){
 
         setTimeout(function(){
-            //Set the status of the Request as CANCELLED
-            if(localStorage.getItem("staffRole") == "CLASS TEACHER")
-                detailRequestRef.child(queryRequestId).update({status : "cancelled(ACO)"});
-            if(localStorage.getItem("staffRole") == "ACO")
-                detailRequestRef.child(queryRequestId).update({status : "cancelled(HOD)"});
+            //Set the status of the Request as SUBMITTED
+
+                detailRequestRef.child(queryRequestId).update({status : "approved(HOD)", hodremarks : hodRemarks});
+    
             //Show Success Message
             $("#action-success-message").fadeIn(1000);
         }, 5000);
-    
+
         //Hide after 5 seconds
         setTimeout(function() { 
             $("#updating-message").hide();
@@ -174,22 +121,80 @@ $("#hod-deny-btn").click(function(){
             //reload the page
             location.reload();
             $("#status-details").show();
-        }, 7000)
+        }, 7000);
 
-    }
+        }
 
-    else{
-        setTimeout(function() { 
-            $("#updating-message").hide();
-            $("#action-failure-message").fadeIn(); 
-        }, 5000);
-      
-        //Hide after 5 seconds
-        setTimeout(function() { 
-            //reload the page
-            $("#action-failure-message").fadeOut();
-            $("#status-details").show();
-        }, 7000)
-    }
+        else{
+            setTimeout(function() { 
+                $("#updating-message").hide();
+                $("#action-failure-message").fadeIn(); 
+            }, 5000);
+        
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                //reload the page
+                $("#action-failure-message").fadeOut();
+                $("#status-details").show();
+            }, 7000)
+        }
+
+    });
+});
+
+//Deny Request
+$("#hod-deny-btn").click(function(){
+    
+    var getCurrentStatusRef = firebase.database().ref("requests/" + queryRequestId);
+    var currentStatus;
+    var hodRemarks = $("#hod-remarks").val();
+    
+    getCurrentStatusRef.once('value').then(function(snapshot){
+
+        currentStatus = snapshot.child("status").val();
+
+        $("#status-details").hide();
+        $("#updating-message").show();
+
+        if (currentStatus == "submitted(HOD)" &&
+            hodRemarks != ""){
+
+            setTimeout(function(){
+                //Set the status of the Request as CANCELLED
+                    detailRequestRef.child(queryRequestId).update({status : "cancelled(HOD)", hodremarks : hodRemarks});
+                //Show Success Message
+                $("#action-success-message").fadeIn(1000);
+            }, 5000);
+        
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#updating-message").hide();
+                $("#action-success-message").fadeOut(); 
+            }, 5000);
+
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                //reload the page
+                location.reload();
+                $("#status-details").show();
+            }, 7000)
+
+        }
+
+        else{
+            setTimeout(function() { 
+                $("#updating-message").hide();
+                $("#action-failure-message").fadeIn(); 
+            }, 5000);
+        
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                //reload the page
+                $("#action-failure-message").fadeOut();
+                $("#status-details").show();
+            }, 7000)
+        }
+
+    });
     
 });
