@@ -2,9 +2,92 @@
 <!-- Details of a Request is expanded using this modal -->
 <!-- Rudr Thakur -->
 
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+    <!-- Title -->
+    <title>Students App</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Leave2Live</a>
+      <!-- Navbar Toggler Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collapsible Navbar -->
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Applications</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">My Requests</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#student-profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gatepass</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#">Feedback</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="logout-btn">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Navbar End -->     
+
+  <!-- Student Profile Modal -->
+
+  <!-- The Modal -->
+  <div class="modal fade" id="student-profile">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-white">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="margin: 0 auto;">PROFILE DETAILS</h4>
+          <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body" style="background-color: white;">
+          <ul style="color: black;list-style: none;">
+            <!-- JS Handler - index.js -->
+            <li><strong>Register Number</strong> : <span id="profile-register-number"></span></li>
+            <li><strong>Student Name</strong> : <span id="profile-student-name"></span></li>
+            <li><strong>Date of Birth</strong> : <span id="profile-dob"></span></li>
+            <li><strong>Department</strong> : <span id="profile-department"></span></li>
+            <li><strong>Class & Section</strong> : <span id="profile-classandsec"></span></li>
+            <li><strong>Number of Arrears</strong> : <span id="profile-arrearcount"></span></li>
+            <li><strong>Email</strong> : <span id="profile-email"></span></li>
+            <li><strong>Phone</strong> : <span id="profile-phone"></span></li>
+            <li><strong>Leave Count Per Month</strong> : <span id="profile-leave-count"></span></li>
+          </ul>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End of Student Profile Modal -->
+
  <!-- Modal Header -->
  <div class="modal-header">
-        <h4 class="modal-title" style="margin: 0 auto;">REQUEST DETAILS</h4>
+        <h2 class="modal-title" style="margin: 0 auto;">REQUEST DETAILS</h2>
 </div>
 
 <!-- Modal body -->
@@ -79,6 +162,20 @@
                             <td id="leave-count-details"></td>
                         </tr>
                     </tbody>
+                        <thead class="text-primary">
+                            <tr>
+                            <th>Remarks of Class Teacher</th>
+                            <th>Remarks of ACO</th>
+                            <th>Remarks of HOD</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="classteacher-remarks-details"></td>
+                            <td id="aco-remarks-details"></td>
+                            <td id="hod-remarks-details"></td>
+                        </tr>
+                    </tbody>
                     <thead class="text-danger text-center">
                         <tr>
                             <th colspan="3" rowspan="" headers="" scope="">Status</th>
@@ -95,6 +192,19 @@
         </div> 
     </div>
 </div>
+<br><hr>
+<!-- Attachments -->
+<div id="attachment-box">
+
+    <h5>Attach Proofs -</h5>
+    <br>
+    <label class="upload-group">
+        Upload File
+        <input type="file" id="proof-file">
+    </label><br><br>
+    <button type="button" class="btn btn-primary" onclick="uploadProof()" style="display: none;" id="btn-proof-upload">Submit</button>
+</div>
+
 <!-- Modal footer -->
 <div class="modal-footer">
     <button type="button" class="btn btn-danger" id="back-btn">Back</button>
@@ -111,6 +221,7 @@
 <!-- External CSS -->
 <link rel="stylesheet" href="css/requestDetails.css">
 <link rel="stylesheet" type="text/css" href="animations/css/progressText.css">
+<link rel="stylesheet" href="css/index.css">
 
 <!-- Bootstrap CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">

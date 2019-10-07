@@ -4,3 +4,7 @@ thead{
 .card:hover{
 	box-shadow:4px 4px 4px 4px #DBC4E0;
 }
+
+#attachment-box{
+	margin: 2%;
+}
