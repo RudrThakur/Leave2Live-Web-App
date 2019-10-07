@@ -5,7 +5,6 @@
 ////////////////////////////////////////////// GLOBALS /////////////////////////////////////////////
 var selectedFile;
 var currentRequestId;
-
 ////////////////////////////////////////////// Functions ///////////////////////////////////////////
 
 //function to reverse a date
@@ -79,7 +78,21 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
         $("#classteacher-remarks-details").html(detailRequestData.classteacherremarks);
         $("#aco-remarks-details").html(detailRequestData.acoremarks);
         $("#hod-remarks-details").html(detailRequestData.hodremarks);
- 
+
+        proofFileRef = firebase.database().ref("studentproofs");
+        proofFileRef.on("value", function(proof){
+
+          proof.forEach(function(fileURL){
+
+            var currentFile = fileURL.val();
+            if (currentFile.requestid == currentRequestId){
+              var displayProofString = "Click this link to preview";
+              $("#file-proof").html(displayProofString.link(currentFile.url));
+              $("#btn-proof-upload").attr("disabled", "true");
+              $("#proof-upload-error").show();
+            }
+          });
+        });
     });
 });
  

@@ -162,12 +162,12 @@
                             <td id="leave-count-details"></td>
                         </tr>
                     </tbody>
-                        <thead class="text-primary">
-                            <tr>
-                            <th>Remarks of Class Teacher</th>
-                            <th>Remarks of ACO</th>
-                            <th>Remarks of HOD</th>
-                            </tr>
+                    <thead class="text-primary">
+                      <tr>
+                        <th>Remarks of Class Teacher</th>
+                        <th>Remarks of ACO</th>
+                        <th>Remarks of HOD</th>
+                      </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -187,6 +187,16 @@
                             </td>
                         </tr>
                     </tbody>
+                    <thead class="text-danger text-center">
+                      <tr>
+                          <th colspan="3" rowspan="" headers="" scope="">Attached Proofs</th>
+                      </tr>
+                  </thead>
+                  <tbody class="text-center">
+                      <tr>
+                          <td colspan="3" id="file-proof" style="font-size: 10px;"></td>
+                      </tr>
+                  </tbody>
                 </table> 
             </div>
         </div> 
@@ -202,6 +212,7 @@
         Upload File
         <input type="file" id="proof-file">
     </label><br><br>
+    <span class="error" id="proof-upload-error" style="display: none;">Proof is already attached</span>
     <button type="button" class="btn btn-primary" onclick="uploadProof()" style="display: none;" id="btn-proof-upload">Submit</button>
 </div>
 
