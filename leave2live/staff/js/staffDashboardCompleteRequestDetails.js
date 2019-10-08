@@ -1,6 +1,11 @@
 //////////////// JS Handler for requestDetails.html
 // Rudr Thakur
 
+
+///////////////////////////////////////////// GLOBALS /////////////////////////////////////////////////
+
+var currentRequestId;
+
 /////////////////  Session Handling ////////////////////
 
 if (!localStorage.getItem("staffemail")) {
@@ -77,6 +82,7 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
 
         ///////////////////////////Display Data in the Request Details Modal
 
+        currentRequestId = child.key;
         $("#requestid-details").html(child.key);
         $("#request-type-details").html(detailRequestData.requesttype);
         $("#register-number-details").html(detailRequestData.registernumber);
@@ -95,6 +101,19 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
         $("#classteacher-remarks-details").html(detailRequestData.classteacherremarks);
         $("#aco-remarks-details").html(detailRequestData.acoremarks);
         $("#hod-remarks-details").html(detailRequestData.hodremarks);
+
+        proofFileRef = firebase.database().ref("studentproofs");
+        proofFileRef.on("value", function(proof){
+
+          proof.forEach(function(fileURL){
+
+            var currentFile = fileURL.val();
+            if (currentFile.requestid == currentRequestId){
+              var displayProofString = "Click this link to preview";
+              $("#file-proof").html(displayProofString.link(currentFile.url));
+            }
+          });
+        });
  
     });
 });
