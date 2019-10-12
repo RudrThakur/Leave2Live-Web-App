@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <!-- Head -->
 <head>
-	<title>Leave form</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/staffleaveform.css">
-
+  <title>Leave2Live - Staff Section</title>
+  <!-- End of Title -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<!-- End of Head -->
+<body onload="pageReloadFunction()" style="margin:0;">
+
+<nav class="navbar navbar-light navbar-expand-md" style="background-color: #0a3d62;">
+  <a class="navbar-brand" href="#">LEAVE2LIVE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="staffDashboard.html">Dashboard</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="javascript:void(0)">Applications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#staff-profile" href="#">Profile</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="#">History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Feedback</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="logout-btn">Logout</a>
+      </li>
+    </ul>
+  </div>  
+</nav>
+<br>
+<!-- End of Navbar -->
+
+<!-- Loader Overlay -->
+<div id="loader"></div>   
+
+    <!--  Staff Dashboard mainDiv -->
+<div id="mainDiv" class="animate-bottom" style="display: none;">
+
 <div class="container-fluid jumbotron">
 	<div class="card col-lg-8 col-xl-8 m-auto">
 		<div class="card-header text-white text-center text-capitalize bg-info">
@@ -135,17 +174,76 @@
     </div>
   </div>
 </div>
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Staff Profile Modal -->
 
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" rel="stylesheet" />
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-	<script type="text/javascript" src="js/staffleaveform.js"></script>
-</body>
+<!-- The Modal -->
+<div class="modal fade" id="staff-profile">
+	<div class="modal-dialog">
+	  <div class="modal-content bg-white text-dark">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title" style="margin: 0 auto;">PROFILE DETAILS</h4>
+		  <button type="button" class="close text-dark" data-dismiss="modal">&times;</button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body" style="background-color: white;">
+		  <ul style="color: black;list-style: none;">
+			<!-- JS Handler - index.js -->
+			<li><strong>Staff Name</strong> : <span id="profile-staff-name"></span></li>
+			<li><strong>Staff Id</strong> : <span id="profile-staff-id"></span></li>
+			<li><strong>Staff Email</strong> : <span id="profile-staff-email"></span></li>
+			<li><strong>Staff Department</strong> : <span id="profile-staff-department"></span></li>
+			<li><strong>Phone</strong> : <span id="profile-staff-phone"></span></li>
+			<li><strong>Is Class Teacher Of</strong> : <span id="profile-staff-isclassteacherof"></span></li>
+			<li><strong>Is ACO Of</strong> : <span id="profile-staff-isacoof"></span></li>
+		  </ul>
+		</div>
+  
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		</div>
+  
+	  </div>
+	</div>
+  </div>
+  <!-- End of Student Profile Modal -->   
+  
+  <!-- End of Body -->
+  </body>
+
+
+<!-- Firebase Config File -->
+<script src="../js/configFirebase.js"></script>
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+
+<!-- External JS -->
+<script type="text/javascript" src="../animations/js/reloader.js"></script>
+<script type="text/javascript" src="js/staffleaveform.js"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Google Fonts API -->
+<link href="https://fonts.googleapis.com/css?family=Akronim|Emilys+Candy|Strait&display=swap" rel="stylesheet">
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<!-- External CSS -->
+<link rel="stylesheet" href="css/staffDashboard.css">
+<link rel="stylesheet" href="../animations/css/reloader.css">
+
 </html>
