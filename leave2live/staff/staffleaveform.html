@@ -33,7 +33,7 @@
         <a class="nav-link" href="#">Feedback</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="#" id="logout-btn">Logout</a>
+        <a class="nav-link" href="javascript:logout()" id="logout-btn">Logout</a>
       </li>
     </ul>
   </div>  
@@ -58,39 +58,39 @@
 				<div class="row form-group">
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="name">Name</label>
-				   	  <input type="text" name="" value="" class="form-control" placeholder="applicant name">
+				   	  <input type="text" id="staff-name" name="" value="" class="form-control" placeholder="applicant name">
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="empno">EMP_No</label>
-				   	  <input type="text" name="" value="" class="form-control" placeholder="emp no.">
+				   	  <input type="text" id="staff-id"name="" value="" class="form-control" placeholder="emp no.">
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="doj">DOJ</label>
-				   	  <input type="text" name="" value="" class="form-control" placeholder="enter doj">
+				   	  <input type="date" id="staff-doj" name="" value="" class="form-control">
 				   </div>
 			    </div>
 			    <div class="row form-group">
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="days">No. of days</label>
-				   	  <input type="number" name="" value="" min="1" max="60" class="form-control" placeholder="no of days">
+				   	  <input type="number" id="staff-noofdays" name="" value="" min="1" max="60" class="form-control" placeholder="no of days">
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="from">From</label>
-				   	  <input type="date" name="" value="" class="form-control" placeholder="from">
+				   	  <input type="date" id="staff-fromdate" name="" value="" class="form-control" placeholder="from">
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="to">To</label>
-				   	  <input type="date" name="" value="" class="form-control" placeholder="to">
+				   	  <input type="date" id="staff-todate" name="" value="" class="form-control" placeholder="to">
 				   </div>
 			    </div>
 			        <div class="row form-group">
 			    	   <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
 			    	   	  <label for="reason">Reason for leave</label>
-			    	   	  <input type="text" name="" value="" class="form-control" placeholder="describe your reason">
+			    	   	  <textarea rows="3" id="staff-reason" name="" value="" class="form-control" placeholder="describe your reason"></textarea>
 			    	   </div>
 			    	   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 			    	   	   	<label for="days">Nature of leave</label><br>
-			    	   	   	    <select name="teams" id="teams" multiple="multiple" class="form-control">
+			    	   	   	    <select name="teams" id="staff-leavenature" multiple="multiple" class="form-control">
 			    	   	   	       <option value="CL">CL</option>
 			    	   	   	       <option value="VL/EL">VL/EL</option>
 			    	   	   	       <option value="ML">ML</option>
@@ -104,18 +104,18 @@
 			    	<div class="row form-group">
 			    	   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 			    	   	  <label for="designation">Designation</label>
-			    	   	  <input type="text" name="" value="" class="form-control" placeholder="your designation">
+			    	   	  <input type="text" id="staff-designation" name="" value="" class="form-control" placeholder="your designation">
 			    	   </div>
 			    	   <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
 			    	   	  <label for="department">Department</label>
-			    	   	  <input type="text" name="" value="" class="form-control" placeholder="your department">
+			    	   	  <input type="text" id="staff-department" name="" value="" class="form-control" placeholder="your department">
 			    	   </div>
 			        </div>
 			       
 			        <div class="row form-group">
 			    	   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    	   		<label for="c.off claimed">Date worked for which C.OFF is claimed</label>
-			    	   		<input type="text" name="" value="" placeholder="mention here" class="form-control">
+			    	   		<input type="date" name="" value="" class="form-control">
 			    	   </div>
 			    	   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    	   		<label for="worknature">Nature of Work</label>
@@ -125,17 +125,17 @@
 			    	<div class="row form-group">
 			    		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    		    <label for="date" data-toggle="tooltip" data-placement="top" title="Recommended/Not Recommended">Date<i class="fa fa-question-circle" aria-hidden="true"></i></label>
-			    		    <input type="date" name="" value="" placeholder="mention here" class="form-control">
+			    		    <input type="date" id="staff-dateofapplication" name="" value="" placeholder="mention here" class="form-control">
 			    		</div>
 			    		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    			<label for="phone">Phone no.</label>
-			    			<input type="phone" name="" value="" placeholder="contact number" class="form-control">
+			    			<input type="phone" id="staff-phone" name="" value="" placeholder="contact number" class="form-control">
 			    		</div>  
 			    	</div>
 			    	<div class="form-group row">
 			    		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    			<label for="address">Contact Address</label>
-			    			<textarea name="" rows="2" placeholder="enter your address" class="form-control"></textarea>
+			    			<textarea name="" id="staff-address" rows="2" placeholder="enter your address" class="form-control"></textarea>
 			    		</div>
 			    	</div>
 			    	<div>
@@ -199,6 +199,9 @@
 			<li><strong>Phone</strong> : <span id="profile-staff-phone"></span></li>
 			<li><strong>Is Class Teacher Of</strong> : <span id="profile-staff-isclassteacherof"></span></li>
 			<li><strong>Is ACO Of</strong> : <span id="profile-staff-isacoof"></span></li>
+			<li><strong>Date of Joining</strong> : <span id="profile-staff-doj"></span></li>
+			<li><strong>Designation</strong> : <span id="profile-staff-designation"></span></li>
+			<li><strong>Address</strong> : <span id="profile-staff-address"></span></li>
 		  </ul>
 		</div>
   
@@ -216,18 +219,19 @@
   </body>
 
 
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+
 <!-- Firebase Config File -->
 <script src="../js/configFirebase.js"></script>
 
-<!-- Firebase CDN -->
-<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+<!-- Jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 <!-- External JS -->
 <script type="text/javascript" src="../animations/js/reloader.js"></script>
 <script type="text/javascript" src="js/staffLeaveform.js"></script>
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Google Fonts API -->
 <link href="https://fonts.googleapis.com/css?family=Akronim|Emilys+Candy|Strait&display=swap" rel="stylesheet">

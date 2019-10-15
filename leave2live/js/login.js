@@ -102,6 +102,9 @@ staffDataRef.once("value", snap =>{
                 var staffProfileDepartment = childNode.child("staffdep").val();
                 var staffProfileIsClassTeacherOf = childNode.child("isclassteacherof").val();
                 var staffProfileIsAcoOf = childNode.child("isacoof").val();
+                var staffProfileDOJ = childNode.child("staffdoj").val();
+                var staffProfileAddress = childNode.child("staffaddress").val();
+                var staffProfileDesignation = childNode.child("staffdesignation").val();
 
                 //using localstorage to pass them into Javascript pages
                 
@@ -112,6 +115,9 @@ staffDataRef.once("value", snap =>{
                 localStorage.setItem("staffdepartment", staffProfileDepartment);
                 localStorage.setItem("staffisclassteacherof", staffProfileIsClassTeacherOf);
                 localStorage.setItem("staffisacoof", staffProfileIsAcoOf);
+                localStorage.setItem("staffdoj", staffProfileDOJ);
+                localStorage.setItem("staffaddress", staffProfileAddress);
+                localStorage.setItem("staffdesignation", staffProfileDesignation);
                 localStorage.setItem("staffRole", "CLASS TEACHER");
 
                 }

@@ -25,6 +25,9 @@ else {
     $("#profile-staff-phone").html(localStorage.getItem("staffphone"));
     $("#profile-staff-isclassteacherof").html(localStorage.getItem("staffisclassteacherof"));
     $("#profile-staff-isacoof").html(localStorage.getItem("staffisacoof"));
+    $("#profile-staff-doj").html(localStorage.getItem("staffdoj"));
+    $("#profile-staff-designation").html(localStorage.getItem("staffdesignation"));
+    $("#profile-staff-address").html(localStorage.getItem("staffaddress"));
 }
 
 //Get Database Reference
