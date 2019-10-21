@@ -54,93 +54,119 @@
 
 		</div>
 		<div class="card-body">
+
 			<form>
 				<div class="row form-group">
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="name">Name</label>
-				   	  <input type="text" id="staff-name" name="" value="" class="form-control" placeholder="applicant name">
+						 <input type="text" id="staff-name" class="form-control" placeholder="applicant name">
+						 <span class="error" id="staff-name-error">Please fill your name</span>
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="empno">EMP_No</label>
-				   	  <input type="text" id="staff-id"name="" value="" class="form-control" placeholder="emp no.">
+						 <input type="text" id="staff-id"name="" value="" class="form-control" placeholder="emp no.">
+						 <span class="error" id="staff-empno-error">Please fill your EMP No.</span>
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="doj">DOJ</label>
 						 <input type="date" id="staff-doj" name="" value="" class="form-control">
+						 <span class="error" id="staff-doj-error">Please fill your Date of Joining</span>
 				   </div>
 			    </div>
 			    <div class="row form-group">
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="days">No. of days</label>
-				   	  <input type="number" id="staff-noofdays" name="" value="" min="1" max="60" class="form-control" placeholder="no of days">
+						 <input type="number" id="staff-noofdays" name="" value="" min="1" max="60" class="form-control" placeholder="no of days">
+						 <span class="error" id="staff-noofdays-error">Please fill Number of Days</span>
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="from">From</label>
-				   	  <input type="date" id="staff-fromdate" name="" value="" class="form-control" placeholder="from">
+						 <input type="date" id="staff-fromdate" name="" value="" class="form-control" placeholder="from">
+						 <span class="error" id="staff-fromdate-error">Please fill From Date</span>
 				   </div>
 				   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 				   	  <label for="to">To</label>
-				   	  <input type="date" id="staff-todate" name="" value="" class="form-control" placeholder="to">
+						 <input type="date" id="staff-todate" name="" value="" class="form-control" placeholder="to">
+						 <span class="error" id="staff-todate-error">Please fill To Date</span>
 				   </div>
 			    </div>
 			        <div class="row form-group">
 			    	   <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
 			    	   	  <label for="reason">Reason for leave</label>
-			    	   	  <textarea rows="3" id="staff-reason" name="" value="" class="form-control" placeholder="describe your reason"></textarea>
+							 <textarea rows="3" id="staff-reason" name="" value="" class="form-control" placeholder="describe your reason"></textarea>
+							 <span class="error" id="staff-reason-error">Please Specify the reason</span>
 			    	   </div>
 			    	   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 			    	   	   	<label for="days">Nature of leave</label><br>
-			    	   	   	    <select name="teams" id="staff-leavenature" multiple="multiple" class="form-control">
-			    	   	   	       <option value="CL">CL</option>
+			    	   	   	    <select name="teams" id="staff-leavenature" class="form-control">
+			    	   	   	       <option value="CL" selected>CL</option>
 			    	   	   	       <option value="VL/EL">VL/EL</option>
 			    	   	   	       <option value="ML">ML</option>
 			    	   	   	       <option value="LLP">LLP</option>
 			    	   	   	       <option value="C.OFF">C.OFF</option>
 			    	   	   	       <option value="MTL">MTL</option>
 			    	   	   	       <option value="SPL">SPL</option>
-			    	   	   	    </select>
+								</select>
+								<span class="error" id="staff-leavenature-error">Please Choose Nature of Leave</span>
 			    	   	   </div>
 			    	   </div>
 			    	<div class="row form-group">
 			    	   <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 			    	   	  <label for="designation">Designation</label>
-			    	   	  <input type="text" id="staff-designation" name="" value="" class="form-control" placeholder="your designation">
+							 <input type="text" id="staff-designation" name="" value="" class="form-control" placeholder="your designation">
+							 <span class="error" id="staff-designation-error">Please fill Designation</span>
 			    	   </div>
 			    	   <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
 			    	   	  <label for="department">Department</label>
-			    	   	  <input type="text" id="staff-department" name="" value="" class="form-control" placeholder="your department">
+							 <input type="text" id="staff-department" name="" value="" class="form-control" placeholder="your department">
+							 <span class="error" id="staff-department-error">Please fill Department</span>
 			    	   </div>
 			        </div>
 			       
 			        <div class="row form-group">
 			    	   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    	   		<label for="c.off claimed">Date worked for which C.OFF is claimed</label>
-			    	   		<input type="date" name="" value="" class="form-control">
+							   <input type="date" id="staff-coffdate" class="form-control">
+							   <span class="error" id="staff-coffdate-error">Please fill the Date</span>
 			    	   </div>
 			    	   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    	   		<label for="worknature">Nature of Work</label>
-			    	   		<input type="text" name="" value="" placeholder="mention here" class="form-control">
+							   <input type="text" id="staff-worknature" name="" value="" placeholder="mention here" class="form-control">
+							   <span class="error" id="staff-worknature-error">Please fill Nature of Work</span>
 			    	   </div>
 			    	</div>
 			    	<div class="row form-group">
 			    		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    		    <label for="date" data-toggle="tooltip" data-placement="top" title="Date of Application">Date<i class="fa fa-question-circle" aria-hidden="true"></i></label>
-			    		    <input type="date" id="staff-dateofapplication" name="" value="" class="form-control">
+							<input type="date" id="staff-dateofapplication" name="" value="" class="form-control">
+							<span class="error" id="staff-dateofapplication-error">Please fill Application Date</span>
 			    		</div>
 			    		<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 			    			<label for="phone">Phone no.</label>
-			    			<input type="phone" id="staff-phone" name="" value="" placeholder="contact number" class="form-control">
+							<input type="phone" id="staff-phone" name="" value="" placeholder="contact number" class="form-control">
+							<span class="error" id="staff-phone-error">Please fill contact number</span>
 			    		</div>  
 			    	</div>
 			    	<div class="form-group row">
 			    		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    			<label for="address">Contact Address</label>
-			    			<textarea name="" id="staff-address" rows="2" placeholder="enter your address" class="form-control"></textarea>
+							<textarea name="" id="staff-address" rows="2" placeholder="enter your address" class="form-control"></textarea>
+							<span class="error" id="staff-address-error">Please fill the address</span>
 			    		</div>
 			    	</div>
 			    	<div>
-			    	   <center> <button class="btn btn-outline-primary">Request Hod for approval</button></center>
-			    	</div>
+			    	   <center> <input type="button" value="submit" class="btn btn-outline-primary" onclick="validateStaffLeaveForm()"></center>
+					</div>
+					<div class="cssload-loader" id="updating-message" style="display: none;font-size:10px;">Validating</div>
+
+					<br>
+									<!-- Action Messages -->
+					<div class="alert alert-success" id="action-success-message" style="display: none;">
+						<strong>Success!</strong> The Request was Successfully Updated
+					</div>
+					<div class="alert alert-danger" id="action-failure-message" style="display: none;">
+						<strong>Failure!</strong> Sorry Something went Wrong
+					</div>
 			</form>
 		</div>
 	</div>
@@ -248,6 +274,8 @@
 
 <!-- External CSS -->
 <link rel="stylesheet" href="css/staffDashboard.css">
+<link rel="stylesheet" href="css/staffLeaveForm.css">
+<link rel="stylesheet" href="../animations/css/progressText.css">
 <link rel="stylesheet" href="../animations/css/reloader.css">
 
 </html>

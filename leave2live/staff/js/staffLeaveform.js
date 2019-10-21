@@ -1,4 +1,5 @@
 // Rudr Thakur
+// staffLeaveForm.js
 
 ///////////  Session Handling ////////////////////
 
@@ -39,6 +40,190 @@ function autoFillStaffDetails(){
     $("#staff-address").val(localStorage.getItem("staffaddress"));
 }
 
+// Function to validate Staff Leave Form
+function validateStaffLeaveForm(){
+
+    // Global Error Flag
+    var errorFlag = true;
+
+
+    if($("#staff-name").val() === ""){
+        $('#staff-name-error').show();
+        errorFlag = false;
+    }
+    else{
+        $('#staff-name-error').hide();
+    }
+
+
+    if($("#staff-id").val() === ""){
+        $('#staff-empno-error').show();
+        errorFlag = false;
+    }
+    else{
+        $('#staff-empno-error').hide();
+    }
+
+
+    if($("#staff-doj").val() === ""){
+        $('#staff-doj-error').show();  
+        errorFlag = false;
+    }
+    else{
+        $('#staff-doj-error').hide();
+    }
+
+    if($("#staff-noofdays").val() === ""){
+        $('#staff-noofdays-error').show();  
+        errorFlag = false;
+    }
+    else{
+        $('#staff-noofdays-error').hide();
+    }
+
+    if($("#staff-fromdate").val() === ""){
+        $('#staff-fromdate-error').show();  
+        errorFlag = false;
+    }
+    else{
+        $('#staff-fromdate-error').hide();
+    }
+
+    if($("#staff-todate").val() === ""){
+        $('#staff-todate-error').show();  
+        errorFlag = false;
+    }
+    else{
+        $('#staff-todate-error').hide();
+    }
+
+    if($("#staff-leavenature").val() === ""){
+        $('#staff-leavenature-error').show();
+        errorFlag = false;
+  
+    }
+    else{
+        $('#staff-leavenature-error').hide();
+    }
+
+    if($("#staff-department").val() === ""){
+        $('#staff-department-error').show();
+        errorFlag = false;
+
+    }
+    else{
+        $('#staff-department-error').hide();
+    }
+    
+    if($("#staff-coffdate").val() === ""){
+        $('#staff-coffdate-error').show();
+        errorFlag = false;
+
+    }
+    else{
+        $('#staff-coffdate-error').hide();
+    }
+
+    if($("#staff-designation").val() === ""){
+        $('#staff-designation-error').show();
+        errorFlag = false;
+
+    }
+    else{
+        $('#staff-designation-error').hide();
+    }
+
+    if($("#staff-dateofapplication").val() === ""){
+        $('#staff-dateofapplication-error').show();
+        errorFlag = false;
+ 
+    }
+    else{
+        $('#staff-dateofapplication-error').hide();
+    }
+
+    if($("#staff-worknature").val() === ""){
+        $('#staff-worknature-error').show();
+        errorFlag = false;
+  
+    }
+    else{
+        $('#staff-worknature-error').hide();
+    }
+
+    if($("#staff-phone").val() === ""){
+        $('#staff-phone-error').show();
+        errorFlag = false;
+   
+    }
+    else{
+        $('#staff-phone-error').hide();
+    }
+
+    if($("#staff-address").val() === ""){
+        $('#staff-address-error').show();
+        errorFlag = false;
+
+    }
+    else{
+        $('#staff-address-error').hide();
+    }
+
+    if($("#staff-reason").val() === ""){
+        $('#staff-reason-error').show();
+        errorFlag = false;
+    }
+    else{
+        $('#staff-reason-error').hide();
+    }
+
+    if(errorFlag){
+
+        if(submitStaffLeaveForm()){
+            $("#updating-message").show();
+
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#action-success-message").fadeIn(1000);
+            }, 5000);
+    
+                //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#action-success-message").fadeOut(); 
+            }, 5000);
+    
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#updating-message").hide();
+                //reload the page
+                location.reload();
+            }, 7000)
+        }
+
+        else{
+            $("#updating-message").show();
+
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#action-failure-message").fadeIn(1000);
+            }, 5000);
+    
+            //Hide after 5 seconds
+            setTimeout(function() { 
+                $("#updating-message").hide();
+            }, 7000)
+
+        }
+     
+    }
+
+}
+
+
+// Function to Submit Staff Leave Form
+function submitStaffLeaveForm(){
+    return false;
+}
 
 // Logout
 function logout(){
