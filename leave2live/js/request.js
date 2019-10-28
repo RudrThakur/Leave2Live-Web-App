@@ -37,52 +37,52 @@ else {
     $("#profile-phone").html(localStorage.getItem("phone"));
     $("#profile-leave-count").html(localStorage.getItem("leavecount"));
 
-}
+        //////////////////////////////////////////////// Data Retrieval ////////////////////////////////
 
-//////////////////////////////////////////////// Data Retrieval ////////////////////////////////
+    //Display Leave Form Data From Firebase to Table
 
-//Display Leave Form Data From Firebase to Table
+    tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("registernumber")).on("value", function(snapshot) {
+        snapshot.forEach(function(child) {
+        
+            var content = '';
+        //Retrieve Request Data
+        var tableData = child.val();
 
-tableRequest.orderByChild('registernumber').equalTo(localStorage.getItem("registernumber")).on("value", function(snapshot) {
-    snapshot.forEach(function(child) {
-    
-        var content = '';
-    //Retrieve Request Data
-    var tableData = child.val();
+        rowInd = rowInd + 1;
 
-    rowInd = rowInd + 1;
+        ////////////////////////////Get the Request Data of the Matched Record
+        var tableRequestId = child.key;
+        var tableRequestType = tableData.requesttype;
+        var tableRequestDate = tableData.date;
+        var tableReasonCategory = tableData.reasoncategory;
+        var tableStatus = tableData.status;
 
-    ////////////////////////////Get the Request Data of the Matched Record
-    var tableRequestId = child.key;
-    var tableRequestType = tableData.requesttype;
-    var tableRequestDate = tableData.date;
-    var tableReasonCategory = tableData.reasoncategory;
-    var tableStatus = tableData.status;
+        ///////////////////////////////Display Request Data in Request-Table
+        content += '<tr>';
+        content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
+        content += '<td>' + tableRequestType + '</td>';//Column RequestType
+        content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
+        content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
+        content += '<td>' + tableStatus + '</td>';//Column Status
+        content += '</tr>';
+        $('#request-table').append(content);
 
-    ///////////////////////////////Display Request Data in Request-Table
-    content += '<tr>';
-    content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';//Column RequestID
-    content += '<td>' + tableRequestType + '</td>';//Column RequestType
-    content += '<td>' + tableRequestDate + '</td>'; //Column RequestDate
-    content += '<td>' + tableReasonCategory + '</td>';//Column Reason Category
-    content += '<td>' + tableStatus + '</td>';//Column Status
-    content += '</tr>';
-    $('#request-table').append(content);
+        });
+    });
+
+    //Logout Handler
+
+    $("#logout-btn").click(function(){
+
+        //Clear Session 
+        localStorage.clear();
+
+        //Redirect to login.html
+        window.location.href = 'login.html';
 
     });
-  });
 
-//Logout Handler
-
-$("#logout-btn").click(function(){
-
-    //Clear Session 
-    localStorage.clear();
-
-    //Redirect to login.html
-    window.location.href = 'login.html';
-
-});
+    }
 
 });
 
