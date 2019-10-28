@@ -48,11 +48,11 @@ else {
             var tableLeaveNature = tableData.staffleavenature;
             var tableRequestFromDate = tableData.stafffromdate;
             var tableRequestToDate = tableData.stafftodate;
-            var tableRequestStatus = 'LOL';
+            var tableRequestStatus = tableData.status;
 
             ///////////////////////////////Display Request Data in Request-Table
             content += '<tr>';
-            content += '<td>' + '<a href="requestDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';
+            content += '<td>' + '<a href="staffHistoryDetails.html?queryid=' + tableRequestId + '">' + tableRequestId + '</a>' + '</td>';
             content += '<td>' + tableRequestDate + '</td>';
             content += '<td>' + tableLeaveNature + '</td>'; 
             content += '<td>' + tableRequestFromDate + '</td>';

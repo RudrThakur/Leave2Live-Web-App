@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+<head>
+  <title>Leave2Live - Staff Leave History</title>
+  <!-- End of Title -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<!-- End of Head -->
+<body onload="pageReloadFunction()" style="margin:0;">
+
+<nav class="navbar navbar-light navbar-expand-md" style="background-color: #0a3d62;">
+  <a class="navbar-brand" href="#">LEAVE2LIVE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="staffDashboard.html">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="staffLeaveform.html">Applications</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#staff-profile" href="#">Profile</a>
+      </li> 
+      <li class="nav-item active">
+        <a class="nav-link" href="#">History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Feedback</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:logout()" id="logout-btn">Logout</a>
+      </li>
+    </ul>
+  </div>  
+</nav>
+<br>
+<!-- End of Navbar -->
+
+<!-- Loader Overlay -->
+<div id="loader"></div>   
+
+    <!--  Staff Dashboard mainDiv -->
+<div id="mainDiv" class="animate-bottom" style="display: none;">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+        <h2 class="modal-title" style="margin: 0 auto;">REQUEST DETAILS</h2>
+    </div>
+
+    <!-- Modal body -->
+    <div class="modal-body" style="background-color: white;">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xl-8 mx-auto">
+            <div class="card">
+                <table class="table responsive table-borderless">
+                    <thead class="text-primary">
+                        <tr>
+                            <th>Request Id</th>
+                            <th>Request Type</th>
+                            <th>Register Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="requestid-details"></td>
+                            <td id="request-type-details"></td>
+                            <td id="request-date-details"></td>
+                        </tr>
+                    </tbody>
+                    <thead class="text-primary">
+                        <tr>
+                            <th>Day Mode</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="day-mode-details"></td>
+                            <td id="fromdate-details"></td>
+                            <td id="todate-details"></td>
+                        </tr>
+                    </tbody>
+                    <thead class="text-primary">
+                        <tr>
+                            <th>Scheduled Tests</th>
+                            <th>Type of Test</th>
+                            <th>Reason Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="test-check-details"></td>
+                            <td id="test-type-details"></td>
+                            <td id="reason-category-details"></td>
+                        </tr>
+                    </tbody>
+                    <thead class="text-primary text-center">
+                        <tr>
+                            <th colspan="3">Reason Specific</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td colspan="3" id="reason-specific-details"></td>
+                        </tr>
+                    </tbody>
+                    <thead class="text-primary">
+                        <tr>
+                            <th>Number of Arrears</th>
+                            <th>Attendance Percentage</th>
+                            <th>Leave Count Per Month</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="arrear-count-details"></td>
+                            <td id="attendance-details"></td>
+                            <td id="leave-count-details"></td>
+                        </tr>
+                    </tbody>
+                    <thead class="text-primary">
+                    <tr>
+                        <th>Remarks of Class Teacher</th>
+                        <th>Remarks of ACO</th>
+                        <th>Remarks of HOD</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="classteacher-remarks-details"></td>
+                            <td id="aco-remarks-details"></td>
+                            <td id="hod-remarks-details"></td>
+                        </tr>
+                    </tbody>
+                    <thead class="text-danger text-center">
+                        <tr>
+                            <th colspan="3" rowspan="" headers="" scope="">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td colspan="3" id="status-details">
+                            </td>
+                        </tr>
+                    </tbody>
+                    <thead class="text-danger text-center">
+                    <tr>
+                        <th colspan="3" rowspan="" headers="" scope="">Attached Proofs</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr>
+                        <td colspan="3" id="file-proof" style="font-size: 10px;"></td>
+                    </tr>
+                </tbody>
+                </table> 
+            </div>
+        </div> 
+    </div>
+    </div>
+    <br><hr>
+    <!-- Attachments -->
+    <div id="attachment-box">
+
+    <h5>Attach Proofs -</h5>
+    <br>
+    <label class="upload-group">
+        Upload File
+        <input type="file" id="proof-file">
+    </label><br><br>
+    <span class="error" id="proof-upload-error" style="display: none;">Proof is already attached</span>
+    <button type="button" class="btn btn-primary" onclick="uploadProof()" style="display: none;" id="btn-proof-upload">Submit</button>
+    </div>
+
+</div>
+
+<!-- Staff Profile Modal -->
+
+<!-- The Modal -->
+<div class="modal fade" id="staff-profile">
+	<div class="modal-dialog">
+	  <div class="modal-content bg-white text-dark">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title" style="margin: 0 auto;">PROFILE DETAILS</h4>
+		  <button type="button" class="close text-dark" data-dismiss="modal">&times;</button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body" style="background-color: white;">
+		  <ul style="color: black;list-style: none;">
+			<!-- JS Handler - index.js -->
+			<li><strong>Staff Name</strong> : <span id="profile-staff-name"></span></li>
+			<li><strong>Staff Id</strong> : <span id="profile-staff-id"></span></li>
+			<li><strong>Staff Email</strong> : <span id="profile-staff-email"></span></li>
+			<li><strong>Staff Department</strong> : <span id="profile-staff-department"></span></li>
+			<li><strong>Phone</strong> : <span id="profile-staff-phone"></span></li>
+			<li><strong>Is Class Teacher Of</strong> : <span id="profile-staff-isclassteacherof"></span></li>
+			<li><strong>Is ACO Of</strong> : <span id="profile-staff-isacoof"></span></li>
+			<li><strong>Date of Joining</strong> : <span id="profile-staff-doj"></span></li>
+			<li><strong>Designation</strong> : <span id="profile-staff-designation"></span></li>
+			<li><strong>Address</strong> : <span id="profile-staff-address"></span></li>
+		  </ul>
+		</div>
+  
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		</div>
+  
+	  </div>
+	</div>
+  </div>
+  <!-- End of Student Profile Modal -->   
+  
+  <!-- End of Body -->
+  </body>
+
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase.js"></script>
+
+<!-- Firebase Config File -->
+<script src="../js/configFirebase.js"></script>
+
+<!-- Jquery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- External JS -->
+<script type="text/javascript" src="../animations/js/reloader.js"></script>
+<script type="text/javascript" src="js/staffHistoryDetails.js"></script>
+
+<!-- Google Fonts API -->
+<link href="https://fonts.googleapis.com/css?family=Akronim|Emilys+Candy|Strait&display=swap" rel="stylesheet">
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- FontAwesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<!-- External CSS -->
+<link rel="stylesheet" href="css/staffDashboard.css">
+<link rel="stylesheet" href="css/staffHistoryDetails.css">
+<link rel="stylesheet" href="../animations/css/progressText.css">
+<link rel="stylesheet" href="../animations/css/reloader.css">
+
+</html>
