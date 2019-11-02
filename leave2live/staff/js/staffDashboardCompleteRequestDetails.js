@@ -12,9 +12,8 @@ if (!localStorage.getItem("staffemail")) {
 
     //Redirect to login page If New User
     window.location.href = '../login.html';
-} 
-else {
-   
+} else {
+
     //////////////////////////////////// Loading Student Profile ///////////////////////////
 
     //Add values to Staff Profile Modal 
@@ -29,7 +28,7 @@ else {
 ////////////////////////////////////////////// Functions ///////////////////////////////////////////
 
 //function to reverse a date
-function rev(str){
+function rev(str) {
     return str.split("-").reverse().join("-");
 }
 
@@ -52,14 +51,14 @@ var queryStudentRegisterNumber;
 
 //Retrieve Record from firebase of matching RequestId
 
-detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snapshot){
+detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function (snapshot) {
 
-    snapshot.forEach(function(child) {
-   
+    snapshot.forEach(function (child) {
+
         //Retrieve Request Data
         var detailRequestData = child.val();
 
-  
+
         //getting the register number of the current query data and then retrieving the student data of the corresponding register number
         queryStudentRegisterNumber = detailRequestData.registernumber;
 
@@ -103,26 +102,26 @@ detailRequestRef.orderByKey().equalTo(queryRequestId).on("value", function(snaps
         $("#hod-remarks-details").html(detailRequestData.hodremarks);
 
         proofFileRef = firebase.database().ref("studentproofs");
-        proofFileRef.on("value", function(proof){
+        proofFileRef.on("value", function (proof) {
 
-          proof.forEach(function(fileURL){
+            proof.forEach(function (fileURL) {
 
-            var currentFile = fileURL.val();
-            if (currentFile.requestid == currentRequestId){
-              var displayProofString = "Click this link to preview";
-              $("#file-proof").html(displayProofString.link(currentFile.url));
-            }
-          });
+                var currentFile = fileURL.val();
+                if (currentFile.requestid == currentRequestId) {
+                    var displayProofString = "Click this link to preview";
+                    $("#file-proof").html(displayProofString.link(currentFile.url));
+                }
+            });
         });
- 
+
     });
 });
 
 //When back button is Clicked
-$("#back-btn").click(function(){
+$("#back-btn").click(function () {
 
     //Go back to Previous Page
-    window.location.href ='../staff/staffDashboard.html';
+    window.location.href = '../staff/staffDashboard.html';
 });
 
 //When an Action Button is Clicked
@@ -130,56 +129,63 @@ $("#back-btn").click(function(){
 ////////////////////////////////// Update Firebase Data
 
 //Approve Request
-$("#approve-btn").click(function(){
+$("#approve-btn").click(function () {
 
     var getCurrentStatusRef = firebase.database().ref("requests/" + queryRequestId);
     var currentStatus;
     var staffRemarks = $("#staff-remarks").val();
-    getCurrentStatusRef.once('value').then(function(snapshot){
+    getCurrentStatusRef.once('value').then(function (snapshot) {
         currentStatus = snapshot.child("status").val();
 
         $("#status-details").hide();
         $("#updating-message").show();
 
-        if((staffRemarks != "") &&
-        (currentStatus == "submitted("+ localStorage.getItem("staffRole") + ")" ||
-        currentStatus == "cancelled("+ localStorage.getItem("staffRole") + ")")){
+        if ((staffRemarks != "") &&
+            (currentStatus == "submitted(" + localStorage.getItem("staffRole") + ")" ||
+                currentStatus == "cancelled(" + localStorage.getItem("staffRole") + ")")) {
 
-            setTimeout(function(){
+            setTimeout(function () {
                 //Set the status of the Request as SUBMITTED
 
-                if(localStorage.getItem("staffRole") == "CLASS TEACHER")
-                    detailRequestRef.child(queryRequestId).update({status : "submitted(ACO)", classteacherremarks : staffRemarks});
-                if(localStorage.getItem("staffRole") == "ACO")
-                    detailRequestRef.child(queryRequestId).update({status : "submitted(HOD)", acoremarks : staffRemarks});
-        
-                //Show Success Message
-                $("#action-success-message").fadeIn(1000);
+                if (localStorage.getItem("staffRole") == "CLASS TEACHER") {
+                    detailRequestRef.child(queryRequestId).update({
+                        status: "submitted(ACO)",
+                        classteacherremarks: staffRemarks
+                    });
+                    //Show Success Message
+                    $("#action-success-message").fadeIn(1000);
+                }
+                if (localStorage.getItem("staffRole") == "ACO") {
+                    detailRequestRef.child(queryRequestId).update({
+                        status: "submitted(HOD)",
+                        acoremarks: staffRemarks
+                    });
+                    //Show Success Message
+                    $("#action-success-message").fadeIn(1000);
+                }
             }, 5000);
 
             //Hide after 5 seconds
-            setTimeout(function() { 
+            setTimeout(function () {
                 $("#updating-message").hide();
-                $("#action-success-message").fadeOut(); 
+                $("#action-success-message").fadeOut();
             }, 5000);
 
             //Hide after 5 seconds
-            setTimeout(function() { 
+            setTimeout(function () {
                 //reload the page
                 location.reload();
                 $("#status-details").show();
             }, 7000);
 
-            }
-
-        else{
-            setTimeout(function() { 
+        } else {
+            setTimeout(function () {
                 $("#updating-message").hide();
-                $("#action-failure-message").fadeIn(); 
+                $("#action-failure-message").fadeIn();
             }, 5000);
-        
+
             //Hide after 5 seconds
-            setTimeout(function() { 
+            setTimeout(function () {
                 //reload the page
                 $("#action-failure-message").fadeOut();
                 $("#status-details").show();
@@ -191,54 +197,65 @@ $("#approve-btn").click(function(){
 
 
 //Deny Request
-$("#deny-btn").click(function(){
-    
+$("#deny-btn").click(function () {
+
     var getCurrentStatusRef = firebase.database().ref("requests/" + queryRequestId);
     var currentStatus;
     var staffRemarks = $("#staff-remarks").val();
-    getCurrentStatusRef.once('value').then(function(snapshot){
+    getCurrentStatusRef.once('value').then(function (snapshot) {
         currentStatus = snapshot.child("status").val();
 
         $("#status-details").hide();
         $("#updating-message").show();
 
-        if((staffRemarks != "" ) &&
-        (currentStatus == "submitted("+ localStorage.getItem("staffRole") + ")" ||
-        currentStatus == "cancelled("+ localStorage.getItem("staffRole") + ")")){
+        if ((staffRemarks != "") &&
+            (currentStatus == "submitted(" + localStorage.getItem("staffRole") + ")" ||
+                currentStatus == "cancelled(" + localStorage.getItem("staffRole") + ")")) {
 
-            setTimeout(function(){
+            setTimeout(function () {
                 //Set the status of the Request as CANCELLED
-                if(localStorage.getItem("staffRole") == "CLASS TEACHER")
-                    detailRequestRef.child(queryRequestId).update({status : "cancelled(ACO)", classteacherremarks : staffRemarks});
-                if(localStorage.getItem("staffRole") == "ACO")
-                    detailRequestRef.child(queryRequestId).update({status : "cancelled(HOD)", acoremarks : staffRemarks});
-                //Show Success Message
-                $("#action-success-message").fadeIn(1000);
-            }, 5000);
-        
-            //Hide after 5 seconds
-            setTimeout(function() { 
-                $("#updating-message").hide();
-                $("#action-success-message").fadeOut(); 
+                if (localStorage.getItem("staffRole") == "CLASS TEACHER") {
+                    detailRequestRef.child(queryRequestId).update({
+                        status: "cancelled(ACO)",
+                        classteacherremarks: staffRemarks
+                    });
+                    //Show Success Message
+                    $("#action-success-message").fadeIn(1000);
+                }
+
+                if (localStorage.getItem("staffRole") == "ACO") {
+                    detailRequestRef.child(queryRequestId).update({
+                        status: "cancelled(HOD)",
+                        acoremarks: staffRemarks
+                    });
+                    //Show Success Message
+                    $("#action-success-message").fadeIn(1000);
+                }
+
+
             }, 5000);
 
             //Hide after 5 seconds
-            setTimeout(function() { 
+            setTimeout(function () {
+                $("#updating-message").hide();
+                $("#action-success-message").fadeOut();
+            }, 5000);
+
+            //Hide after 5 seconds
+            setTimeout(function () {
                 //reload the page
                 location.reload();
                 $("#status-details").show();
             }, 7000)
 
-        }
-
-        else{
-            setTimeout(function() { 
+        } else {
+            setTimeout(function () {
                 $("#updating-message").hide();
-                $("#action-failure-message").fadeIn(); 
+                $("#action-failure-message").fadeIn();
             }, 5000);
-        
+
             //Hide after 5 seconds
-            setTimeout(function() { 
+            setTimeout(function () {
                 //reload the page
                 $("#action-failure-message").fadeOut();
                 $("#status-details").show();
@@ -246,3 +263,12 @@ $("#deny-btn").click(function(){
         }
     });
 });
+
+// Logout
+
+function logout() {
+
+    localStorage.clear();
+    window.location.href = '../login.html';
+
+}

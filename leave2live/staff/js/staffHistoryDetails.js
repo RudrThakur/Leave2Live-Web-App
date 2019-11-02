@@ -5,9 +5,8 @@
 if (!localStorage.getItem("staffemail")) {
     window.location.href = '../login.html';
 
-} 
-else {
-   
+} else {
+
     //////////////////////////////////// Loading Student Profile ///////////////////////////
 
 
@@ -34,9 +33,9 @@ else {
 
     //Retrieve Record from firebase of matching RequestId
 
-    staffHistoryRef.orderByKey().equalTo(queryRequestId).on("value", function(snapshot){
+    staffHistoryRef.orderByKey().equalTo(queryRequestId).on("value", function (snapshot) {
 
-        snapshot.forEach(function(child) {
+        snapshot.forEach(function (child) {
 
             //Retrieve Request Data
             var detailRequestData = child.val();
@@ -45,15 +44,15 @@ else {
 
             ///////////////////////////Display Data in the Request Details Modal
             $("#requestid-details").html(child.key);
-            $("#request-type-details").html(detailRequestData.requesttype);
-            $("#request-date-details").html(detailRequestData.date);
-            $("#fromdate-details").html(rev(detailRequestData.fromdate));
-            $("#todate-details").html(rev(detailRequestData.todate));
-            $("#day-mode-details").html(detailRequestData.daymode);
-            $("#test-check-details").html(detailRequestData.testcheck);
-            $("#test-type-details").html(detailRequestData.testtype);
+            $("#noofdays-details").html(detailRequestData.staffdays);
+            $("#application-date-details").html(detailRequestData.staffdateofapplication);
+            $("#fromdate-details").html(detailRequestData.stafffromdate);
+            $("#todate-details").html(detailRequestData.stafftodate);
+            $("#work-nature-details").html(detailRequestData.staffworknature);
+            $("#leave-nature-details").html(detailRequestData.staffleavenature);
+            $("#coff-claim-date").html(detailRequestData.staffcoffdate);
             $("#reason-category-details").html(detailRequestData.reasoncategory);
-            $("#reason-specific-details").html(detailRequestData.reasonspecific);
+            $("#reason-specific-details").html(detailRequestData.staffreason);
             $("#arrear-count-details").html(detailRequestData.arrearcount);
             $("#attendance-details").html(detailRequestData.attendance);
             $("#leave-count-details").html(detailRequestData.leavecount);
@@ -63,20 +62,61 @@ else {
             $("#hod-remarks-details").html(detailRequestData.hodremarks);
 
             proofFileRef = firebase.database().ref("studentproofs");
-            proofFileRef.on("value", function(proof){
+            proofFileRef.on("value", function (proof) {
 
-                proof.forEach(function(fileURL){
+                proof.forEach(function (fileURL) {
 
-                var currentFile = fileURL.val();
-                if (currentFile.requestid == currentRequestId){
-                    var displayProofString = "Click this link to preview";
-                    $("#file-proof").html(displayProofString.link(currentFile.url));
-                    $("#btn-proof-upload").attr("disabled", "true");
-                    $("#proof-upload-error").show();
-                }
+                    var currentFile = fileURL.val();
+                    if (currentFile.requestid == currentRequestId) {
+                        var displayProofString = "Click this link to preview";
+                        $("#file-proof").html(displayProofString.link(currentFile.url));
+                        $("#btn-proof-upload").attr("disabled", "true");
+                        $("#proof-upload-error").show();
+                    }
                 });
             });
         });
     });
 
+    // Cancel Request- Staff
+    function staffRequestCancel() {
+
+        $("#updating-message").show();
+        setTimeout(function () {
+            staffHistoryRef.child(queryRequestId).remove();
+            var cancellationCheck = staffHistoryRef.child(queryRequestId);
+            if(cancellationCheck){
+                // Uh-oh, an error occurred!
+                $("#action-failure-message").fadeIn(1000);
+                setTimeout(function () {
+                    $("#updating-message").hide();
+                    $("#action-failure-message").fadeIn();
+                }, 5000);
+            }
+            else{
+                $("#action-success-message").fadeIn(1000);
+                setTimeout(function () {
+                    $("#updating-message").hide();
+                    $("#action-success-message").fadeOut();
+                }, 5000);
+
+                window.location.href = 'staffHistory.html';
+            }
+
+        }, 5000);
+
+    }
+
+    // Logout
+
+    function logout(){
+        localStorage.clear();
+        window.location.href = '../login.html';
+    }
+
+
+
+
+// END
 }
+

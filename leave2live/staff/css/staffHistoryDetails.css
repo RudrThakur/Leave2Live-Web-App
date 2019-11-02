@@ -1,0 +1,9 @@
+#attachment-box, .staff-cancel-box{
+    padding: 1%;
+    margin: 1%;
+    display: inline-block;
+}
+
+.staff-cancel-box{
+    float: right;
+}
