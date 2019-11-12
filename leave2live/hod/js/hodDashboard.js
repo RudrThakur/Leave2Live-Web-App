@@ -65,9 +65,9 @@ if (!localStorage.getItem("hodemail")) {
 
     });
 
-      /////////////////////////////////// Approved Requests 
+    /////////////////////////////////// Approved Requests 
 
-      hodDashboardRef.orderByChild("status").equalTo("approved(HOD)").once("value", function (snapshot) {
+    hodDashboardRef.orderByChild("status").equalTo("approved(HOD)").once("value", function (snapshot) {
         snapshot.forEach(function (child) {
 
             var content = '';
@@ -102,9 +102,9 @@ if (!localStorage.getItem("hodemail")) {
 
     });
 
-      /////////////////////////////////// Cancelled Requests 
+    /////////////////////////////////// Cancelled Requests 
 
-      hodDashboardRef.orderByChild("status").equalTo("cancelled(HOD)").once("value", function (snapshot) {
+    hodDashboardRef.orderByChild("status").equalTo("cancelled(HOD)").once("value", function (snapshot) {
         snapshot.forEach(function (child) {
 
             var content = '';
@@ -142,10 +142,10 @@ if (!localStorage.getItem("hodemail")) {
 
 }
 
-    //When Logout button is Clicked
-    function logout() {
+//When Logout button is Clicked
+function logout() {
 
-        localStorage.clear();
-        //Go back to Login Page
-        window.location.href = '../login.html';
-    };
+    localStorage.clear();
+    //Go back to Login Page
+    window.location.href = '../login.html';
+};
