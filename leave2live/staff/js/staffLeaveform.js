@@ -232,6 +232,7 @@ else {
         var staffCoffDate = $('#staff-coffdate').val();
         var staffDateOfApplication = $('#staff-dateofapplication').val();
         var staffWorkNature = $('#staff-worknature').val();
+        var initStatus = 'submitted(HOD)';
 
         //Create a Reference to firebase
         var staffRequestsRef = firebase.database().ref("staffrequests");
@@ -244,6 +245,7 @@ else {
             'staffleavenature' : staffLeaveNature,
             'staffcoffdate' : staffCoffDate, 
             'staffworknature' : staffWorkNature,
+            'status' : initStatus,
             'staffdateofapplication' : staffDateOfApplication
         };
 
