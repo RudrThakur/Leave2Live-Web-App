@@ -237,7 +237,7 @@ else {
         //Create a Reference to firebase
         var staffRequestsRef = firebase.database().ref("staffrequests");
         var staffRequestObject = {
-            'staffempno' : staffEmpNo,
+            'staffid' : staffEmpNo,
             'staffdays' : staffDays,
             'stafffromdate' : staffFromDate, 
             'stafftodate' : staffToDate, 
