@@ -1,2 +1,2 @@
 # Leave2Live-Web-App
-Application for taking leave/od
+Web Application for Leave/On Duty Management System built in Javascript & Google Firebase
